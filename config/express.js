@@ -7,6 +7,7 @@ var config = require('./config'),
 	compress = require('compression'),
 	bodyParser = require('body-parser'),
 	methodOverride = require('method-override'),
+	multer = require('multer'),
 	flash = require('express-flash'),
 	session = require('express-session'),
 	MongoStore = require('connect-mongo')(session),
@@ -48,6 +49,15 @@ module.exports = function(db) {
 	}));
 	app.use(bodyParser.json());
 	app.use(methodOverride());
+
+	//Configure multer module
+	app.use(multer({ dest: path.join(__dirname, 'uploads')}));
+
+	app.use(function(req,res,next){
+		res.locals.user = req.user;
+		next();
+	});
+
 
 	//Configure express validator module
 	app.use(expressValidator());

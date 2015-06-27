@@ -8,33 +8,18 @@ var passport = require('passport'),
 
 // Create the Local strategy configuration method
 module.exports = function() {
-	// Use the Passport's Local strategy 
-	passport.use(new LocalStrategy(function(username, password, done) {
-		// Use the 'User' model 'findOne' method to find a user with the current username
-		User.findOne({
-			username: username
-		}, function(err, user) {
-			// If an error occurs continue to the next middleware
-			if (err) {
-				return done(err);
-			}
-			
-			// If a user was not found, continue to the next middleware with an error message
-			if (!user) {
-				return done(null, false, {
-					message: 'Unknown user'
-				});
-			}
-
-			// If the passport is incorrect, continue to the next middleware with an error message
-			if (!user.authenticate(password)) {
-				return done(null, false, {
-					message: 'Invalid password'
-				});
-			}
-			
-			// Otherwise, continue to the next middleware with the user object
-			return done(null, user);
-		});
-	}));
+// Use the Passport's Local strategy 
+passport.use(new LocalStrategy({ usernameField: 'email' }, function(email, password, done) {
+  email = email.toLowerCase();
+  User.findOne({ email: email }, function(err, user) {
+    if (!user) return done(null, false, { message: 'Email ' + email + ' not found'});
+    user.comparePassword(password, function(err, isMatch) {
+      if (isMatch) {
+        return done(null, user);
+      } else {
+        return done(null, false, { message: 'Invalid email or password.' });
+      }
+    });
+  });
+}));
 };
