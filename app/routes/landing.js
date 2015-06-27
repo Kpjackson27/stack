@@ -1,9 +1,16 @@
 'use strict';
 
+//Load the module dependencies
+var users = require('../../app/controllers/users'),
+	passport = require('passport'),
+	landing = require('../controllers/landing');
+
+	var passportConf = require('../../config/passport');
+
 module.exports = function(app){
-	//Load the 'index' controller
-	var landing = require('../controllers/landing');
 
 	//Mount the 'index' controller's 'render' method
-	app.get('/landing', landing.render);
+	app.route('/landing')
+		.get(landing.render)
+		.post(users.postLogin);
 };
