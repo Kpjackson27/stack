@@ -14,7 +14,7 @@ var db = mongoose();
 var app = express(db);
 
 //configure the passport middleware
-var passport = passport();
+var passport = require('passport');
 
 //use express application instance to listen to '3000' port
 app.listen(3000);

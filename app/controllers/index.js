@@ -4,8 +4,8 @@
 exports.render = function(req,res){
 	res.render('index', {
 		title: 'Lyrical Intent',
-		user: JSON.stringify(req.user),
+		// user: JSON.stringify(req.user),
 		//set the flash message variable
-		messages: req.flash('error')
+		// messages: req.flash('error')
 	});
 };

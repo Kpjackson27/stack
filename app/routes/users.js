@@ -4,6 +4,9 @@
 var users = require('../../app/controllers/users'),
 	passport = require('passport');
 
+
+var passportConf = require('../../config/passport');
+
 //Define the routes module method
 module.exports = function(app){
 	//setup the 'signup' routes
@@ -15,6 +18,9 @@ module.exports = function(app){
 	app.route('/login')
 		.get(users.getLogin)
 		.post(users.postLogin);
+
+	app.route('/logout')
+		.get(users.logout);
 
 	//setup the 'forgot password' routes
 	app.route('/forgot')
@@ -28,38 +34,20 @@ module.exports = function(app){
 
 	//setup the 'account' routes
 	app.route('/account')
-		.post(passport.authenticate('local', {
-			successRedirect: '/',
-			failureRedirect: '/login',
-			failureFlash: true
-		}), users.getAccount);
+		.get(passportConf.isAuthenticated, users.getAccount);
 
 	//setup the 'account profile' routes
 	app.route('/account/profile')
-		.post(passport.authenticate('local', {
-			successRedirect: '/',
-			failureRedirect: '/login',
-			failureFlash: true
-		}), users.postUpdateProfile);
-
+		.post(passportConf.isAuthenticated, users.postUpdateProfile);
 
 	//setup the 'account password' routes
 	app.route('/account/password')
-		.post(passport.authenticate('local', {
-			successRedirect: '/',
-			failureRedirect: '/login',
-			failureFlash: true
-		}), users.postUpdatePassword);	
+		.post(passportConf.isAuthenticated, users.postUpdatePassword);	
 
 	//setup the 'account delete' routes
 	app.route('/account/delete')
-		.post(passport.authenticate('local', {
-			successRedirect: '/',
-			failureRedirect: '/login',
-			failureFlash: true
-		}), users.postDeleteAccount);
+		.post(passportConf.isAuthenticated, users.postDeleteAccount);
 	
-	//setup logout route
-	app.get('/logout', users.logout);
-
+	app.route('/account/unlink/:provider')
+		.get(passportConf.isAuthenticated, users.getOauthUnlink);
 };

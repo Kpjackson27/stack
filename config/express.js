@@ -52,13 +52,7 @@ module.exports = function(db) {
 
 	//Configure multer module
 	app.use(multer({ dest: path.join(__dirname, 'uploads')}));
-
-	app.use(function(req,res,next){
-		res.locals.user = req.user;
-		next();
-	});
-
-
+	
 	//Configure express validator module
 	app.use(expressValidator());
 
@@ -101,8 +95,26 @@ module.exports = function(db) {
 	app.use(passport.initialize());
 	app.use(passport.session());
 
+	app.use(function(req,res,next){
+		res.locals.user = req.user;
+		next();
+	});
 	//Configure error handler module
 	app.use(errorHandler());
+
+
+	// app.use(function(req, res, next) {
+ //  	if (/api/i.test(req.path)) req.session.returnTo = req.path;
+ //  	next();
+	// });
+	// app.use(session({
+	// 	  resave: true,
+	// 	  saveUninitialized: true,
+	// 	  secret: secrets.sessionSecret,
+	// 	  store: new MongoStore({ url: secrets.db, autoReconnect: true })
+	// }));
+
+
 
 	//Load the routing files
 	require('../app/routes/index.js')(app);
