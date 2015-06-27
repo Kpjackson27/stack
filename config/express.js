@@ -15,6 +15,8 @@ var config = require('./config'),
 	_ = require('lodash'),
 	cookieParser = require('cookie-parser'),
 	lusca = require('lusca'),
+	expressValidator = require('express-validator'),
+	errorHandler = require('errorhandler'),
 	passport = require('passport');
 
 //Create a new error handling controller method
@@ -47,6 +49,9 @@ module.exports = function(db) {
 	app.use(bodyParser.json());
 	app.use(methodOverride());
 
+	//Configure express validator module
+	app.use(expressValidator());
+
 	//Configure the MongoDB session storage
 	var mongoStore = new MongoStore({
 		db: db.connection.db
@@ -54,7 +59,6 @@ module.exports = function(db) {
 
 
 	//Configure the 'session' middleware
-	
 	app.use(session({
 		saveUnitialized: true,
 		resave: true,
@@ -86,6 +90,9 @@ module.exports = function(db) {
 	//Configure passport middleware
 	app.use(passport.initialize());
 	app.use(passport.session());
+
+	//Configure error handler module
+	app.use(errorHandler());
 
 	//Load the routing files
 	require('../app/routes/index.js')(app);
