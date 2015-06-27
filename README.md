@@ -2,7 +2,7 @@
 
 > Yeoman generator for creating MEAN stack applications, using MongoDB, Express, AngularJS, and Node - lets you quickly set up a project following best practices.
 
-## Example project
+## Example project Song Qin
 
 Generated with defaults: http://fullstack-demo.herokuapp.com/.
 
