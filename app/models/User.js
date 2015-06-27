@@ -3,10 +3,11 @@
 //Load module dependencies
 var mongoose = require('mongoose'),
 	bcrypt = require('bcrypt-nodejs'),
-	crypto = require('crypto');
+	crypto = require('crypto'),
+	Schema  = mongoose.Schema;
 
 //User schema
-var UserSchema = new mongoose.Schema({
+var UserSchema = new Schema({
 	email:{
 		type: String,
 		unique: true,

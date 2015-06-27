@@ -2,10 +2,11 @@
 
 //Load the module dependencies
 var passport = require('passport'),
-	mongoose = require('mongoose'),
-	LocalStrategy = require('passport-local').Strategy;
+    mongoose = require('mongoose'),
+    LocalStrategy = require('passport-local').Strategy;
 
-var User = require('../app/models/User');
+var User = require('../app/models/User')
+
 passport.serializeUser(function(user, done) {
   done(null, user.id);
 });
