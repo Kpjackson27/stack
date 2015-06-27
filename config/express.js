@@ -118,7 +118,9 @@ module.exports = function(db) {
 
 	//Load the routing files
 	require('../app/routes/index.js')(app);
+	require('../app/routes/landing.js')(app);
 	require('../app/routes/users.js')(app);
+	require('../app/routes/about.js')(app);
 
 	return app;
 };
