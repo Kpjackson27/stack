@@ -1,0 +1,29 @@
+extends layouts/landing
+
+
+block content
+	.row.top
+		.col-xs-12.col-sm-6.col-md-8
+			h1 Random Poems as Song Says
+		.col-xs-6.col-md-4
+			p.text-center Already Have An Account?
+			form(method='POST')
+				input(type='hidden', name='_csrf', value=_csrf)
+				.col-sm-8.col-sm-offset-2
+					.form-group
+						input.form-control(type='email', name='email', id='email', placeholder='Email', autofocus=true)
+					.form-group
+						input.form-control(type='password', name='password', id='password', placeholder='Password')
+					.form-group
+						a.btn.btn-link(href='/forgot') Forgot password?
+					.form-group
+						button.btn.btn-primary(type='submit')
+							| Login
+					.form-group
+						h5 New to Lyrical Intent?
+						p Sign Up now and join other artists
+						a.btn.btn-primary(href='/signup')
+							| Sign Up
+
+					
+
