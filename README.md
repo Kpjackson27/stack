@@ -402,3 +402,7 @@ See the `travis.yml` for configuration required to run tests.
 ## License
 
 [BSD license](http://opensource.org/licenses/bsd-license.php)
+
+
+
+Why are you putting all this random information in the readme file??
