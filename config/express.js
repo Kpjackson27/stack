@@ -75,7 +75,7 @@ module.exports = function(db) {
 	app.set('view engine', 'jade');
 	app.use(compress());
 	app.use(connectAssets({
-		paths: [path.join('public/css'), path.join('public/js')]
+		paths: [path.join('public/css'), path.join('public/js'), path.join('public/img')]
 	}));
 
 	//render static files
