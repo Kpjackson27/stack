@@ -59,14 +59,12 @@ exports.list = function(req, res) {
 			return res.redirect('/');
 		} else {
 			res.format({
-				//HTML response will render the index.jade file in the views/blobs folder. We are also setting "blobs" to be an accessible variable in our jade view
 				html: function() {
 					res.render('article/listPost', {
 						title: 'All Poems',
 						"articles": articles
 					});
 				},
-				//JSON response will show all blobs in JSON format
 				json: function() {
 					res.json(articles);
 				}
