@@ -17,15 +17,14 @@ var getErrorMessage = function(err) {
 };
 
 //render the page to create new articles
-exports.getCreateArticles = function(req, res){
- 	if(req.user) {
- 		res.render('article/create', {
- 		title: 'Create Article'
- 		});
- 	}
- 	else
- 		return res.redirect('/');
- };
+exports.getCreateArticles = function(req, res) {
+	if (req.user) {
+		res.render('article/create', {
+			title: 'Create Article'
+		});
+	} else
+		return res.redirect('/');
+};
 
 // Create a new controller method that creates new articles
 exports.create = function(req, res) {
@@ -38,11 +37,13 @@ exports.create = function(req, res) {
 	// Try saving the article
 	article.save(function(err) {
 		if (err) {
-				req.flash('errors', { msg: getErrorMessage(err)});
-				return res.redirect('/api/CreateArticles');
+			req.flash('errors', {
+				msg: getErrorMessage(err)
+			});
+			return res.redirect('/api/CreateArticles');
 		} else {
 			// req.flash('success', { msg: 'Poem created.'});
-				return res.redirect('/api/articles');
+			return res.redirect('/api/articles');
 		}
 	});
 };
@@ -50,15 +51,26 @@ exports.create = function(req, res) {
 // Create a new controller method that retrieves a list of articles
 exports.list = function(req, res) {
 	// Use the model 'find' method to get a list of articles
-	Article.find().sort('-created').populate('creator', 'firstName lastName fullName').exec(function(err, articles) {
+	Article.find().sort('-created').exec(function(err, articles) {
 		if (err) {
-			// If an error occurs send the error message
-			return res.status(400).send({
-				message: getErrorMessage(err)
+			eq.flash('errors', {
+				msg: getErrorMessage(err)
 			});
+			return res.redirect('/');
 		} else {
-			// Send a JSON representation of the article 
-			res.json(articles);
+			res.format({
+				//HTML response will render the index.jade file in the views/blobs folder. We are also setting "blobs" to be an accessible variable in our jade view
+				html: function() {
+					res.render('article/listPost', {
+						title: 'All Poems',
+						"articles": articles
+					});
+				},
+				//JSON response will show all blobs in JSON format
+				json: function() {
+					res.json(articles);
+				}
+			});
 		}
 	});
 };
