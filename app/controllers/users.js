@@ -99,7 +99,7 @@ exports.postLogin = function(req,res,next){
   			if(err) return next(err);
   			req.logIn(user, function(err){
   				if(err) return next(err);
-  					res.redirect('/');
+  				res.redirect('/');
   			});
   		});
   	});

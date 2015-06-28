@@ -12,9 +12,11 @@ var passportConf = require('../../config/passport');
 module.exports = function(app){
 
 	// Set up the 'articles' base routes 
+	app.route('/api/createArticles')
+		.get(articles.getCreateArticles)
+		.post(passportConf.isAuthenticated, articles.create);
 	app.route('/api/articles')
-	   .get(articles.list)
-	   .post(passportConf.isAuthenticated, articles.create);
+	   	.get(articles.list);
 	
 	// Set up the 'articles' parameterized routes
 	app.route('/api/articles/:articleId')

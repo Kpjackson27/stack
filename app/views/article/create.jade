@@ -1,0 +1,28 @@
+extends ../layouts/default
+
+block content
+  .page-header
+    h3 New Post
+  form.form-horizontal(id='createArticle-form', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='title') Title
+      .col-sm-7
+        input.form-control(type='text', name='title', id='title', placeholder='poem title', autofocus)
+    .form-group
+      label.col-sm-3.control-label(for='content') Content
+      .col-sm-7
+        textarea#content.form-control(type='text', name='content', placeholder='poem content', row='10')
+    .form-group
+      label.col-sm-3.control-label(for='category') Category
+      .col-sm-7
+        select#category.form-control(name='category')
+          option nonCategorized
+          option Category1
+          option Category2
+          option Category3
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.btn.btn-success(type='submit')
+          i.fa.fa-user-plus
+          | CreatePost

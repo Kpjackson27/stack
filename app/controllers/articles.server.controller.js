@@ -16,6 +16,17 @@ var getErrorMessage = function(err) {
 	}
 };
 
+//render the page to create new articles
+exports.getCreateArticles = function(req, res){
+ 	if(req.user) {
+ 		res.render('article/create', {
+ 		title: 'Create Article'
+ 		});
+ 	}
+ 	else
+ 		return res.redirect('/');
+ };
+
 // Create a new controller method that creates new articles
 exports.create = function(req, res) {
 	// Create a new article object
@@ -27,13 +38,11 @@ exports.create = function(req, res) {
 	// Try saving the article
 	article.save(function(err) {
 		if (err) {
-			// If an error occurs send the error message
-			return res.status(400).send({
-				message: getErrorMessage(err)
-			});
+				req.flash('errors', { msg: getErrorMessage(err)});
+				return res.redirect('/api/CreateArticles');
 		} else {
-			// Send a JSON representation of the article 
-			res.json(article);
+			// req.flash('success', { msg: 'Poem created.'});
+				return res.redirect('/api/articles');
 		}
 	});
 };
