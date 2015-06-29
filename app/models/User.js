@@ -35,13 +35,24 @@ var UserSchema = new Schema({
 			type: String,
 			default: ''
 		},
+		facebook: {
+			type: String,
+			default: ''
+		},
+		twitter: {
+			type: String,
+			default: ''
+		},
 		picture: {
 			type: String,
 			default: ''
 		}
 	},
 	resetPasswordToken: String,
-	resetPasswordExpires: Date
+	resetPasswordExpires: Date,
+	followers: [{type: Schema.ObjectId, ref: 'User'}],
+	following: [{type: Schema.ObjectId, ref: 'User'}],
+	postCount: Number
 });
 
 /**

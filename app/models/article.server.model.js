@@ -31,7 +31,11 @@ var ArticleSchema = new Schema({
 		enum: ['nonCategorized', 'Category1', 'Category2', 'Category3'],
 		default: 'nonCategorized',
 		required: 'Category cannot be blank'
-	}
+	},
+	comments: [{type: Schema.ObjectId, ref: 'Comment'}],
+	// tags: {type: [], get: getTags, set: setTags}
+	favorites: [{ type: Schema.ObjectId, ref: 'User' }],
+	favoritesCount: Number
 });
 
 // Create the 'Article' model out of the 'ArticleSchema'
