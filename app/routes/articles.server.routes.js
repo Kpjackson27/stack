@@ -21,9 +21,12 @@ module.exports = function(app){
 	// Set up the 'articles' parameterized routes
 	app.route('/api/articles/:articleId')
 	   .get(articles.read)
-	   .put(passportConf.isAuthenticated, articles.hasAuthorization, articles.update)
-	   .delete(passportConf.isAuthenticated, articles.hasAuthorization, articles.delete);
-
+	   // .put(passportConf.isAuthenticated, articles.hasAuthorization, articles.update)
+	app.route('/api/articles/:articleId/delete')   
+	   .post(passportConf.isAuthenticated, articles.hasAuthorization, articles.delete);
+	
+	// app.route('/api/articles/:articleId/edit')
+	//    .get(articles.getUpdate);
 	// Set up the 'articleId' parameter middleware   
 	app.param('articleId', articles.articleByID);
 };

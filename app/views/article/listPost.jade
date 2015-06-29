@@ -7,18 +7,24 @@ block content
     ul
         - each article, i in articles
             li
-                = article.title
-                = article.content
-                = article.creator.name
-                = article.category
-                = article.created
-                = article._id
-                form(action='/articles/#{article._id}/edit',method='post',enctype='application/x-www-form-urlencoded')
-                    input(type='hidden',value='DELETE',name='_method')
+                = 'Title: ' + article.title
+                br
+                = article.content 
+                br
+                = 'Author: '+ article.creator.profile.name||article.creator.email || article.creator.id
+                br
+                = 'Category:' + article.category 
+                br
+                = 'Created on: ' + article.created 
+                br
+                = 'Article id: ' + article._id 
+                form(action='/api/articles/#{article._id}/delete',method='POST')
+                    input(type='hidden', name='_csrf', value=_csrf)
                     button(type='submit').
                         Delete
-                p 
-                    a(href='/articles/#{article._id}/edit') Edit
                 p
-                    a(href='/articles/#{article._id}') Show
+                    a(href='/api/articles/#{article._id}') Show
+
+
+
 

@@ -1,0 +1,28 @@
+extends ../layouts/default
+
+block content
+  .page-header
+    h3 New Post
+  form.form-horizontal(id='createArticle-form', method='POST', action = 'api/articles/#{article._id}/edit', role='form')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-3.control-label(for='title') Title
+      .col-sm-7
+        input.form-control.input-lg(type='text', name='title', id='title', value='#{article.title}', autofocus)
+    .form-group
+      label.col-sm-3.control-label(for='content') Content
+      .col-sm-7
+        input.form-control.input-lg(type='text', name='content', id = 'content', value= '#{article.content}')
+    .form-group
+      label.col-sm-3.control-label(for='category') Category
+      .col-sm-7
+        select.form-control.input-lg(name='category', selected = 'Category1', value = '#{article.category}')
+          option nonCategorized
+          option Category1
+          option Category2
+          option Category3
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.btn.btn-success(type='submit')
+          i.fa.fa-user-plus
+          | Update

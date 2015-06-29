@@ -42,7 +42,7 @@ exports.isAuthenticated = function(req, res, next) {
   if (req.isAuthenticated()) {
   	return next();
   }
-  res.redirect('/landing');
+  return res.redirect('/landing');
 };
 
 /**
@@ -54,7 +54,7 @@ exports.isAuthorized = function(req, res, next) {
   if (_.find(req.user.tokens, { kind: provider })) {
     next();
   } else {
-    res.redirect('/auth/' + provider);
+    return res.redirect('/auth/' + provider);
   }
 };
 //Define the Passport configuration method
