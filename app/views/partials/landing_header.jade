@@ -1,6 +1,6 @@
 html
   body
-    .navbar.navbar-default.navbar-fixed-top
+    nav.navbar.navbar-default.navbar-fixed-top
       .container
         .navbar-header
           button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -11,8 +11,11 @@ html
         .navbar-collapse.collapse
           ul.nav.navbar-nav.navbar-right
             li
-              a(href='/signup') Signup
+              a(href='/signup') Login
     .wide
       .col-md-12
-        h1.text-center.call Unleash Your Creativity
-
+        h1.text-center.call.header Unleash Your Creativity
+        p.text-center Join a community of artistic thinkers and lyricists
+      .col-md-6.col-md-offset-3.text-center
+         .form-group
+          input#focusedInput.form-control(type='text', value='Search')

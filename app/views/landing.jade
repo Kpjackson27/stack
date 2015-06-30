@@ -2,74 +2,12 @@ extends layouts/landing
 
 
 block content
- .col-md-12.text-center
-      span.input.input--nao
-        input#input-2.input__field.input__field--nao(type='text')
-        label.input__label.input__label--nao(for='input-2')
-          span.input__label-content.input__label-content--nao Search
-        svg.graphic.graphic--nao(width='300%', height='100%', viewbox='0 0 1200 60', preserveaspectratio='none')
-          path(d='M0,56.5c0,0,298.666,0,399.333,0C448.336,56.5,513.994,46,597,46c77.327,0,135,10.5,200.999,10.5c95.996,0,402.001,0,402.001,0')
-      hr
- .col-md-12.text-center
-      h4.text-center
-        | There is nothing either good or bad but thinking makes it so. ~William Shakespeare
-  .spacer
- .section
-      .container
-        .row
-          .col-md-8
-            img.grad.img-responsive(src='http://hyperliteratura.ro/wp-content/uploads/2013/01/hyperliteratura-shakespeare.jpg')
-          .col-md-4
-            h1.text-center Login
-            form(role='form')
-              .form-group
-                label.control-label(for='exampleInputEmail1') Email address
-                input#exampleInputEmail1.form-control(placeholder='Enter email', type='email')
-              .form-group
-                label.control-label(for='exampleInputPassword1') Password
-                input#exampleInputPassword1.form-control(placeholder='Password', type='password')
-              button.btn.btn-default(type='submit') Submit
-              p 
-               li
-                a(href="/signup") Register here
-    .spacer
-    .section
-      .container
-        .row
-          .col-md-3
-            img.img-responsive(src='http://i1.wp.com/dysfunctionalliteracy.files.wordpress.com/2015/01/edgar_allan_poe_daguerreotype_crop.png?resize=200%2C200')
-          .col-md-3
-            img.img-responsive(src='http://i1.wp.com/dysfunctionalliteracy.files.wordpress.com/2015/01/edgar_allan_poe_daguerreotype_crop.png?resize=200%2C200')
-          .col-md-3
-            img.img-responsive(src='http://i1.wp.com/dysfunctionalliteracy.files.wordpress.com/2015/01/edgar_allan_poe_daguerreotype_crop.png?resize=200%2C200')
-          .col-md-3
-            img.img-responsive(src='http://i1.wp.com/dysfunctionalliteracy.files.wordpress.com/2015/01/edgar_allan_poe_daguerreotype_crop.png?resize=200%2C200')
-    .spacer
-    .section
-      .container
-        .row.text-center
-          .col-xs-2.text-center
-            a
-              i.fa.fa-2x.fa-fw.fa-instagram
-            h5 Sonnet
-          .col-xs-2
-            a
-              i.fa.fa-2x.fa-fw.fa-twitter
-            h5 Elegy
-          .col-xs-2
-            a
-              i.fa.fa-2x.fa-fw.fa-facebook
-            h5 Lyric
-          .col-xs-2.text-center
-            a
-              i.fa.fa-2x.fa-fw.fa-github
-            h5 Song Writting
-          .col-xs-2.text-center
-            a
-              i.fa.fa-2x.fa-fw.fa-github
-            h5 Limerick
-          .col-xs-2.text-center
-            a
-              i.fa.fa-2x.fa-fw.fa-github
-            h5 Narrative
+  .col-md-3
+    include partials/sidebar
+  .col-md-6
+    include partials/center
+  .col-md-3
+    include partials/login-sidebar
 
+
+          

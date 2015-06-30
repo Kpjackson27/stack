@@ -13,12 +13,23 @@ html
     .container
       include ../partials/flash
       block content
+
   hr
   footer
     .container.text-center
       p.pull-left © 2015 Verses Inc. All Rights Reserved
       ul.pull-right.list-inline
         li
-          a('/') Contact
+          a(href='/') Blog
+        li
+          a(href='/') About
+        li
+          a(href='/') Terms
+        li
+          a(href='/') Privacy
+        li
+          a(href='/') Rules
+        li
+          a(href='/') Contact
 
     != js('application')

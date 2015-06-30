@@ -1,46 +1,18 @@
 $(document).ready(function() {
 
   // Place JavaScript code here...
-     (function ($) {
-    "use strict";
-    var mainApp = {
-
-        main_fun: function () {
-
-            //ADD REMOVE PADDING CLASS ON SCROLL
-            $(window).scroll(function () {
-                if ($(".navbar").offset().top >50) {
-                    $(".navbar-fixed-top").addClass("navbar-pad-original");
-                } else {
-                    $(".navbar-fixed-top").removeClass("navbar-pad-original");
-                }
-            });
-     
-
-       
-
-
-            /*====================================
-               WRITE YOUR SCRIPTS BELOW 
-           ======================================*/
-
-
-        },
-
-        initialization: function () {
-            mainApp.main_fun();
-
+  (function(){
+    $(window).scroll(function() {
+    
+        // check if window scroll for more than 430px. May vary
+        // as per the height of your main banner.
+        
+        if($(this).scrollTop() > 90) { 
+            $('.navbar').addClass('opaque'); // adding the opaque class
+        } else {
+            $('.navbar').removeClass('opaque'); // removing the opaque class
         }
-
-    }
-    // Initializing ///
-
-    $(document).ready(function () {
-        mainApp.main_fun();
     });
-
-}(jQuery));
-
-     
+  })();
 
 });
