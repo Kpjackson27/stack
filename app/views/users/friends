@@ -1,0 +1,10 @@
+extends ../layouts/default
+
+
+block content
+    h1.
+         #{title}
+    ul
+        - each user, i in users
+            li
+                = user.email
