@@ -120,7 +120,7 @@ module.exports = function(db) {
 	require('../app/routes/index.js')(app);
 	require('../app/routes/landing.js')(app);
 	require('../app/routes/users.js')(app);
-	require('../app/routes/articles.server.routes.js')(app);
+	require('../app/routes/articles.js')(app);
 	require('../app/routes/about.js')(app);
 
 	return app;

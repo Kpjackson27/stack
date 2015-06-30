@@ -2,7 +2,7 @@
 
 //Load the module dependencies
 var users = require('../../app/controllers/users'),
-	articles = require('../../app/controllers/articles.server.controller'),
+	articles = require('../../app/controllers/articles'),
 	passport = require('passport');
 
 
