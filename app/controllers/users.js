@@ -6,7 +6,8 @@ var _ = require('lodash'),
 	crypto = require('crypto'),
 	passport = require('passport'),
 	nodemailer = require('nodemailer'),
-	User = require('../models/User');
+	User = require('../models/User'),
+  Article = require('../models/article.server.model');
 
 
 /**
@@ -106,12 +107,44 @@ exports.postLogin = function(req,res,next){
   };
  /**
   *GET /account
-  *Profile Page
+  * Render Profile Page and Verse stats for current user
  */
  exports.getAccount = function(req, res){
- 	res.render('account/profile', {
- 		title: 'Account Management'
- 	});
+    var stats={};
+    Article.countArticle(req.user.id, function(err, c){
+      // if (err) return next(err);
+      console.log('count:'+c);
+      if (err) {
+        req.flash('errors', {
+          msg: getErrorMessage(err)
+        });
+        return res.redirect('/');
+      } else {
+        stats.count = c;
+        console.log('stats.count:'+stats.count);
+        res.format({
+          html: function() {
+            res.render('account/profile', {
+              title: 'Stats',
+              "stats": stats
+            });            
+          },
+          json: function() {
+            res.json(stats);
+          }
+        });
+      }
+
+    });
+
+  //   Tweet.load(id, function (err, tweet) {
+  //   if (err) return next(err);
+  //   if (!tweet) return next(new Error('Failed to load tweet'+id));
+  //   req.tweet = tweet;
+  //   next();
+  // });
+
+
  };
  /**
   *POST /account/profile

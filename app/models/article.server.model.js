@@ -38,5 +38,12 @@ var ArticleSchema = new Schema({
 	favoritesCount: Number
 });
 
+ArticleSchema.statics = {
+  	countArticle: function(id, cb){
+  	  	// _this.find({creator: id}).length().exec(cb);
+  	  	this.count({creator: id}).exec(cb);  	  	
+  	}
+};
+
 // Create the 'Article' model out of the 'ArticleSchema'
 module.exports =  mongoose.model('Article', ArticleSchema);

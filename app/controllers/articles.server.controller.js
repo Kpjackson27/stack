@@ -51,9 +51,9 @@ exports.create = function(req, res) {
 // Create a new controller method that retrieves a list of articles
 exports.list = function(req, res) {
 	// Use the model 'find' method to get a list of articles
-	Article.find().sort('-created').populate('creator', 'email profile').exec(function(err, articles) {
+	Article.find().sort('-created').populate('creator', 'email profile profile.name').exec(function(err, articles) {
 		if (err) {
-			eq.flash('errors', {
+			req.flash('errors', {
 				msg: getErrorMessage(err)
 			});
 			return res.redirect('/');

@@ -1,19 +1,45 @@
 extends ../layouts/default
 
 block content
-  .row
-    .col-xs-6.col-md-4
-      form.form-horizontal(action='/account/profile', method='POST')
-        .form-group
-          .col-sm-4
-            img(src="#{user.gravatar()}", class='profile', width='100', height='100')
-        h4 User
-        h4 email
-        h4 # of posts
-        h4 user stats
-    .col-xs-12.col-sm-6.col-md-8
-      .col-sm-8
-        .col-sm-2
-          h6 My Posts
-        .col-sm-3
-          h6 Following Posts
+  .page-header
+    h3 Verse Stats
+    p Verses: #{stats.count}
+  .page-header
+    h3 Profile Information
+
+  form.form-horizontal(action='/account/profile', method='POST')
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      label.col-sm-2.control-label(for='email') Email
+      .col-sm-4
+        input.form-control(type='email', name='email', id='email', value='#{user.email}')
+    .form-group
+      label.col-sm-2.control-label(for='name') Name
+      .col-sm-4
+        input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
+    .form-group
+      label.col-sm-2.control-label(for='gender') Gender
+      .col-sm-4
+        label.radio.col-sm-4
+          input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
+          span Male
+        label.radio.col-sm-4
+          input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
+          span Female
+    .form-group
+      label.col-sm-2.control-label(for='location') Location
+      .col-sm-4
+        input.form-control(type='text', name='location', id='location', value='#{user.profile.location}')
+    .form-group
+      label.col-sm-2.control-label(for='website') Website
+      .col-sm-4
+        input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
+    .form-group
+      label.col-sm-2.control-label(for='gravatar') Gravatar
+      .col-sm-4
+        img(src="#{user.gravatar()}", class='profile', width='100', height='100')
+    .form-group
+      .col-sm-offset-2.col-sm-4
+        button.btn.btn.btn-primary(type='submit')
+          i.fa.fa-pencil
+          | Update Profile

@@ -11,7 +11,9 @@ block content
                 br
                 = article.content 
                 br
-                = 'Author: '+ article.creator.profile.name||article.creator.email || article.creator.id
+                = 'Author:'
+                br
+                =  article.creator.profile.name||article.creator.email || article.creator.id + '|'
                 br
                 = 'Category:' + article.category 
                 br

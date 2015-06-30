@@ -21,7 +21,7 @@ var UserSchema = new Schema({
 	profile: {
 		name: { 
 			type: String,
-			default: ''
+			default: 'name'
 		},
 		gender: {
 			type: String,
@@ -46,7 +46,12 @@ var UserSchema = new Schema({
 		picture: {
 			type: String,
 			default: ''
+		},
+		test: {
+			type: String,
+			default: 'test'	
 		}
+
 	},
 	resetPasswordToken: String,
 	resetPasswordExpires: Date,

@@ -18,7 +18,7 @@ module.exports = function(app){
 	app.route('/api/articles')
 	   	.get(articles.list);
 	
-	// Set up the 'articles' parameterized routes
+	// Single article
 	app.route('/api/articles/:articleId')
 	   .get(articles.read)
 	   // .put(passportConf.isAuthenticated, articles.hasAuthorization, articles.update)
