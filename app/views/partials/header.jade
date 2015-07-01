@@ -1,4 +1,4 @@
-.navbar.navbar-default.navbar-fixed-top
+.navbar.navbar-main.navbar-fixed-top
   .container
     .navbar-header
       button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
@@ -7,9 +7,10 @@
         span.icon-bar
         span.icon-bar
       a.navbar-brand(href='/')
-        | Lyrical Intent
+        | Verses
     .collapse.navbar-collapse
       ul.nav.navbar-nav
+        if user
           li(class=title=='Home'?'active':undefined)
             a(href='/') Home
       ul.nav.navbar-nav.navbar-right
@@ -37,4 +38,5 @@
             a(href='/api/createArticles') Write New Verse
           li
             a(href='/api/articles') Browse Verses
+       
 
