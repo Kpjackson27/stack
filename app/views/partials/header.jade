@@ -7,9 +7,10 @@
         span.icon-bar
         span.icon-bar
       a.navbar-brand(href='/')
-        | Lyrical Intent
+        | Verses
     .collapse.navbar-collapse
       ul.nav.navbar-nav
+        if user
           li(class=title=='Home'?'active':undefined)
             a(href='/') Home
       ul.nav.navbar-nav.navbar-right
