@@ -3,6 +3,7 @@
 //Load the module dependencies
 var users = require('../../app/controllers/users'),
 	articles = require('../../app/controllers/articles'),
+	favorites = require('../../app/controllers/favorites'),
 	passport = require('passport');
 
 
@@ -29,4 +30,7 @@ module.exports = function(app){
 	//    .get(articles.getUpdate);
 	// Set up the 'articleId' parameter middleware   
 	app.param('articleId', articles.articleByID);
+
+	app.post('/api/articles/:articleId/favorites', passportConf.isAuthenticated, favorites.create);
+   	// app.del('/api/articles/:articleId/favorites', passportConf.isAuthenticated, favorites.destroy);
 };

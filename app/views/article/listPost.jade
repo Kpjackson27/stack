@@ -20,13 +20,17 @@ block content
                 = 'Created on: ' + article.created 
                 br
                 = 'Article id: ' + article._id 
+                form(action='/api/articles/#{article._id}/favorites',method='POST')
+                    input(type='hidden', name='_csrf', value=_csrf)
+                    button(type='submit').
+                        like #{article.favoritesCount} 
+                p
+                    a(href='/api/articles/#{article._id}') Detail
+                
                 form(action='/api/articles/#{article._id}/delete',method='POST')
                     input(type='hidden', name='_csrf', value=_csrf)
                     button(type='submit').
                         Delete
-                p
-                    a(href='/api/articles/#{article._id}') Show
-
 
 
 

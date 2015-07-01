@@ -21,7 +21,7 @@ var UserSchema = new Schema({
 	profile: {
 		name: { 
 			type: String,
-			default: 'name'
+			default: ''
 		},
 		gender: {
 			type: String,

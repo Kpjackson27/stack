@@ -1,11 +1,8 @@
-// Invoke 'strict' JavaScript mode
 'use strict';
 
-// Load the module dependencies
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
-// Define a new 'ArticleSchema'
 var ArticleSchema = new Schema({
 	created: {
 		type: Date,
@@ -38,6 +35,21 @@ var ArticleSchema = new Schema({
 	favoritesCount: Number
 });
 
+ArticleSchema.pre('save', function (next) {
+  if (this.favorites) this.favoritesCount = this.favorites.length;
+  // if (this.favorites) this.favoriters = this.favorites;
+  next();
+});
+ArticleSchema.virtual('_favorites').set(function(user){
+	if(this.favorites.indexOf(user._id)===-1){
+	    console.log('user._id: '+user._id);
+    	console.log('this.favorites:' +this.favorites);
+		this.favorites.push(user._id);
+	}
+	else{
+		this.favorites.splice(this.favorites.indexOf(user._id), 1);
+	}
+});
 ArticleSchema.statics = {
   	countArticle: function(id, cb){
   	  	// _this.find({creator: id}).length().exec(cb);
