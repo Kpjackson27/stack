@@ -167,3 +167,24 @@ color: grey;
   font-family: 'Nixie One', cursive;
 }
 
+.navbar-main {
+    background-color: white;
+    background: white;
+    transition: background-color 1s ease 0s;
+    box-shadow: 0px 0px 4px #969696;
+    .navbar-brand {
+        color: #969696;
+        transition: color 1s ease 0s;
+    }
+    .navbar-nav {
+        & > li {
+            & > a {
+                color: #969696;
+                transition: color 1s ease 0s;
+            }
+            & > a:active {
+                text-decoration: underline;
+            }
+        }
+    }
+}
