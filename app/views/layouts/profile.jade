@@ -5,16 +5,16 @@ html
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     meta(name='csrf-token', content=_csrf)
-    title #{title} - Hackathon Starter
+    title #{title}
     != css('main')
   body
-    include ../partials/header
+    include ../partials/profile
 
     .container
       include ../partials/flash
       block content
 
-  hr
+  
   footer
     .container.text-center
       p.pull-left © 2015 Verses Inc. All Rights Reserved

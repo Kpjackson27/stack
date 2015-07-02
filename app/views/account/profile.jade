@@ -1,45 +1,65 @@
-extends ../layouts/default
+extends ../layouts/profile
 
 block content
-  .page-header
-    h3 Verse Stats
-    p Verses#: #{stats.count}
-  .page-header
-    h3 Profile Information
-
-  form.form-horizontal(action='/account/profile', method='POST')
-    input(type='hidden', name='_csrf', value=_csrf)
-    .form-group
-      label.col-sm-2.control-label(for='email') Email
-      .col-sm-4
-        input.form-control(type='email', name='email', id='email', value='#{user.email}')
-    .form-group
-      label.col-sm-2.control-label(for='name') Name
-      .col-sm-4
-        input.form-control(type='text', name='name', id='name', value='#{user.profile.name}')
-    .form-group
-      label.col-sm-2.control-label(for='gender') Gender
-      .col-sm-4
-        label.radio.col-sm-4
-          input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
-          span Male
-        label.radio.col-sm-4
-          input(type='radio', checked=user.profile.gender=='female', name='gender', value='female', data-toggle='radio')
-          span Female
-    .form-group
-      label.col-sm-2.control-label(for='location') Location
-      .col-sm-4
-        input.form-control(type='text', name='location', id='location', value='#{user.profile.location}')
-    .form-group
-      label.col-sm-2.control-label(for='website') Website
-      .col-sm-4
-        input.form-control(type='text', name='website', id='website', value='#{user.profile.website}')
-    .form-group
-      label.col-sm-2.control-label(for='gravatar') Gravatar
-      .col-sm-4
-        img(src="#{user.gravatar()}", class='profile', width='100', height='100')
-    .form-group
-      .col-sm-offset-2.col-sm-4
-        button.btn.btn.btn-primary(type='submit')
-          i.fa.fa-pencil
-          | Update Profile
+  .section.top
+    .container
+      .row
+        .col-md-4
+          a(href='#')
+            img.img-responsive.img-rounded(src='http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png')
+        .col-md-5
+          h3 @username
+          p First Name
+          ul.list-inline.list-unstyled
+            li
+              a(href="#") Verses: #{stats.count}
+            li 
+              a(href="#") Following: 0
+            li
+              a(href="#") Followers: 0
+            li
+              a(href="#") Features: 0
+            li
+              a(href="#") Likes: 0
+          hr
+          h4 Inspiration:
+          ul.list-inline.list-unstyled
+            li
+              a(href="#") William Shakespeare
+            li 
+              a(href="#") 2Pac
+            li
+              a(href="#") Poet
+            li
+              a(href="#") Author
+            li
+              a(href="#") Song Writter
+        .col-md-3
+          a.btn.btn-default.btn-sm(href='#') Edit Profile
+  hr
+  .section
+    .container
+      .row
+       form.form-horizontal(id='createArticle-form', method='POST')
+         input(type='hidden', name='_csrf', value=_csrf)
+         .form-group
+           label.col-sm-3.control-label(for='title') Title
+           .col-sm-2
+             input.form-control.input-sm(type='text', name='title', id='title', placeholder='poem title', autofocus)
+         .form-group
+           label.col-sm-3.control-label(for='content') Content
+           .col-sm-5
+             textarea#content.form-control.input-sm(type='text', name='content', placeholder='poem content', row='10')
+         .form-group
+           label.col-sm-3.control-label(for='category') Category
+           .col-sm-5
+             select#category.form-control.input-sm(name='category')
+               option nonCategorized
+               option Category1
+               option Category2
+               option Category3
+         .form-group
+           .col-sm-offset-3.col-sm-7
+             button.btn.btn-success(type='submit')
+               i.fa.fa-user-plus
+               | CreatePost
