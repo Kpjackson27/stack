@@ -388,3 +388,23 @@ exports.postForgot = function(req, res, next) {
     res.redirect('/forgot');
   });
 };
+
+exports.userByID = function(req, res, next, id) {
+  // Use the model 'findById' method to find a single article 
+  User.findOne({_id:id}).exec(function(err, user) {
+    if (err) return next(err);
+    if (!user) {
+        req.flash('errors', {
+          msg: 'Failed to find user ' + id
+        });
+        return res.redirect('/');
+    }
+    // If an article is found use the 'request' object to pass it to the next middleware
+    req.user = user;
+    // console.log('id: ' + req.article.creator.id);
+    // console.log('profile: ' + req.article.creator.profile);
+    // console.log('profile.name: ' + req.article.creator.profile.name);
+    // Call the next middleware
+    next();
+  });
+};

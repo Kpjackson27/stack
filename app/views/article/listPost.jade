@@ -24,6 +24,12 @@ block content
                     input(type='hidden', name='_csrf', value=_csrf)
                     button(type='submit').
                         like #{article.favoritesCount} 
+
+                form(action='/users/#{article.creator.id}/follow/',method='POST')
+                    input(type='hidden', name='_csrf', value=_csrf)
+                    input(type='hidden', name='fid', value=article.creator.id)
+                    button(type='submit').
+                        follow                       
                 p
                     a(href='/api/articles/#{article._id}') Detail
                 

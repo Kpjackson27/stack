@@ -6,6 +6,7 @@ var users = require('../../app/controllers/users'),
 
 
 var passportConf = require('../../config/passport');
+var follows = require('../controllers/follows');
 
 //Define the routes module method
 module.exports = function(app){
@@ -50,4 +51,7 @@ module.exports = function(app){
 	
 	app.route('/account/unlink/:provider')
 		.get(passportConf.isAuthenticated, users.getOauthUnlink);
+
+	app.post('/users/:userId/follow', passportConf.isAuthenticated, follows.follow);
+	app.param('userId', users.userByID);	
 };

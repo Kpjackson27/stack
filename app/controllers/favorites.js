@@ -11,6 +11,7 @@
 
 exports.create = function (req, res) {
   var article = req.article;
+  // console.log(req.article);
   article._favorites = req.user;
   article.save(function (err) {
     if (err) {

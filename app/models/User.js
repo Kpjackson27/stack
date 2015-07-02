@@ -86,11 +86,20 @@ UserSchema.pre('save', function(next){
  /**
   * Helper method for getting user's gravatar.
   */
-  UserSchema.methods.gravatar = function(size){
-  	if(!size) size = 200;
-  	if(!this.email) return 'https://gravatar.com/avatar/?s=' + size + '&d=retro';
-  	var md5 = crypto.createHash('md5').update(this.email).digest('hex');
-  	return 'https://gravatar.com/avatar/' + md5 + '?s=' + size + '&d=retro';
+UserSchema.methods.gravatar = function(size){
+	if(!size) size = 200;
+	if(!this.email) return 'https://gravatar.com/avatar/?s=' + size + '&d=retro';
+	var md5 = crypto.createHash('md5').update(this.email).digest('hex');
+	return 'https://gravatar.com/avatar/' + md5 + '?s=' + size + '&d=retro';
+};
+UserSchema.methods.follow =  function (id) {
+    if (this.following.indexOf(id) === -1) {
+      this.following.push(id);
+    }
+    else {
+      this.following.splice(this.following.indexOf(id), 1);
+    }
+    console.log(this.following);
   };
 
-  module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
