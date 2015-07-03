@@ -5,8 +5,8 @@
 process.env.NODE_ENV = 'production';
 console.log('process.env.NODE_ENV:' +process.env.NODE_ENV);
 //load the module dependencies
-var config = require('./config'),
-	express = require('express'),
+// var config = require('./config'),
+var express = require('express'),
 	morgan = require('morgan'),
 	compress = require('compression'),
 	bodyParser = require('body-parser'),
