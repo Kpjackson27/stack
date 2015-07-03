@@ -17,10 +17,10 @@ var app = express(db);
 var passport = require('passport');
 
 //use express application instance to listen to '3000' port
-// app.listen(3000);
-app.listen(process.env.PORT || 3000, function(){
-  console.log('listening on', app.address().port);
-});
+app.listen(process.env.PORT);
+// app.listen(process.env.PORT || 3000, function(){
+//   console.log('listening on', app.address().port);
+// });
 // console('process.env.PORT' + process.env.PORT);
 //log server status to the console
 // console.log('Server running at http://127.0.0.1:3000/');
