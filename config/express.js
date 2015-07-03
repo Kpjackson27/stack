@@ -70,7 +70,8 @@ module.exports = function(db) {
 	app.use(session({
 		saveUnitialized: true,
 		resave: true,
-		secret: config.sessionSecret,
+		// secret: config.sessionSecret,
+		secret: 'developmentSessionSecret',
 		store: mongoStore
 	}));
 
