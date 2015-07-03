@@ -15,9 +15,10 @@ var app = express(db);
 
 //configure the passport middleware
 var passport = require('passport');
-
+//
 //use express application instance to listen to '3000' port
-app.listen(process.env.PORT);
+app.listen(process.env.PORT||3000);
+//
 // app.listen(process.env.PORT || 3000, function(){
 //   console.log('listening on', app.address().port);
 // });
