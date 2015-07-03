@@ -33,4 +33,5 @@ module.exports = function(app){
 
 	app.post('/api/articles/:articleId/favorites', passportConf.isAuthenticated, favorites.create);
    	// app.del('/api/articles/:articleId/favorites', passportConf.isAuthenticated, favorites.destroy);
+   	app.post('/api/articles/:articleId/comments', passportConf.isAuthenticated, articles.createComment);
 };

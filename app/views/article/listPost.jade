@@ -7,36 +7,37 @@ block content
     ul
         - each article, i in articles
             li
-                = 'Title: ' + article.title
-                br
+                = article.title + ' by '
+                p 
+                    a(href='/api/users/#{article.creator.id}/profile') #{article.creator.profile.name||article.creator.email || article.creator.id}
                 = article.content 
                 br
-                = 'Author:'
+                =  article.category 
                 br
-                =  article.creator.profile.name||article.creator.email || article.creator.id + '|'
-                br
-                = 'Category:' + article.category 
-                br
-                = 'Created on: ' + article.created 
-                br
-                = 'Article id: ' + article._id 
+                p Created  #{moment(article.created).fromNow()}
+                //= 'Created on: ' + article.created 
+
                 form(action='/api/articles/#{article._id}/favorites',method='POST')
                     input(type='hidden', name='_csrf', value=_csrf)
                     button(type='submit').
-                        like #{article.favoritesCount} 
-
-                form(action='/users/#{article.creator.id}/follow/',method='POST')
-                    input(type='hidden', name='_csrf', value=_csrf)
-                    input(type='hidden', name='fid', value=article.creator.id)
-                    button(type='submit').
-                        follow                       
-                p
-                    a(href='/api/articles/#{article._id}') Detail
-                
+                        like: #{article.favoritesCount}                   
+                //p
+                //    a(href='/api/articles/#{article._id}') Detail
+                br
                 form(action='/api/articles/#{article._id}/delete',method='POST')
                     input(type='hidden', name='_csrf', value=_csrf)
                     button(type='submit').
                         Delete
-
+                hr
+                ul
+                    - each comment in article.comments
+                        li
+                            ='User: '+ comment.user
+                            br
+                            ='Comment: '+ comment.body
+                            p Created: #{moment(comment.createdAt).fromNow()}
+                        hr
+                hr
+                include ../comments/form
 
 

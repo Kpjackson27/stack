@@ -29,7 +29,13 @@ var ArticleSchema = new Schema({
 		default: 'nonCategorized',
 		required: 'Category cannot be blank'
 	},
-	comments: [{type: Schema.ObjectId, ref: 'Comment'}],
+	comments: [{
+		body: {type: String, default:'', required: 'Comment can not be blank'},
+		user: {type:Schema.ObjectId, ref:'User'},
+		createdAt: {type: Date, default:Date.now},
+		favorites: [{ type: Schema.ObjectId, ref: 'User' }],
+		favoritesCount: Number
+	}],
 	// tags: {type: [], get: getTags, set: setTags}
 	favorites: [{ type: Schema.ObjectId, ref: 'User' }],
 	favoritesCount: Number
@@ -55,6 +61,16 @@ ArticleSchema.statics = {
   	  	// _this.find({creator: id}).length().exec(cb);
   	  	this.count({creator: id}).exec(cb);  	  	
   	}
+};
+ArticleSchema.methods = {
+	addComment: function(user, comment, cb){
+		this.comments.push({
+			body: comment.body,
+			user: user._id
+		});
+		console.log('comments:'+this.comments);
+		this.save(cb);
+	}
 };
 
 // Create the 'Article' model out of the 'ArticleSchema'

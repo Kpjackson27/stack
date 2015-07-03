@@ -1,0 +1,9 @@
+block content
+  form(role="form", method="POST", action="/api/articles/#{article._id}/comments")
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      .controls
+        textarea.form-control(type='text', name="body", placeholder='Enter the comment')
+    .form-group
+      button.btn.btn-primary.flat.pull-right(type='submit') Comment
+  hr

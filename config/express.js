@@ -101,7 +101,7 @@ module.exports = function(db) {
 	});
 	//Configure error handler module
 	app.use(errorHandler());
-
+	app.locals.moment = require('moment');
 
 	// app.use(function(req, res, next) {
  //  	if (/api/i.test(req.path)) req.session.returnTo = req.path;

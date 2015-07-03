@@ -48,8 +48,15 @@ exports.create = function(req, res) {
 	});
 };
 
-// Create a new controller method that retrieves a list of articles
+// return a list of articles
 exports.list = function(req, res) {
+	// var page = (req.param('page') > 0 ? req.param('page'):1) - 1;
+	// var perPage = 15;
+	// var options = {
+	// perPage: perPage,
+	// page: page
+	// };
+
 	// Use the model 'find' method to get a list of articles
 	Article.find().sort('-created').populate('creator', 'email profile profile.name').exec(function(err, articles) {
 		if (err) {
@@ -180,4 +187,14 @@ exports.hasAuthorization = function(req, res, next) {
 
 	// Call the next middleware
 	next();
+};
+
+exports.createComment = function(req, res){
+	var article = req.article;
+	var user = req.user;
+	// if (!req.body.body) return res.redirect('/tweets/'+tweet.id);
+	article.addComment(user, req.body, function(err){
+		if(err) return res.render('500');
+		res.redirect('/');
+	});
 };

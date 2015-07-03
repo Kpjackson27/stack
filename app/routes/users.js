@@ -52,6 +52,8 @@ module.exports = function(app){
 	app.route('/account/unlink/:provider')
 		.get(passportConf.isAuthenticated, users.getOauthUnlink);
 
-	app.post('/users/:userId/follow', passportConf.isAuthenticated, follows.follow);
-	app.param('userId', users.userByID);	
+	app.post('/users/:followingId/follow', passportConf.isAuthenticated, follows.follow);
+	app.get('/api/users/:userId/profile', users.publicProfile);
+	app.param('userId', users.userByID);
+	
 };

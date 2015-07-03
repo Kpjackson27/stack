@@ -126,7 +126,8 @@ exports.postLogin = function(req,res,next){
           html: function() {
             res.render('account/profile', {
               title: 'Stats',
-              "stats": stats
+              "stats": stats,
+              "u": req.user
             });            
           },
           json: function() {
@@ -134,7 +135,6 @@ exports.postLogin = function(req,res,next){
           }
         });
       }
-
     });
 
   //   Tweet.load(id, function (err, tweet) {
@@ -408,3 +408,81 @@ exports.userByID = function(req, res, next, id) {
     next();
   });
 };
+exports.publicProfile = function(req, res){
+  // console.log('userId:'+req.params.userId);
+  // var user = req.user;
+  // console.log('user:'+user);
+  // var stats={};
+  // Article.countArticle(req.user._id, function(err, c){
+  //   // if (err) return next(err);
+  //   console.log('count:'+c);
+  //   if (err) {
+  //     req.flash('errors', {
+  //       msg: getErrorMessage(err)
+  //     });
+  //     return res.redirect('/');
+  //   } else {
+  //     stats.count = c;
+  //     console.log('stats.count!!!!:'+stats.count);
+  //   }
+  // });
+
+  // // User.findOne({_id:req.params.userId}).exec(function(err, user) {
+  // //   if (err) return next(err);
+  // //   if (!user) {
+  // //       req.flash('errors', {
+  // //         msg: 'Failed to find user ' + id
+  // //       });
+  // //       return res.redirect('/');
+  // //   }
+  // // });
+
+
+  // res.format({
+  //     html: function() {
+  //       res.render('account/publicProfile', {
+  //         title: 'Stats',
+  //         "stats": stats,
+  //         "_user": req.user
+
+  //       });            
+  //     },
+  //     json: function() {
+  //       res.json(stats);
+  //     }
+  //   });
+    var stats={};
+    Article.countArticle(req.user.id, function(err, c){
+      if (err) {
+        req.flash('errors', {
+          msg: getErrorMessage(err)
+        });
+        return res.redirect('/');
+      } else {
+        stats.count = c;
+        console.log('stats.count:'+stats.count);
+        res.format({
+          html: function() {
+            res.render('account/publicProfile', {
+              title: 'Stats',
+              "stats": stats,
+              "u": req.user
+            });            
+          },
+          json: function() {
+            res.json(stats);
+          }
+        });
+      }
+
+    });
+};
+
+
+
+
+
+
+
+
+      

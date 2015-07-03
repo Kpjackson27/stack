@@ -8,13 +8,13 @@ block content
           a(href='#')
             img.img-responsive.img-rounded(src='http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png')
         .col-md-5
-          h3 @username
-          p First Name
+          h3 @username #{u.profile.name}
+          p @email #{u.email}
           ul.list-inline.list-unstyled
             li
               a(href="#") Verses: #{stats.count}
             li 
-              a(href="#") Following: 0
+              a(href="#") Following: #{u.following}
             li
               a(href="#") Followers: 0
             li
