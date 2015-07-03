@@ -74,7 +74,7 @@ module.exports = function(db) {
 		secret: 'developmentSessionSecret',
 		store: mongoStore
 	}));
-
+ //
 	//set application view engine and 'views' folder
 	app.set('views', './app/views');
 	app.set('view engine', 'jade');
