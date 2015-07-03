@@ -8,7 +8,7 @@
 module.exports = function() {
 	//use Mongoose to connect to MongoDB
 	// var db = mongoose.connect(config.db);
-	var db = mongoose.connect('mongodb://songqin:123456/@ds045632.mongolab.com:45632/verzdb');
+	var db = mongoose.connect('mongodb://song:123456@ds041150.mongolab.com:41150/verz');
 	mongoose.connection.on('error', function() {
 	  console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
 	});
