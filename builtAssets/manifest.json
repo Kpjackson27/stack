@@ -1,0 +1,97 @@
+{
+  "assets": {
+    "main.css": "main-05ff0e161447fd332cf148ad12a7685a.css",
+    "style.css": "style-2bd1c0ac85b007d6eeb37c43744028f9.css",
+    "application.js": "application-1c2edbe3209497c7fbddafca2d30c1da.js",
+    "main.js": "main-7085afa2d05391f2fa653273da78ee19.js",
+    "131289_shakespeare.jpg": "131289_shakespeare-7f542571e53980aa4c65e36cf7984874.jpg",
+    "Shakespeare-Wallpaper-1.png": "Shakespeare-Wallpaper-1-7fba2900dbe771b02c92e0e53a17f946.png",
+    "bg1.jpg": "bg1-f1e393383a8d0c0b8ddf126380a30732.jpg",
+    "bg2.jpg": "bg2-c73086e8320631ff106902feb4bf2708.jpg",
+    "bg3.jpg": "bg3-dbc4cc4abf7292d13f567c3727085609.jpg",
+    "bg4.jpg": "bg4-de28a92ea2d611bb6079eeb7a884e9c4.jpg",
+    "img.jpg": "img-24794c8556194835b1b98f9f1b216ed7.jpg",
+    "img1.jpg": "img1-6f147dc6ed138b04f3bc6cffd659b4c9.jpg",
+    "ooo.jpg": "ooo-f09cbf363b253c997cb712b0971797c1.jpg"
+  },
+  "files": {
+    "main-05ff0e161447fd332cf148ad12a7685a.css": {
+      "logical_path": "main.css",
+      "mtime": "2015-07-02T02:03:35.000Z",
+      "size": 156560,
+      "digest": "05ff0e161447fd332cf148ad12a7685a"
+    },
+    "style-2bd1c0ac85b007d6eeb37c43744028f9.css": {
+      "logical_path": "style.css",
+      "mtime": "2015-07-03T21:48:49.000Z",
+      "size": 2890,
+      "digest": "2bd1c0ac85b007d6eeb37c43744028f9"
+    },
+    "application-1c2edbe3209497c7fbddafca2d30c1da.js": {
+      "logical_path": "application.js",
+      "mtime": "2015-07-01T03:58:18.000Z",
+      "size": 120148,
+      "digest": "1c2edbe3209497c7fbddafca2d30c1da"
+    },
+    "main-7085afa2d05391f2fa653273da78ee19.js": {
+      "logical_path": "main.js",
+      "mtime": "2015-07-01T03:58:18.000Z",
+      "size": 166,
+      "digest": "7085afa2d05391f2fa653273da78ee19"
+    },
+    "131289_shakespeare-7f542571e53980aa4c65e36cf7984874.jpg": {
+      "logical_path": "131289_shakespeare.jpg",
+      "mtime": "2015-06-28T02:40:43.000Z",
+      "size": 196772,
+      "digest": "7f542571e53980aa4c65e36cf7984874"
+    },
+    "Shakespeare-Wallpaper-1-7fba2900dbe771b02c92e0e53a17f946.png": {
+      "logical_path": "Shakespeare-Wallpaper-1.png",
+      "mtime": "2015-06-28T02:40:43.000Z",
+      "size": 499748,
+      "digest": "7fba2900dbe771b02c92e0e53a17f946"
+    },
+    "bg1-f1e393383a8d0c0b8ddf126380a30732.jpg": {
+      "logical_path": "bg1.jpg",
+      "mtime": "2015-06-28T02:40:43.000Z",
+      "size": 71501,
+      "digest": "f1e393383a8d0c0b8ddf126380a30732"
+    },
+    "bg2-c73086e8320631ff106902feb4bf2708.jpg": {
+      "logical_path": "bg2.jpg",
+      "mtime": "2015-06-28T02:40:43.000Z",
+      "size": 4444,
+      "digest": "c73086e8320631ff106902feb4bf2708"
+    },
+    "bg3-dbc4cc4abf7292d13f567c3727085609.jpg": {
+      "logical_path": "bg3.jpg",
+      "mtime": "2015-06-28T02:40:43.000Z",
+      "size": 2482930,
+      "digest": "dbc4cc4abf7292d13f567c3727085609"
+    },
+    "bg4-de28a92ea2d611bb6079eeb7a884e9c4.jpg": {
+      "logical_path": "bg4.jpg",
+      "mtime": "2015-06-28T02:40:43.000Z",
+      "size": 120060,
+      "digest": "de28a92ea2d611bb6079eeb7a884e9c4"
+    },
+    "img-24794c8556194835b1b98f9f1b216ed7.jpg": {
+      "logical_path": "img.jpg",
+      "mtime": "2015-06-30T02:24:00.000Z",
+      "size": 173700,
+      "digest": "24794c8556194835b1b98f9f1b216ed7"
+    },
+    "img1-6f147dc6ed138b04f3bc6cffd659b4c9.jpg": {
+      "logical_path": "img1.jpg",
+      "mtime": "2015-06-30T02:24:00.000Z",
+      "size": 36747,
+      "digest": "6f147dc6ed138b04f3bc6cffd659b4c9"
+    },
+    "ooo-f09cbf363b253c997cb712b0971797c1.jpg": {
+      "logical_path": "ooo.jpg",
+      "mtime": "2015-06-30T02:24:00.000Z",
+      "size": 2417761,
+      "digest": "f09cbf363b253c997cb712b0971797c1"
+    }
+  }
+}

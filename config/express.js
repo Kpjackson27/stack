@@ -1,5 +1,9 @@
 'use strict';
 
+// Set the 'NODE_ENV' variable
+// process.env.NODE_ENV = process.env.NODE_ENV || 'production';
+process.env.NODE_ENV = 'production';
+console.log('process.env.NODE_ENV:' +process.env.NODE_ENV);
 //load the module dependencies
 var config = require('./config'),
 	express = require('express'),

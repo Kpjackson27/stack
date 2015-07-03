@@ -20,10 +20,6 @@ color: #FFF;
     transition: background .8s ease-out,padding .8s ease-out;
 }
 
-//.navbar-default {
-  //background-color: rgba(248, 248, 248, 0);
- // border-color: rgba(231, 231, 231, 0);
-//}
 
 .navbar-default {
   background-color: rgba(53, 35, 13, 1);
@@ -198,5 +194,3 @@ color: #FFF;
   padding-top:20px;
   padding-bottom:20px;
 }
-.spacer{
-  padding-top:
