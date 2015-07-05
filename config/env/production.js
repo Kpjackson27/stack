@@ -3,6 +3,6 @@
 //set the 'production' environment configuration object
 module.exports = {
 	// db: 'mongodb://localhost/lyrical-intent',
-	db: 'mongodb://verzadmin:123456/@ds045632.mongolab.com:45632/verzdb',
+	db: 'mongodb://song:123456@ds041150.mongolab.com:41150/verz',
 	sessionSecret: 'developmentSessionSecret'
 };
