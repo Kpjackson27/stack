@@ -9,4 +9,4 @@ var _ = require('lodash'),
 module.exports = function(){
 	//Use the Passport's oauth strategy
 	
-}
+};

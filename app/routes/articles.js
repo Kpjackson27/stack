@@ -21,7 +21,7 @@ module.exports = function(app){
 	
 	// Single article
 	app.route('/api/articles/:articleId')
-	   .get(articles.read)
+	   .get(articles.read);
 	   // .put(passportConf.isAuthenticated, articles.hasAuthorization, articles.update)
 	app.route('/api/articles/:articleId/delete')   
 	   .post(passportConf.isAuthenticated, articles.hasAuthorization, articles.delete);

@@ -8,7 +8,17 @@ var _ = require('lodash'),
 	nodemailer = require('nodemailer'),
 	User = require('../models/User'),
   Article = require('../models/Article');
-
+var secrets = require('../../config/secrets');
+// Create a new error handling controller method
+var getErrorMessage = function(err) {
+  if (err.errors) {
+    for (var errName in err.errors) {
+      if (err.errors[errName].message) return err.errors[errName].message;
+    }
+  } else {
+    return 'Unknown server error';
+  }
+};
 
 /**
  *GET /login

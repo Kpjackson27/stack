@@ -1,0 +1,4 @@
+{
+    "globalstrict": false, // Allow global "use strict" (also enables 'strict').
+	"globals module": false
+}
