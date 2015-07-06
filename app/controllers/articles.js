@@ -65,6 +65,7 @@ exports.list = function(req, res) {
 			});
 			return res.redirect('/');
 		} else {
+			console.log(articles);
 			res.format({
 				html: function() {
 					res.render('article/listPost', {
