@@ -15,4 +15,16 @@
 
 //= require lib/jquery-2.1.3.min
 //= require lib/bootstrap.min
+//= require lib/jquery-1.10.2
+//= require lib/bootstrap-select
+//= require lib/bootstrap-datepicker
+//= require lib/chartist.min
+//= require lib/demo
+//= require lib/get-shit-done
+//= require lib/gsdk-bootstrapswitch
+//= require lib/gsdk-checkbox
+//= require lib/gsdk-morphing
+//= require lib/gsdk-radio
+//= require lib/jquery.flexisel
+//= require lib/jquery.tagsinput
 //= require main

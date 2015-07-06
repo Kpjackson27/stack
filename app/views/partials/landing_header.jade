@@ -1,21 +1,26 @@
-html
-  body
-    nav.navbar.navbar-default.navbar-fixed-top
+#navbar-full
+  #navbar
+    .navigation-example
+      nav.navbar.navbar-ct-transparent(role='navigation-demo')
+        .container
+          .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navigation-example-2')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href='/')
+              img.logo1(src='/img/verze.co-01.png')
+          #navigation-example-2.collapse.navbar-collapse
+            ul.nav.navbar-nav
+            ul.nav.navbar-nav.navbar-right
+              li
+                a.btn.btn-default.btn-simple("href=/signup") REGISTER
+              li
+                a.btn.btn-fill.btn-round.btn-info("href=/login") SIGN IN
       .container
-        .navbar-header
-          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='#') Verses
-        .navbar-collapse.collapse
-          ul.nav.navbar-nav.navbar-right
-            li
-              a(href='/signup') Signup
-    .wide
-      .col-md-12
-        h1.text-center.call.header Unleash Your Creativity
-        p.text-center Join a community of artistic thinkers and lyricists
-      .col-md-6.col-md-offset-3.text-center
-         .form-group
-          input#focusedInput.form-control(type='text', value='Search')
+        .col-md-12.col-sm-6.text-center.p-top
+          img.logo(src='/img/verze.co-01.png')
+          p.bg-white Unleash Your Creativity
+          br
+          button.btn.btn-info.btn-lg Discover

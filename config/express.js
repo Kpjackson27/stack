@@ -76,11 +76,11 @@ module.exports = function(db) {
 	app.set('view engine', 'jade');
 	app.use(compress());
 	app.use(connectAssets({
-		paths: [path.join('public/css'), path.join('public/js'), path.join('public/img')]
+		paths: [path.join('public/css'), path.join('public/js')]
 	}));
 
 	//render static files
-	app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000}));
+	app.use(express.static(path.join('public'), { maxAge: 31557600000}));
 
 	//configure the flash messages middleware
 	app.use(flash());

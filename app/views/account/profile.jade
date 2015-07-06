@@ -1,65 +1,43 @@
-extends ../layouts/profile
+extends ../layouts/default
 
 block content
-  .section.top
-    .container
-      .row
-        .col-md-4
-          a(href='#')
-            img.img-responsive.img-rounded(src='http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png')
-        .col-md-5
-          h3 @username #{u.profile.name}
-          p @email #{u.email}
-          ul.list-inline.list-unstyled
-            li
-              a(href="#") Verses: #{stats.count}
-            li 
-              a(href="#") Following: #{u.following}
-            li
-              a(href="#") Followers: 0
-            li
-              a(href="#") Features: 0
-            li
-              a(href="#") Likes: 0
-          hr
-          h4 Inspiration:
-          ul.list-inline.list-unstyled
-            li
-              a(href="#") William Shakespeare
-            li 
-              a(href="#") 2Pac
-            li
-              a(href="#") Poet
-            li
-              a(href="#") Author
-            li
-              a(href="#") Song Writter
-        .col-md-3
-          a.btn.btn-default.btn-sm(href='#') Edit Profile
-  hr
   .section
     .container
       .row
-       form.form-horizontal(id='createArticle-form', method='POST')
-         input(type='hidden', name='_csrf', value=_csrf)
-         .form-group
-           label.col-sm-3.control-label(for='title') Title
-           .col-sm-2
-             input.form-control.input-sm(type='text', name='title', id='title', placeholder='poem title', autofocus)
-         .form-group
-           label.col-sm-3.control-label(for='content') Content
-           .col-sm-5
-             textarea#content.form-control.input-sm(type='text', name='content', placeholder='poem content', row='10')
-         .form-group
-           label.col-sm-3.control-label(for='category') Category
-           .col-sm-5
-             select#category.form-control.input-sm(name='category')
-               option nonCategorized
-               option Category1
-               option Category2
-               option Category3
-         .form-group
-           .col-sm-offset-3.col-sm-7
-             button.btn.btn-success(type='submit')
-               i.fa.fa-user-plus
-               | CreatePost
+        .col-md-3
+          .fixed-section.float
+            .card.card-user.card-plain
+              .image.image-plain
+              .content
+                .author
+                  a(href='#')
+                    img.avatar(src='/img/face-4.jpg', alt='...')
+                    h3.title
+                      | Drake 
+                      br
+                      small Artist
+                p.description.text-center
+                  | "I got my eyes on you 
+                  br
+                  |     You're everything that I see 
+                  br
+                  |     I want your high love" 
+                  br
+              .footer.text-center
+                .stats
+                  a.card-link(href='#')
+                    i.fa.fa-comments
+                    |  89
+                .stats
+                  a.card-link(href='#')
+                    i.fa.fa-heart
+                    |  341
+                .stats
+                  a.card-link(href='#')
+                    i.fa.fa-heart
+                    |  341
+                .stats
+                  a.card-link(href='#')
+                    i.fa.fa-heart
+                    |  341
+              button.btn.btn-info.btn-round.btn-fill(href='#') Edit Profile 

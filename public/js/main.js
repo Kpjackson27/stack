@@ -1,18 +1,32 @@
 $(document).ready(function() {
 
   // Place JavaScript code here...
-  (function(){
-    $(window).scroll(function() {
+  	//on scroll effect
+    $(window).on('scroll', gsdk.checkScrollForTransparentNavbar);
+
+
+          var big_image;
+        $().ready(function(){
+            responsive = $(window).width();
+            
+            $(window).on('scroll', gsdk.checkScrollForTransparentNavbar);
+            
+            if (responsive >= 768){
+                big_image = $('.parallax-image').find('img');
+                
+                $(window).on('scroll',function(){           
+                    parallax();
+                });
+            }
+            
+        });
+
+           var parallax = function() {
+            var current_scroll = $(this).scrollTop();
+            
+            oVal = ($(window).scrollTop() / 3); 
+            big_image.css('top',oVal);
+        };
     
-        // check if window scroll for more than 430px. May vary
-        // as per the height of your main banner.
-        
-        if($(this).scrollTop() > 90) { 
-            $('.navbar').addClass('opaque'); // adding the opaque class
-        } else {
-            $('.navbar').removeClass('opaque'); // removing the opaque class
-        }
-    });
-  })();
 
 });

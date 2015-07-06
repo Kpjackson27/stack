@@ -10,5 +10,5 @@ module.exports = function(app){
 	
 	//Mount the 'index' controller's 'render' method
 	app.route('/')
-		.get(passportConf.isAuthenticated , index.render);
+		.get(passportConf.isAuthenticated,index.render);
 };
