@@ -1,43 +1,32 @@
-extends ../layouts/profile
+extends ../layouts/default
 
 
 block content
-    h1.
-         #{title}
-    ul
-        - each article, i in articles
-            li
-                = article.title + ' by '
-                p 
-                    a(href='/api/users/#{article.creator.id}/profile') #{article.creator.profile.name||article.creator.email || article.creator.id}
-                = article.content 
-                br
-                =  article.category 
-                br
-                p Created  #{moment(article.created).fromNow()}
-                //= 'Created on: ' + article.created 
-
-                form(action='/api/articles/#{article._id}/favorites',method='POST')
-                    input(type='hidden', name='_csrf', value=_csrf)
-                    button(type='submit').
-                        like: #{article.favoritesCount}                   
-                //p
-                //    a(href='/api/articles/#{article._id}') Detail
-                br
-                form(action='/api/articles/#{article._id}/delete',method='POST')
-                    input(type='hidden', name='_csrf', value=_csrf)
-                    button(type='submit').
-                        Delete
-                hr
-                ul
-                    - each comment in article.comments
-                        li
-                            ='User: '+ comment.user
-                            br
-                            ='Comment: '+ comment.body
-                            p Created: #{moment(comment.createdAt).fromNow()}
-                        hr
-                hr
-                include ../comments/form
+    .col-md-7
+        ul
+            - each article, i in articles
+                .fixed-section
+                    .card
+                        .content
+                            p.category.text-right
+                                i.fa.fa-clock-o
+                                |   #{moment(article.created).fromNow()}
+                            a.card-link(href='#')
+                                h1.title= article.title
+                                h3= article.content
+                            a.card-link(href="#")
+                            .footer
+                                .author
+                                    a.card-link(href="/api/users/#{article.creator.id}/profile")
+                                        img.avatar(src='/img/face-2.jpg')
+                                        span #{article.creator.profile.name||article.creator.email || article.creator.id}
+                                .stats.pull-right
+                                    a.card-link(href="#")
+                                        i.fa.fa-comments
+                                        | #     
+                                .stats.pull-right
+                                    a.card-link(href="#")
+                                        i.fa.fa-heart
+                                        | #{article.favoritesCount}
 
 
