@@ -123,6 +123,7 @@ module.exports = function(db) {
 	require('../app/routes/users.js')(app);
 	require('../app/routes/articles.js')(app);
 	require('../app/routes/about.js')(app);
+	require('../app/routes/discover.js')(app);
 
 	return app;
 };
