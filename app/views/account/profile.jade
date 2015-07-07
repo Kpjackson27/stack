@@ -13,9 +13,9 @@ block content
                   a(href='#')
                     img.avatar(src='/img/face-4.jpg', alt='...')
                     h3.title
-                      | Drake 
+                      | Username
                       br
-                      small Artist
+                      small #{user.email}
                 p.description.text-center
                   | "I got my eyes on you 
                   br
@@ -36,8 +36,4 @@ block content
                   a.card-link(href='#')
                     i.fa.fa-heart
                     |  341
-                .stats
-                  a.card-link(href='#')
-                    i.fa.fa-heart
-                    |  341
-              button.btn.btn-info.btn-round.btn-fill(data-toggle='modal', data-target='#editProfileModal') Edit Profile 
+                button.btn.btn-info.btn-round.btn-fill(data-toggle='modal', data-target='#editProfileModal') Edit Profile 
