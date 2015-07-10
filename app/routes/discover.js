@@ -5,5 +5,5 @@ module.exports = function(app){
 	var discover = require('../controllers/discover');
 
 	//Mount the 'index' controller's 'render' method
-	app.get('/discover', discover.render);
+	app.get('/discover', discover.getDailyFeatured);
 };
