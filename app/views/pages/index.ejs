@@ -7,7 +7,7 @@
 	<% include ../partials/header %>
 </body>
 	<div class="wrapper">
-     <div class="parallax">
+     <div class="parallax filter-black">
         <div class="parallax-image">
             <img src="/img/Poetry_Web_Background.jpg">
         </div>
@@ -15,26 +15,115 @@
             <img src="/img/verze.co-01.png" class="logo"/>
         </div>
     
-        <h3 class="motivation">Tag Line Have to Decide what it is</h3>
-        <p>test</p>
+        <h3 class="motivation">Your Creativity, Your content</h3>
 
         </div>
           <div class="section">
             <div class="container tim-container" style="max-width:800px; padding-top:100px">
-               <h1 class="text-center">Awesome looking header <br> just for my friends<small class="subtitle">This is like a small motto before the story.</small></h1>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>      
+               <h1 class="text-center">As You Like It <br>Act II, Scene VII<small class="subtitle">~William Shakespeare, 1564-1616</small></h1>
+               <p>All the world’s a stage, And all the men and women merely players;They have their exits and their entrances, And one man in his time plays many parts, His acts being seven ages. At first, the infant, Mewling and puking in the nurse’s arms. Then the whining schoolboy, with his satchel And shining morning face, creeping like snail Unwillingly to school. And then the lover, Sighing like furnace, with a woeful ballad</p>
+               <p>Made to his mistress’ eyebrow. Then a soldier, Full of strange oaths and bearded like the pard, Jealous in honor, sudden and quick in quarrel, Seeking the bubble reputation Even in the cannon’s mouth. And then the justice, In fair round belly with good capon lined, With eyes severe and beard of formal cut, Full of wise saws and modern instances; And so he plays his part. The sixth age shifts Into the lean and slippered pantaloon, With spectacles on nose and pouch on side; His youthful hose, well saved, a world too wide For his shrunk shank, and his big manly voice, Turning again toward childish treble, pipes And whistles in his sound. Last scene of all, That ends this strange eventful history, Is second childishness and mere oblivion, Sans teeth, sans eyes, sans taste, sans everything.</p>      
                    <!--     end extras -->        
             </div>
-            <div class="space"></div>
+            <div class="text-center">
+              <button class="btn btn-black">Discover</button>
+              <hr>
+            </div>
+        <div class="section section-blog">
+           <div class="container">
+               <h1 class="section-title text-center">Featured Poets</h1>
+               <div class="row">
+                     <div class="col-md-4">
+                        <div class="card card-background">
+                            <a href="#">
+                            <div class="image">
+                                <img src="/img/shakespeare.jpg" alt="..."/>
+                                <div class="filter"></div>
+                            </div>
+                            <div class="footer">
+                                <h4 class="title">William Shakespeare</h4>                      
+                            </div>
+                            </a>
+                        </div> <!-- end card -->
+                    </div> 
+                    
+                     <div class="col-md-4">
+                        <div class="card card-background">
+                            <a href="#">
+                            <div class="image">
+                                <img src="/img/edgar.jpg" alt="..."/>
+                                <div class="filter filter-azure"></div>
+                            </div>
+                            <div class="footer">
+                                <h4 class="title">Edgar Allen Poe</h4>                      
+                            </div>
+                            </a>
+                        </div> <!-- end card -->
+                    </div> 
+
+                      <div class="col-md-4">
+                        <div class="card card-background">
+                            <a href="#">
+                            <div class="image">
+                                <img src="/img/Maya.jpg" alt="..."/>
+                                <div class="filter filter-orange"></div>
+                            </div>
+                            <div class="footer">
+                                <h4 class="title">Maya Angelou</h4>             
+                            </div>
+                            </a>
+                        </div> <!-- end card -->
+                    </div> 
+                    
+               </div>
+           </div>
+    </div><!-- section -->
+
     </div>
 </div> <!-- wrapper --> 
     </div>
 	<% include ../partials/footer %>
-	 <script type="text/javascript">
+	    <script type="text/javascript">
+        var big_image;
+        var transparent = true;
+        
         $().ready(function(){
-            $(window).on('scroll', gsdk.checkScrollForTransparentNavbar);
-        });       
+            responsive = $(window).width();
+            
+            $(window).on('scroll', checkScroll);
+            
+            if (responsive >= 768){
+                big_image = $('.parallax-image').find('img');
+                
+                $(window).on('scroll',function(){           
+                    parallax();
+                    checkScroll();
+                });
+            }
+            
+        });
+       
+       function checkScroll(){  
+          if($(document).scrollTop() > 260 ) {
+                if(transparent) {
+                    transparent = false;
+                    $('nav[role="navigation"]').removeClass('navbar-transparent').addClass('navbar-default');
+                }
+            } else {
+                if( !transparent ) {
+                    transparent = true;
+                    $('nav[role="navigation"]').addClass('navbar-transparent').removeClass('navbar-default');
+                }
+            }
+        }
+    
+       var parallax = function() {
+            var current_scroll = $(this).scrollTop();
+            
+            oVal = ($(window).scrollTop() / 3); 
+            big_image.css('top',oVal);
+        };
+
     </script>
    </body>
 </html>

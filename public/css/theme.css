@@ -39,6 +39,11 @@
 .tim-row h3{
     margin-top: 0;
 }
+
+.btn-black{
+    border-color:#000000;
+    color:#000000;
+}
 .switch{
     margin-right: 20px;
 }
@@ -154,7 +159,6 @@ pre {
 
 .card .title {
   margin: 0 0 10px 0;
-  color: #3f220b;
   font-weight: 300;
 }
 
