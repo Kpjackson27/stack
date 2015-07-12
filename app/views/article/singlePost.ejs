@@ -1,0 +1,20 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <p>Title:<%= article.title %></p>
+    <p>Content:<%= article.content %></p>
+    <p>Creator Detail:<%= article.creator %></p>
+    <p>Creator Profile:<%= article.creator.profile %></p>
+    <p>Creator Profile.name:<%= article.creator.profile.name %></p>
+    <p>Creator:<%= article.creator.profile.name ? article.creator.email : article.creator.id : article.creator.profile.name %></p>
+    <p>Creator.profile.name:<%= article.creator.email %></p>
+    <p>Creator.creator.id:<%= article.creator.id %></p>
+    <p>Category:<%= article.category %></p>
+    <p>Created on:<%= article.created %></p>
+    <p>id:<%= article._id %></p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+<div class="section">
+  <div class="container"><img src="/img/black-01.png" class="logo2"/>
+    <div class="col-md-4 col-md-offset-4">
+      <div class="card card-price">
+        <div class="content">
+          <h6 class="text-center">Sign Up For Verses</h6>
+          <hr/><br/>
+          <form id="signup-form" method="POST">
+            <input type="hidden" name="_csrf" value="<%= locals._csrf %>">
+            <div class="form-group">
+              <input type="email" name="email" id="email" placeholder="Email" autofocus="autofocus" class="form-control input-sm"/>
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" id="password" placeholder="Password" class="form-control input-sm"/>
+            </div>
+            <div class="form-group">
+              <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" class="form-control input-sm"/>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-info btn-md btn-block">Sign Up</button>
+            </div>
+            <p>By signing up, you agree to the Terms of Service and Privacy Policy, including Cookie Use. Others will be able to find you by email or phone number when provided.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+   </body>
+</html>

@@ -1,0 +1,8 @@
+{
+	"name": "Verz",
+	"version":"0.0.1",
+	"dependencies": {
+		"bootstrap": "*",
+		"font-awesome":"*"
+	}
+}

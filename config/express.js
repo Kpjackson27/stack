@@ -11,8 +11,6 @@ var express = require('express'),
 	flash = require('express-flash'),
 	session = require('express-session'),
 	MongoStore = require('connect-mongo')(session),
-	connectAssets = require('connect-assets'),
-	path = require('path'),
 	_ = require('lodash'),
 	cookieParser = require('cookie-parser'),
 	lusca = require('lusca'),
@@ -51,7 +49,7 @@ module.exports = function(db) {
 	app.use(methodOverride());
 
 	//Configure multer module
-	app.use(multer({ dest: path.join(__dirname, 'uploads')}));
+	app.use(multer({ dest: ('uploads')}));
 	
 	//Configure express validator module
 	app.use(expressValidator());
@@ -70,17 +68,14 @@ module.exports = function(db) {
 		secret: 'developmentSessionSecret',
 		store: mongoStore
 	}));
- //
+
 	//set application view engine and 'views' folder
 	app.set('views', './app/views');
-	app.set('view engine', 'jade');
+	app.set('view engine', 'ejs');
 	app.use(compress());
-	app.use(connectAssets({
-		paths: [path.join('public/css'), path.join('public/js')]
-	}));
+	
 
-	//render static files
-	app.use(express.static(path.join('public'), { maxAge: 31557600000}));
+
 
 	//configure the flash messages middleware
 	app.use(flash());
@@ -91,6 +86,7 @@ module.exports = function(db) {
 		xframe: 'SAMEORIGIN',
 		xssProtection: true
 	}));
+
 
 	//Configure passport middleware
 	app.use(passport.initialize());
@@ -119,11 +115,15 @@ module.exports = function(db) {
 
 	//Load the routing files
 	require('../app/routes/index.js')(app);
-	require('../app/routes/landing.js')(app);
+	//require('../app/routes/landing.js')(app);
+	require('../app/routes/main.js')(app);
 	require('../app/routes/users.js')(app);
 	require('../app/routes/articles.js')(app);
 	require('../app/routes/about.js')(app);
 	require('../app/routes/discover.js')(app);
+
+	//render static files
+	app.use(express.static('./public'));
 
 	return app;
 };

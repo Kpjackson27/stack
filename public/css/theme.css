@@ -78,7 +78,8 @@
 }
 
 .logo{
-    height:400px;
+    /*height:400px;*/
+    padding-top:50%;
     width:100%;
 }
 
@@ -145,6 +146,11 @@ pre {
     font-weight: 400;
     line-height: 18.5714302062988px;
 }
+.section-header .action-buttons {
+  margin-top: 41px;
+}
+
+
 
 .card .title {
   margin: 0 0 10px 0;
