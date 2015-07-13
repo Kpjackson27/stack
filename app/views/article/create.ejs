@@ -4,9 +4,9 @@
   <% include ../partials/head %>
 </head>
 <body>
-<div class="page-header">
-  <h3>New Post</h3>
-</div>
+  <% include ../partials/main-header %>
+
+
 <form id="createArticle-form" method="POST" class="form-horizontal">
   <input type="hidden" name="_csrf"/>
   <div class="form-group">
@@ -36,3 +36,5 @@
     <div class="col-sm-offset-3 col-sm-7">
 </body>
 </html>
+
+

@@ -4,16 +4,22 @@
 	<% include ../partials/head %>
 </head>
 <body>
-	<ul>
-		<% for (var i = 0; i< poems.length; i++) {%>
-			<li>
-				<%= poems.title %>
-				br
-				<%= 'Posted: ' + poems.date %>
-				br
-				<%= poems.description %>
-			</li>
-		<% } %>
-	</ul>
+	<h1>Discover</h1>
+	<h1><%= title %></h1>
+		<ul>
+			<% for (var i = 0; i < poems.length; i++) {%>
+			  <li>
+				<h1 class="title"><%= poems[i].title %></h1>
+				<br>
+				<p><%= poems[i].description %></p>
+				<br>
+				<p><%= poems[i].author %></p>
+				<br>
+				<p><%= poems[i].date %></p>
+		     </li>
+			<% } %>
+		
+		</ul>
+
 </body>
 </html>

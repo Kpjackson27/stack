@@ -5,14 +5,16 @@
 </head>
 <body>
 
-<div id="createModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal modal-small fade">
+<div id="createModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal modal-small fade" aria-labelledby="createModalLabel">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title text-center">Unleash Your Creativity</h4>
       </div>
       <div class="modal-body">
         <form id="createArticle-form" method="POST" class="form-horizontal">
+          <input type="hidden" name="_csrf" value="<%= locals._csrf %>"/>
           <div class="form-group">
             <div class="col-sm-7">
               <input type="text" value="" id="title" placeholder="Title" class="form-control"/>
@@ -27,7 +29,7 @@
             <div class="col-sm-12">
               <label for="category" class="control-label">Category</label>
               <select id="category" name="category" class="form-control">
-                <option>nonCategorized</option>
+                <option>non</option>
                 <option>Category1</option>
                 <option>Category2</option>
                 <option>Category3</option>

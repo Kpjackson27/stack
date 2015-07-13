@@ -34,13 +34,13 @@ exports.getDailyFeatured = function(req, res) {
     feedparser.on('readable', function() {
         // console.log('readable:' + this);
         var meta = this.meta, item;
-        while (item === this.read()) {
+        while (item = this.read()) {
             // console.log(item);
             var poem = {
                 title: item.title,
                 description: item.description,
-                // author: item.author,
-                // summary: item.summary,
+                author: item.author,
+                //summary: item.summary,
                 date: item.date
             };
             poems.push(poem);
