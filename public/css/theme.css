@@ -39,6 +39,11 @@
 .tim-row h3{
     margin-top: 0;
 }
+
+.btn-black{
+    border-color:#000000;
+    color:#000000;
+}
 .switch{
     margin-right: 20px;
 }
@@ -57,6 +62,11 @@
 }
 .space-50{
     height: 50px;
+    display: block;
+}
+
+.space-10{
+    height: 10px;
     display: block;
 }
 .space-70{
@@ -78,7 +88,8 @@
 }
 
 .logo{
-    height:400px;
+    /*height:400px;*/
+    padding-top:50%;
     width:100%;
 }
 
@@ -145,10 +156,14 @@ pre {
     font-weight: 400;
     line-height: 18.5714302062988px;
 }
+.section-header .action-buttons {
+  margin-top: 41px;
+}
+
+
 
 .card .title {
   margin: 0 0 10px 0;
-  color: #3f220b;
   font-weight: 300;
 }
 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+
+<div id="createModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal modal-small fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Unleash Your Creativity</h4>
+      </div>
+      <div class="modal-body">
+        <form id="createArticle-form" method="POST" class="form-horizontal">
+          <div class="form-group">
+            <div class="col-sm-7">
+              <input type="text" value="" id="title" placeholder="Title" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <textarea id="content" type="text" name="content" placeholder="poem content" row="10" class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12">
+              <label for="category" class="control-label">Category</label>
+              <select id="category" name="category" class="form-control">
+                <option>nonCategorized</option>
+                <option>Category1</option>
+                <option>Category2</option>
+                <option>Category3</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-info btn-fill btn-block"><i class="fa fa-user-plus"></i>Create Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="editProfileModal" tabindex="-1" role="dialog" aria-hidden="true" class="modal modal-small fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Edit Profile</h4>
+      </div>
+      <div class="modal-body">
+        <div class="author card-user"><a href="#"><img src="/img/face-4.jpg" alt="..." class="avatar img-circle"/>
+            <form id="createArticle-form" method="POST" class="form-horizontal">
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="text" value="" id="username" placeholder="Username" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="text" value="" id="firstname" placeholder="Firstname" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="text" value="" id="lastname" placeholder="Lastname" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="text" value="" id="website" placeholder="Website" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <input type="email" value="" id="email" placeholder="Email" class="form-control"/>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-info btn-fill btn-block"><i class="fa fa-user-plus"></i>Save</button>
+            </form></a></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

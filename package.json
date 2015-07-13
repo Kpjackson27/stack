@@ -26,6 +26,7 @@
         "nodemailer": "^1.3.4",
         "jade": "^1.11.0",
         "connect-assets": "latest",
+        "ejs": "~1.0.0",
         "less": "^2.5.1",
         "lusca": "^1.1.1",
         "cookie-parser": "^1.3.5",

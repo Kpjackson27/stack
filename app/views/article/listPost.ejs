@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include ../partials/head %>
+</head>
+<body>
+	<div class="col-md-7">
+		<ul>
+			<% for (val i = 0; i < articles.length; i++) {%>
+				<div class="fixed-section">
+					<div class="card">
+						<div class="content">
+							<p class="category text-right">
+								<i class="fa fa-clock-o">
+									 <%= moment(articles.created).fromNow() %>
+								</i>
+							</p>
+							<a class="card-link" href="#">
+								<h1 class="title"><%= articles.title %></h1>
+								<h3><% articles.content %></h3>
+							</a>
+							<div class="footer">
+								<div class="author">
+									<a card-link href="/api/users/#{article.creator.id}/profile">
+									<img class="avatar" src="/img/face-2.jpg"/>
+										<span>
+											<%= articles.creator.profile.name ? articles.creator.email : articles.creator.id : articles.creator.profile.name %>
+										</span>
+									</a>
+								<stats class="pull-right">
+									<a class="card-link" href="#">
+										<i class="fa fa-comments">#</i>
+									</a>
+								</stats>
+								<stats class="pull-right">
+									<a class="card-link" href="#">
+										<i class="fa fa-heart">
+											<%= articles.favoritesCount %>
+										</i>
+									</a>
+								</stats>
+							</div>
+						</div>
+					</div>
+					<% } %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

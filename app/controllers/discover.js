@@ -34,7 +34,7 @@ exports.getDailyFeatured = function(req, res) {
     feedparser.on('readable', function() {
         // console.log('readable:' + this);
         var meta = this.meta, item;
-        while (item = this.read()) {
+        while (item === this.read()) {
             // console.log(item);
             var poem = {
                 title: item.title,
@@ -49,7 +49,7 @@ exports.getDailyFeatured = function(req, res) {
     feedparser.on('end', function(error) {
         res.format({
             html: function() {
-                res.render('article/dailyFeatured', {
+                res.render('pages/discover', {
                     title: 'Lyrical Intent | Discover',
                     "poems": poems
                 });
