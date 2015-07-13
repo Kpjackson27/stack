@@ -18,11 +18,11 @@ var getErrorMessage = function(err) {
 //render the page to create new articles
 exports.getCreateArticles = function(req, res) {
     if (req.user) {
-        res.render('article/create', {
+        res.render('pages/main', {
             title: 'Create Article'
         });
     } else
-        return res.redirect('/');
+        return res.redirect('/main');
 };
 
 //create a new article
@@ -39,10 +39,10 @@ exports.create = function(req, res) {
             req.flash('errors', {
                 msg: getErrorMessage(err)
             });
-            return res.redirect('/api/CreateArticles');
+            return res.redirect('/main');
         } else {
             // req.flash('success', { msg: 'Poem created.'});
-            return res.redirect('/api/articles');
+            return res.redirect('/main');
         }
     });
 };
@@ -67,7 +67,7 @@ exports.list = function(req, res) {
             console.log(articles);
             res.format({
                 html: function() {
-                    res.render('article/listPost', {
+                    res.render('pages/main', {
                         title: 'All Poems',
                         "articles": articles
                     });
@@ -148,7 +148,7 @@ exports.delete = function(req, res) {
             req.flash('success', {
                 msg: 'Verse deleted.'
             });
-            res.redirect('/api/articles');
+            res.redirect('/main');
             // Send a JSON representation of the article 
             // res.json(article);
         }
@@ -164,7 +164,7 @@ exports.articleByID = function(req, res, next, id) {
             req.flash('errors', {
                 msg: 'Failed to load article ' + id
             });
-            return res.redirect('/');
+            return res.redirect('/main');
         }
         // If an article is found use the 'request' object to pass it to the next middleware
         req.article = article;
@@ -188,7 +188,7 @@ exports.hasAuthorization = function(req, res, next) {
             msg: 'User is not authorized creator'
         });
         // return(next(err));
-        return res.redirect('/api/articles');
+        return res.redirect('/main');
     }
 
     // Call the next middleware
@@ -201,6 +201,6 @@ exports.createComment = function(req, res) {
     // if (!req.body.body) return res.redirect('/tweets/'+tweet.id);
     article.addComment(user, req.body, function(err) {
         if (err) return res.render('500');
-        res.redirect('/');
+        res.redirect('/main');
     });
 };

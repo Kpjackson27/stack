@@ -8,7 +8,7 @@ var _ = require('lodash'),
 	nodemailer = require('nodemailer'),
 	User = require('../models/User'),
   Article = require('../models/Article');
-//var secrets = require('../../config/secrets');
+var secrets = require('../../config/secrets');
 // Create a new error handling controller method
 var getErrorMessage = function(err) {
   if (err.errors) {

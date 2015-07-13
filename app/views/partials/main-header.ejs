@@ -1,5 +1,6 @@
+<% include ../partials/modal %> 
+
  <div id="navbar">
-    
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     
           <div class="container-fluid">
@@ -18,7 +19,7 @@
     
               </button>
     
-              <a class="navbar-brand" href="#">Verz</a>
+              <a class="navbar-brand" href="/main">Verz</a>
     
             </div>
     
@@ -32,11 +33,20 @@
 
               <ul class="nav navbar-nav navbar-right">
 
-                <li><a href="api/createArticles"><%= user.email %></a></li>
+                <li class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="/account"><%= user.email %><b class="caret"></b></a>
+
+                        <ul class="dropdown-menu">
+                          <li><a href="/account">Profile</a></li>
+                          <li><a href="/settings">Settings</a></li>
+                          <li><a href="/logout">Signout</a></li>
+                        </ul>
+                    </li>
     
-                <li><a href="api/createArticles">Post</a></li>
+                <li><button class="btn btn-round btn-default" data-toggle="modal" data-target="#createModal"><i class="fa fa-edit"></i> Post</button></li>
     
-                <li><a href="/logout">Signout</a></li>
+                
     
               </ul>
     
