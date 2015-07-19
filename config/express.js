@@ -1,8 +1,10 @@
 'use strict';
 
 //load the module dependencies
-var config = require('./config');
-var express = require('express'),
+var config = require('./config'),
+	http = require('http'),
+	socketio = require('socket.io'),
+	express = require('express'),
 	morgan = require('morgan'),
 	compress = require('compression'),
 	bodyParser = require('body-parser'),
@@ -33,6 +35,12 @@ var getErrorMessage = function(err){
 module.exports = function(db) {
 	//create new express application instance
 	var app = express();
+
+	//create new HTTP server
+	var server = http.createServer(app);
+
+	//create a new socket.io server
+	var io = socketio.listen(server);
 
 	//Use the 'NODE_ENV' variable to activate the 'morgan' logger or 'compress' middleware
 	if(process.env.NODE_ENV === 'development'){
@@ -125,5 +133,9 @@ module.exports = function(db) {
 	//render static files
 	app.use(express.static('./public'));
 
-	return app;
+	//load socket.io configuration
+	require('./socketio')(server, io, mongoStore);
+	
+	
+	return server;
 };

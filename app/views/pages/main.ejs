@@ -5,6 +5,7 @@
 </head>
 
 <body>
+  <script src="/socket.io/socket.io.js"></script>
 	<% include ../partials/main-header %>
 
 	  <div class="main">
@@ -41,7 +42,7 @@
        <div class="tim-container" style="min-height: 2000px;">
           <div class="space-50"></div>
           <form id="createArticle-form" method="POST" class="form-horizontal">
-        <input type="hidden" name="_csrf"/>
+            <input type='hidden' name='_csrf' value="<%= locals._csrf %>">
   <div class="form-group">
     <label for="title" class="col-sm-3 control-label">Title</label>
     <div class="col-sm-7">
@@ -67,7 +68,7 @@
   </div>
   <div class="form-group">
       <div class="col-sm-4 col-sm-offset-8">
-        <button type="submit" class="btn btn-black ">Post</button>
+        <button type="submit" class="btn btn-black">Post</button>
       </div>
   </div>
 </form>
@@ -112,5 +113,6 @@
               </div>
             </div>
             <% include ../partials/footer %>
+        <!--<script type="text/javascript" src="/js/script.js"></script>-->
         </body>
     </html>
