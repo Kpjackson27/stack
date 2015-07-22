@@ -2,23 +2,26 @@
 
 //load the module dependencies
 var config = require('./config'),
-	http = require('http'),
-	socketio = require('socket.io'),
-	express = require('express'),
-	morgan = require('morgan'),
-	compress = require('compression'),
-	bodyParser = require('body-parser'),
-	methodOverride = require('method-override'),
-	multer = require('multer'),
-	flash = require('express-flash'),
-	session = require('express-session'),
-	MongoStore = require('connect-mongo')(session),
-	_ = require('lodash'),
-	cookieParser = require('cookie-parser'),
-	lusca = require('lusca'),
-	expressValidator = require('express-validator'),
-	errorHandler = require('errorhandler'),
-	passport = require('passport');
+    http = require('http'),
+    socketio = require('socket.io'),
+    express = require('express'),
+    morgan = require('morgan'),
+    compress = require('compression'),
+    bodyParser = require('body-parser'),
+    methodOverride = require('method-override'),
+    multer = require('multer'),
+    flash = require('express-flash'),
+    session = require('express-session'),
+    MongoStore = require('connect-mongo')(session),
+    _ = require('lodash'),
+    cookieParser = require('cookie-parser'),
+    lusca = require('lusca'),
+    expressValidator = require('express-validator'),
+    errorHandler = require('errorhandler'),
+    passport = require('passport'),
+    url = require('url'),
+    redis = require('redis');
+
 
 var redisURL = url.parse('redis://rediscloud:4kmgVo8PXPmJzJWH@pub-redis-17622.us-east-1-4.5.ec2.garantiadata.com:17622');
 var client = redis.createClient(redisURL.port, redisURL.hostname, {
@@ -46,18 +49,18 @@ module.exports = function(db) {
     //create new express application instance
     var app = express();
 
-	//create new HTTP server
-	var server = http.createServer(app);
+    //create new HTTP server
+    var server = http.createServer(app);
 
-	//create a new socket.io server
-	var io = socketio.listen(server);
+    //create a new socket.io server
+    var io = socketio.listen(server);
 
-	//Use the 'NODE_ENV' variable to activate the 'morgan' logger or 'compress' middleware
-	if(process.env.NODE_ENV === 'development'){
-		app.use(morgan('dev'));
-	} else if (process.env.NODE_ENV === 'production') {
-		app.use(compress());
-	}
+    //Use the 'NODE_ENV' variable to activate the 'morgan' logger or 'compress' middleware
+    if (process.env.NODE_ENV === 'development') {
+        app.use(morgan('dev'));
+    } else if (process.env.NODE_ENV === 'production') {
+        app.use(compress());
+    }
 
     //Use the 'body-parser' and 'method-override' middleware functions
     app.use(bodyParser.urlencoded({
@@ -141,9 +144,11 @@ module.exports = function(db) {
     require('../app/routes/about.js')(app);
     require('../app/routes/discover.js')(app);
 
-	//load socket.io configuration
-	require('./socketio')(server, io, mongoStore);
-	
-	
-	return server;
+    //render static files
+    app.use(express.static('./public'));
+    //load socket.io configuration
+    require('./socketio')(server, io, mongoStore);
+
+
+    return server;
 };

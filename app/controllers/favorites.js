@@ -9,6 +9,8 @@
 //   User = require('../models/User'),
 //   Article = require('../models/Article');
 
+//import raccoon module
+
 exports.create = function (req, res) {
   var article = req.article;
   // console.log(req.article);
@@ -20,6 +22,10 @@ exports.create = function (req, res) {
     res.redirect('/api/articles');
 
   });
+  //recommendation data
+  //article id
+  //user id
+  //liked function to store a like instance in redis server
 };
 
 
