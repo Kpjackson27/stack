@@ -25,6 +25,12 @@ module.exports = function(grunt) {
                 }
             }
         },
+        mochaTest: {
+            src: 'app/tests/**/*.js',
+            options: {
+                reporter: 'spec'
+            }
+        },
         jshint: {
             all: {
                 src: ['server.js', 'config/**/*.js', 'app/**/*.js', 'public/js/*.js', 'public/modules/**/*.js'],
@@ -76,6 +82,9 @@ module.exports = function(grunt) {
     });
     grunt.loadNpmTasks('grunt-env');
     grunt.loadNpmTasks('grunt-nodemon');
+    grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-karma');
+    grunt.loadNpmTasks('grunt-protractor-runner');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-lesslint');
@@ -87,6 +96,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['env:dev', 'concurrent:dev']);
     //grunt debug
     grunt.registerTask('debug', ['env:dev', 'concurrent:debug']);
+    grunt.registerTask('test', ['env:test', 'mochaTest']);
     //grunt lint
     grunt.registerTask('lint', ['jshint', 'csslint', 'lesslint']);
 };
