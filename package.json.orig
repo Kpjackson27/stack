@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "name": "lyricalintent",
     "version": "1.0.0",
     "description": "Social media application for poetry",
@@ -73,7 +74,9 @@
     },
     "author": "Kareem Phillip-Jackson, Song Qin",
     "license": "ISC"
-}  "name": "lyricalintent",
+}
+=======
+  "name": "lyricalintent",
   "version": "1.0.0",
   "description": "Social media application for poetry",
   "main": "server.js",
@@ -131,3 +134,4 @@
   "author": "Kareem Phillip-Jackson, Song Qin",
   "license": "ISC"
 }
+>>>>>>> 714870aad42e586e8c49df21a234ebfb50ca20eb

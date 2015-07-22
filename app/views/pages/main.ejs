@@ -5,6 +5,7 @@
 </head>
 
 <body>
+  <script src="/socket.io/socket.io.js"></script>
 	<% include ../partials/main-header %>
 
 	  <div class="main">
@@ -20,7 +21,7 @@
                                      <a href="#">
                                     <img class="avatar" src="/img/face-2.jpg" alt="..."/>
                                    
-                                      <h4 class="title"><%= user.email %>
+                                      <h4 class="title"><%= user.email %><a href=""></a>
                                       </h4> 
                                     </a>
                                 </div>
@@ -41,7 +42,7 @@
        <div class="tim-container" style="min-height: 2000px;">
           <div class="space-50"></div>
           <form id="createArticle-form" method="POST" class="form-horizontal">
-        <input type="hidden" name="_csrf"/>
+            <input type='hidden' name='_csrf' value="<%= locals._csrf %>">
   <div class="form-group">
     <label for="title" class="col-sm-3 control-label">Title</label>
     <div class="col-sm-7">
@@ -67,7 +68,7 @@
   </div>
   <div class="form-group">
       <div class="col-sm-4 col-sm-offset-8">
-        <button type="submit" class="btn btn-black ">Post</button>
+        <button type="submit" class="btn btn-black">Post</button>
       </div>
   </div>
 </form>
@@ -88,18 +89,22 @@
                              <p><h3><% articles[i].content %></h3></p>
                             
                              <div class="media-footer">
-                                 <a href="#" class="btn btn-info btn-simple "> <i class="fa fa-reply"></i> Comment</a>                          
+                                 <a href="#" class="btn btn-info btn-simple "> <i class="fa fa-reply"></i> Comment</a> 
+
+                                 <form action='/api/articles/<%= articles[i]._id%>/favorites', method='POST'>
+                                   <input type='hidden' name='_csrf' value="<%= locals._csrf %>">                         
+                                    <button type="submit" id="favorites" class="btn btn-default btn-simple pull-right">
+                                     <i class="fa fa-heart-o"></i><%= articles[i].favoritesCount%>
+                                 </button>
+                               </form>
                                  <a href="#" class="btn btn-default btn-simple pull-right">
-                                     <i class="fa fa-heart-o"></i> 23
-                                 </a>
-                                 <a href="#" class="btn btn-default btn-simple pull-right">
-                                     <i class="fa fa-heart-o"></i> 23
+                                     <i class="fa fa-heart-o"></i> 12
                                  </a> 
                                  <a href="#" class="btn btn-default btn-simple pull-right">
-                                     <i class="fa fa-heart-o"></i> 23
+                                     <i class="fa fa-heart-o"></i> 14
                                  </a> 
                                  <a href="#" class="btn btn-default btn-simple pull-right">
-                                     <i class="fa fa-heart-o"></i> 23
+                                     <i class="fa fa-heart-o"></i> 16
                                  </a>     
                              </div><!--Media footer-->
                             </div><!--Media Body-->
@@ -112,5 +117,6 @@
               </div>
             </div>
             <% include ../partials/footer %>
+        <!--<script type="text/javascript" src="/js/script.js"></script>-->
         </body>
     </html>
