@@ -97,6 +97,15 @@
                                      <i class="fa fa-heart-o"></i><%= articles[i].favoritesCount%>
                                  </button>
                                </form>
+
+
+                                 <form action='/api/articles/<%= articles[i]._id%>/randomFunction', method='POST'>
+                                   <input type='hidden' name='_csrf' value="<%= locals._csrf %>">                         
+                                    <button type="submit" id="randomFunction" class="btn btn-default btn-simple pull-right">
+                                     <i class="fa fa-heart-o"></i><%= articles[i].favoritesCount%>
+                                 </button>
+                               </form>
+
                                  <a href="#" class="btn btn-default btn-simple pull-right">
                                      <i class="fa fa-heart-o"></i> 12
                                  </a> 
