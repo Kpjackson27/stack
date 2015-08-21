@@ -38,12 +38,15 @@ var ArticleSchema = new Schema({
 	}],
 	// tags: {type: [], get: getTags, set: setTags}
 	favorites: [{ type: Schema.ObjectId, ref: 'User' }],
-	favoritesCount: Number
+	favoritesCount: Number,
+	dislikes: [{ type: Schema.ObjectId, ref: 'User' }],
+	dislikesCount: Number
 });
 
 ArticleSchema.pre('save', function (next) {
   if (this.favorites) this.favoritesCount = this.favorites.length;
   // if (this.favorites) this.favoriters = this.favorites;
+  if (this.dislikes) this.dislikesCount = this.dislikes.length;
   next();
 });
 ArticleSchema.virtual('_favorites').set(function(user){
@@ -56,6 +59,19 @@ ArticleSchema.virtual('_favorites').set(function(user){
 		this.favorites.splice(this.favorites.indexOf(user._id), 1);
 	}
 });
+
+ArticleSchema.virtual('_dislikes').set(function(user){
+	if(this.dislikes.indexOf(user._id)===-1){
+	    console.log('user._id: '+user._id);
+    	console.log('this.dislikes:' +this.dislikes);
+		this.dislikes.push(user._id);
+	}
+	else{
+		this.dislikes.splice(this.dislikes.indexOf(user._id), 1);
+	}
+});
+
+
 ArticleSchema.statics = {
   	countArticle: function(id, cb){
   	  	// _this.find({creator: id}).length().exec(cb);

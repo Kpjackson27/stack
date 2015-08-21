@@ -99,10 +99,10 @@
                                </form>
 
 
-                                 <form action='/api/articles/<%= articles[i]._id%>/randomFunction', method='POST'>
+                                 <form action='/api/articles/<%= articles[i]._id%>/dislike', method='POST'>
                                    <input type='hidden' name='_csrf' value="<%= locals._csrf %>">                         
-                                    <button type="submit" id="randomFunction" class="btn btn-default btn-simple pull-right">
-                                     <i class="fa fa-heart-o"></i><%= articles[i].favoritesCount%>
+                                    <button type="submit" id="dislike" class="btn btn-default btn-simple pull-right">
+                                     <i class="fa fa-heart-o"></i><%= articles[i].dislikesCount%>
                                  </button>
                                </form>
 

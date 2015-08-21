@@ -18,18 +18,17 @@ var config = require('./config'),
     lusca = require('lusca'),
     expressValidator = require('express-validator'),
     errorHandler = require('errorhandler'),
-    passport = require('passport'),
-    url = require('url'),
-    redis = require('redis');
+    passport = require('passport');
+    // url = require('url'),
+    // redis = require('redis')
 
-
-var redisURL = url.parse('redis://rediscloud:4kmgVo8PXPmJzJWH@pub-redis-17622.us-east-1-4.5.ec2.garantiadata.com:17622');
-var client = redis.createClient(redisURL.port, redisURL.hostname, {
-    no_ready_check: true
-});
-client.auth(redisURL.auth.split(":")[1]);
-var raccoon = require('raccoon');
-raccoon.connect(redisURL.port, redisURL.hostname, redisURL.auth.split(":")[1]);
+// var redisURL = url.parse('redis://rediscloud:4kmgVo8PXPmJzJWH@pub-redis-17622.us-east-1-4.5.ec2.garantiadata.com:17622');
+// var client = redis.createClient(redisURL.port, redisURL.hostname, {
+//     no_ready_check: true
+// });
+// client.auth(redisURL.auth.split(":")[1]);
+// var raccoon = require('raccoon');
+// raccoon.connect(redisURL.port, redisURL.hostname, redisURL.auth.split(":")[1]);
 
 
 
@@ -143,6 +142,7 @@ module.exports = function(db) {
     require('../app/routes/articles.js')(app);
     require('../app/routes/about.js')(app);
     require('../app/routes/discover.js')(app);
+    require('../app/routes/recommendations.js')(app);
 
     //render static files
     app.use(express.static('./public'));
