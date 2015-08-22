@@ -1,3 +1,7 @@
+.tall{
+    height: 200px;
+}
+
 .tim-container{
     background: #FFF;
 }
@@ -62,8 +66,7 @@
 }
 .space-50{
     height: 50px;
-    display: block;
-}
+    display: block;}
 
 .space-10{
     height: 10px;
@@ -71,6 +74,11 @@
 }
 .space-70{
     height: 70px;
+    display: block;
+}
+
+.space-90{
+    height: 90px;
     display: block;
 }
 .navigation-example .img-src{
@@ -109,11 +117,12 @@
 .card-price .content{
     min-height:0px;
 }
-.card{
-    border-radius:0;
+
+/*.card{
+    box-shadow:none;
 
 }
-
+*/
 
 
 h1 {

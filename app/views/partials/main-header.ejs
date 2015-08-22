@@ -1,59 +1,83 @@
-<% include ../partials/modal %> 
+ <style>
+        .navbar{
+            margin-bottom:0px;
+        }
+        .card-user1 .avatar {
+    width: 70px;
+    height: 70px;
+    border: 5px solid #FFFFFF;
+    position: relative;
+    margin-bottom: 15px;
+}
+</style>
 
- <div id="navbar">
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    
-          <div class="container-fluid">
-    
-            <div class="navbar-header">
-    
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-    
-                <span class="sr-only">Toggle navigation</span>
-    
-                <span class="icon-bar"></span>
-    
-                <span class="icon-bar"></span>
-    
-                <span class="icon-bar"></span>
-    
-              </button>
-    
-              <a class="navbar-brand" href="/main">Verz</a>
-    
-            </div>
-    
-    
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    
-              <ul class="nav navbar-nav">
-    
-                <li><a href="/discover">Discover</a></li>
-              </ul>
 
-              <ul class="nav navbar-nav navbar-right">
-
-                <li class="dropdown">
-
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="/account"><%= user.email %><b class="caret"></b></a>
-
-                        <ul class="dropdown-menu">
-                          <li><a href="/account">Profile</a></li>
-                          <li><a href="/settings">Settings</a></li>
-                          <li><a href="/logout">Signout</a></li>
-                        </ul>
-                    </li>
-    
-                <li><button class="btn btn-round btn-default" data-toggle="modal" data-target="#createModal"><i class="fa fa-edit"></i> Post</button></li>
-    
+       <nav class="navbar navbar-ct-blue navbar-fixed-top" role="navigation-demo">
+                  <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-default2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand" href="/main">LOGO</a>
+                    </div>
                 
-    
-              </ul>
-    
-            </div><!-- /.navbar-collapse -->
-    
-          </div><!-- /.container-fluid -->
-    
-        </nav>
-    
-    </div><!--  end navbar --> 
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navigation-default2">
+
+                        <ul class="nav navbar-nav navbar-left">
+                            <li>
+                                <a href="/main">Home</a>
+                            </li>
+                             <li>
+                                <a href="/discover">Discover</a>
+                            </li>
+                              <li>
+                            <a href="javascript:void(0);" data-toggle="search" class="hidden-xs"><i class="fa fa-search"></i></a>
+                        </li>
+                      </ul>
+                       <form class="navbar-form navbar-left navbar-search-form" role="search">                  
+                         <div class="form-group">
+                              <input type="text" value="" class="form-control" placeholder="Search...">
+                         </div> 
+                      </form>
+                        </ul>
+                      <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="/create"><i class="fa fa-edit"></i>Create Verz</a>
+                        </li>
+                    
+                         <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                                    <i class="fa fa-globe"></i><%= user.email %>
+                              <b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="/account">Profile</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Inspiration</a></li>
+                                <hr>
+                                <li><a href="/logout">Logout</a></li>
+                              </ul>
+                        </li>
+                         <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                                    <i class="fa fa-globe"></i>
+                              <b class="caret"></b>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification</a></li>
+                                <li><a href="#">Notification</a></li>
+                                <li><a href="#">Notification</a></li>
+                                <li><a href="#">Notification</a></li>
+                                <li><a href="#">Notification</a></li>
+                              </ul>
+                        </li>
+                       </ul>
+                      
+                    </div><!-- /.navbar-collapse -->
+                  </div><!-- /.container-fluid -->
+                </nav>

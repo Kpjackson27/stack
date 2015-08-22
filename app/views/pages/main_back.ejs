@@ -1,0 +1,179 @@
+div class="wrapper">
+	  <div class="main">
+        <div class="section section-gray">
+          <div class="space-50"></div>
+    		<div class="container">
+        		<div class="row" id="profile-cards">
+            		<div class="col-md-4">
+                		<div class="card card-user">
+                            <div class="image">
+                               <img src="https://unsplash.imgix.net/41/pHyYeNZMRFOIRpYeW7X3_manacloseup%20copy.jpg?q=75&w=1080&h=1080&fit=max&fm=jpg&auto=format&s=befb073386542ab0a27cd34e4ecba7a9" alt="..."/>
+                            </div>
+                            <div class="content">
+                                <div class="author">
+                                     <a href="#">
+                                    <img class="avatar" src="/img/face-2.jpg" alt="..."/>
+                                      <h4 class="title"><%= user.email %><a href=""></a>
+                                      </h4> 
+                                    </a>
+                                </div>
+                                <hr>
+                                <div class="description text-center">
+                                    <a class="card-link" href="#">
+                                      <i class="fa fa-comments"></i> 89
+                                    </a>
+                                    <a class="card-link" href="#">
+                                      <i class="fa fa-heart"></i> 432
+                                    </a>
+                                    <a class="card-link" href="#">
+                                      <i class="fa fa-heart"></i> 321
+                                    </a>
+                                  </div>
+                                </div>
+                              <hr>
+                            </div><!-- end card -->
+                          </div>
+            
+            <div class="col-md-6">
+              <div class="card">
+                <div class="content">
+                  <form id="createArticle-form" method="POST" class="form-horizontal">
+                    <input type='hidden' name='_csrf' value="<%= locals._csrf %>">
+                      <textarea style="border: none" class="form-control" placeholder="Create Verz" rows="4"></textarea>
+                      <div class="footer">
+                        <div class="author">
+                          <a class="card-link" href="#">
+                            <img src="assets/img/faces/face-5.jpg" alt="..." class="avatar">
+                              <span><%= user.email %></span>
+                          </a>
+                        </div>
+                        <div class="stats pull-right">
+                          <button  type="submit" class="btn btn-block btn-sm btn-info">Post</button>
+                        </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div><!-- end card -->
+                </div>
+            </div><!-- end row -->
+
+             <div class="row"><!-- Inspiration row -->
+                  <div class="col-md-4">
+                     <div class="card">
+                  
+                         <div class="content text-center">
+                            <h3 class="title text-center">Inspiration</h3>
+                             
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>    
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <br><br>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>    
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                         </div>
+                         <div class="content text-center">
+                            <h3 class="title text-center">Following</h3>
+                             
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>    
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <br><br>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>    
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                         </div><!-- End Follow -->
+                         <hr>
+                     </div> <!-- end card -->
+
+
+                  </div><!-- End following and inspiration -->
+              
+
+
+          <ul>
+            <% for (var i = 0; i < articles.length; i++) {%>
+        	<div class="col-md-6">
+            <div class="card">
+              <div class="content">
+          
+                  <p class="category text-right">
+                      <i class="fa fa-clock-o"></i><%= moment(articles[i].created).fromNow() %>
+                  </p>
+                  <a class="card-link" href="#">
+                    <p><%= articles[i].content%></p>
+                  </a>
+                  <a class="card-link" href="#"></a>
+
+                  <div class="footer">
+                    <div class="author">
+                      <a class="card-link" href="#">
+                        <img src="assets/img/faces/face-1.jpg" alt="..." class="avatar">
+                          <span><%= user.email %></span>
+                      </a>
+                    </div>
+                    <div class="stats pull-right">
+                      <a class="card-link" href="#">
+                        <i class="fa fa-comments"></i> 89
+                      </a>
+                    </div>
+
+                    <div class="stats pull-right">
+                        <form action='/api/articles/<%= articles[i]._id%>/favorites', method='POST'>
+                            <input type='hidden' name='_csrf' value="<%= locals._csrf %>">                 
+                                <button type="submit" id="favorites" class=" card-link btn btn-default btn-simple">
+                                    <i class="fa fa-heart-o"></i><%= articles[i].favoritesCount%>
+                                </button>
+                         </form>
+                    </div>
+
+                    <div class="stats pull-right">
+                        <form action='/api/articles/<%= articles[i]._id%>/dislike', method='POST'>
+                            <input type='hidden' name='_csrf' value="<%= locals._csrf %>">            
+                                <button type="submit" id="dislike" class="card-link btn btn-default btn-simple pull-right">
+                                     <i class="fa fa-heart-o"></i><%= articles[i].dislikesCount%>
+                                 </button>
+                          </form>
+                    </div>  
+              </div>
+          </div>
+      </div><!-- end card -->
+    </div>
+    <%}%>
+    </ul>
