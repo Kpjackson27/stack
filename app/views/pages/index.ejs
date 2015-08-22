@@ -5,83 +5,499 @@
 </head>
 <body>
 	<% include ../partials/header %>
-</body>
+
 	<div class="wrapper">
-     <div class="parallax filter-black">
+     <div class="parallax">
         <div class="parallax-image">
             <img src="/img/Poetry_Web_Background.jpg">
         </div>
         <div class="motto">
             <img src="/img/verze.co-01.png" class="logo"/>
+             <div class="row tim-row" id="display-buttons" data-class="btn-info">
+                        <div class="col-md-6">
+                            <button data-toggle="modal" data-target="#loginModal" class="btn btn-white btn-block btn-md ">Login</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button data-toggle="modal" data-target="#registerModal" class="btn btn-block btn-md btn-white">Register</button>
+                        </div>
+                    </div> <!-- end row --> 
+                </div>
+                <h3 class="motivation">Your Creativity, Your Content</h3>
         </div>
-    
-        <h3 class="motivation">Your Creativity, Your Content</h3>
 
+         <div class="main">
+        <div class="section">
+         <div class="container">
+            <div class="tim-title">
+                    <ul class="list-inline text-center">
+                        <li><a href="#">Limrick</a></li> 
+                        <li><a href="#">R&B</a></li> 
+                        <li><a href="#">Sonet</a></li> 
+                        <li><a href="#">Rock</a></li> 
+                        <li><a href="#">test</a></li> 
+                        <li><a href="#">test</a></li> 
+                    </ul>
+            </div>
         </div>
-          <div class="section">
-            <div class="container tim-container" style="max-width:800px; padding-top:100px">
-               <h1 class="text-center">As You Like It <br>Act II, Scene VII<small class="subtitle">~William Shakespeare, 1564-1616</small></h1>
-               <p>All the world’s a stage, And all the men and women merely players;They have their exits and their entrances, And one man in his time plays many parts, His acts being seven ages. At first, the infant, Mewling and puking in the nurse’s arms. Then the whining schoolboy, with his satchel And shining morning face, creeping like snail Unwillingly to school. And then the lover, Sighing like furnace, with a woeful ballad</p>
-               <p>Made to his mistress’ eyebrow. Then a soldier, Full of strange oaths and bearded like the pard, Jealous in honor, sudden and quick in quarrel, Seeking the bubble reputation Even in the cannon’s mouth. And then the justice, In fair round belly with good capon lined, With eyes severe and beard of formal cut, Full of wise saws and modern instances; And so he plays his part. The sixth age shifts Into the lean and slippered pantaloon, With spectacles on nose and pouch on side; His youthful hose, well saved, a world too wide For his shrunk shank, and his big manly voice, Turning again toward childish treble, pipes And whistles in his sound. Last scene of all, That ends this strange eventful history, Is second childishness and mere oblivion, Sans teeth, sans eyes, sans taste, sans everything.</p>      
-                   <!--     end extras -->        
-            </div>
-            <div class="text-center">
-              <a href="/discover" class="btn btn-black">Discover</a>
-              <hr>
-            </div>
-        <div class="section section-blog">
-           <div class="container">
-               <h1 class="section-title text-center">Featured Poets</h1>
-               <div class="row">
-                     <div class="col-md-4">
+
+        <div class="section section-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                         <h5>Tnjnjkfnsjnf</h5>
                         <div class="card card-background">
-                            <a href="#">
                             <div class="image">
-                                <img src="/img/shakespeare.jpg" alt="..."/>
+                                <img src="assets/img/card-full-2.jpg" alt="..."/>
                                 <div class="filter"></div>
                             </div>
-                            <div class="footer">
-                                <h4 class="title">William Shakespeare</h4>                      
+                             <div class="content">
+                                <p class="category">Latest news</p>
+                                <a href="#">
+                                    <h4 class="title">Get Shit Done Kit PRO, the most wanted bootstrap kit is here </h4>
+                                </a>
                             </div>
-                            </a>
+                            <div class="footer">
+                               <div class="author">
+                                    <a href="#">
+                                       <img src="assets/img/faces/face-6.jpg" alt="..." class="avatar">
+                                       <span> Conacel Elena </span>
+                                    </a>
+                                </div>
+                               <div class="stats pull-right">
+                                    <i class="fa fa-clock-o"></i> 3 hours ago
+                               </div>                           
+                            </div>
                         </div> <!-- end card -->
                     </div> 
-                    
-                     <div class="col-md-4">
+                      
+                    <div class="col-md-6">
+                         <h5>Tnjnjkfnsjnf</h5>
                         <div class="card card-background">
-                            <a href="#">
                             <div class="image">
-                                <img src="/img/edgar.jpg" alt="..."/>
-                                <div class="filter filter-azure"></div>
+                                <img src="assets/img/card-full-3.jpg" alt="..."/>
+                                <div class="filter"></div>
+                            </div>
+                             <div class="content">
+                                <p class="category text-right">
+                                    <i class="fa fa-star"></i> Promo
+                                </p>
+                                <a href="#">
+                                    <h4 class="title">The next big thing in web development is here!</h4>
+                                </a>
                             </div>
                             <div class="footer">
-                                <h4 class="title">Edgar Allen Poe</h4>                      
+                               <div class="stats">
+                                    <a href="#"> 
+                                       <i class="fa fa-comment"></i> 68 comments
+                                    </a>
+                               </div>                           
+                               <div class="stats">
+                                    <a href="#">
+                                       <i class="fa fa-heart"></i> 221 likes
+                                    </a>
+                               </div>                           
                             </div>
-                            </a>
                         </div> <!-- end card -->
                     </div> 
+                                        
+                </div>
 
-                      <div class="col-md-4">
-                        <div class="card card-background">
-                            <a href="#">
+                <div class="row">
+                    <div class="col-md-3">
+                         <h5>Tnjnjkfnsjnf</h5>
+                       <div class="card card-background">
                             <div class="image">
-                                <img src="/img/Maya.jpg" alt="..."/>
+                                <img src="assets/img/card-full-6.jpg" alt="..."/> 
                                 <div class="filter filter-orange"></div>
                             </div>
-                            <div class="footer">
-                                <h4 class="title">Maya Angelou</h4>             
+                             <div class="content text-center">
+                                <a href="#"><br>
+                                    <h1 class="title"> 37&deg;C </h1>
+                                    <h5>Very Hot</h5>
+                                </a>
                             </div>
-                            </a>
+                            <div class="footer">
+                               <div class="stats">
+                                    <i class="fa fa-map-marker"></i>  New York, USA                                
+                               </div>                           
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                    <div class="col-md-4">
+                         <h5>Tnjnjkfnsjnf</h5>
+                       <div class="card card-background">
+                            <div class="image">
+                                <img src="assets/img/card-full-7.jpg" alt="..."/>
+                                <div class="filter"></div>
+                            </div>
+                             <div class="content">
+                                <h5 class="price">&euro; 129,00
+                                     <a href="#" class="pull-right">
+                                        <i class="fa fa-heart"></i>
+                                     </a>
+                                 </h5>                           
+                                <a href="#"><br>
+                                    <h4 class="title">Premium Apartment in Old Town</h4>
+                                    
+                                </a>
+                            </div>
+                            <div class="footer">
+                               <div class="author">
+                                    <a href="#">
+                                       <img src="assets/img/faces/face-5.jpg" alt="..." class="avatar">
+                                       <span>Alex</span>
+                                    </a>
+                                </div>
+                               <div class="stats pull-right">
+                                    <i class="fa fa-comment"></i>  253 Reviews                                
+                               </div>                           
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                    <div class="col-md-5">
+                         <h5>Tnjnjkfnsjnf</h5>
+                       <div class="card card-background">
+                            <div class="image">
+                                <img src="assets/img/card-full-5.jpg" alt="..."/>
+                                <div class="filter"></div>
+                            </div>
+                             <div class="content">
+                                <p class="category">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i> 
+                                    <i class="fa fa-star"></i> 
+                                    
+                                     <a href="#" class="pull-right btn-hover">
+                                        <i class="fa fa-heart-o"></i> Wishlist
+                                     </a>
+                                </p>
+                               
+                                <a href="#"><br>
+                                    <h4 class="title">Exclusive Penthouse in Downtown<br>
+                                        <small> &euro; 450/mo</small>
+                                    </h4>
+                                    
+                                </a>
+                            </div>
+                            <div class="footer">
+                               <i class="fa fa-map-marker"></i> Paris, France                               
+                                
+                               <div class="author pull-right">
+                                    <a href="#" rel="tooltip" title="Radu Tintescu" data-placement="left">
+                                       <img src="assets/img/faces/face-7.jpg" alt="..." class="avatar">
+                                       
+                                    </a>
+                                </div>                           
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+    
+                </div>
+                
+                
+               <h6></h6>
+                <div class="row" id="blog-cards">
+                    <div class="col-md-4">
+                         <h5>Tnjnjkfnsjnf</h5>
+                        <div class="card">
+                            <div class="image">
+                                <img src="assets/img/blog_2.png" alt="..."/>
+                                <div class="filter">
+                                    <button type="button" class="btn btn-neutral btn-simple">
+                                        <i class="fa fa-bookmark-o"></i> Bookmark
+                                    </button>
+                                    <button type="button" class="btn btn-neutral btn-simple">
+                                        <i class="fa fa-align-left"></i> Read article
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <p class="category">Latest news</p>
+                                <a class="card-link" href="#">
+                                    <h4 class="title">Get Shit Done Kit PRO, the most wanted bootstrap kit is here </h4>
+                                </a>
+                                 <div class="footer">
+                                    <div class="author">
+                                        <a class="card-link" href="#">
+                                           <i class="fa fa-female"></i> Elena Conacel 
+                                        </a>
+                                    </div>
+                                    <div class="stats pull-right">
+                                        <i class="fa fa-clock-o"></i> 7 min read
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end card -->
+                    </div> 
+
+                    <div class="col-md-4">
+                         <h5>Tnjnjkfnsjnf</h5>
+                        <div class="card">
+                            <div class="image">
+                                <img src="assets/img/blog_2.png" alt="..."/>
+                                <div class="filter">
+                                    <button type="button" class="btn btn-neutral btn-simple">
+                                        <i class="fa fa-bookmark-o"></i> Bookmark
+                                    </button>
+                                    <button type="button" class="btn btn-neutral btn-simple">
+                                        <i class="fa fa-align-left"></i> Read article
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <p class="category">Latest news</p>
+                                <a class="card-link" href="#">
+                                    <h4 class="title">Get Shit Done Kit PRO, the most wanted bootstrap kit is here </h4>
+                                </a>
+                                 <div class="footer">
+                                    <div class="author">
+                                        <a class="card-link" href="#">
+                                           <i class="fa fa-female"></i> Elena Conacel 
+                                        </a>
+                                    </div>
+                                    <div class="stats pull-right">
+                                        <i class="fa fa-clock-o"></i> 7 min read
+                                    </div>
+                                </div>
+                            </div>
                         </div> <!-- end card -->
                     </div> 
                     
-               </div>
-           </div>
-    </div><!-- section -->
+                      <div class="col-md-4">
+                         <h5>Tnjnjkfnsjnf</h5>
+                        <div class="card">
+                            <div class="image">
+                                <img src="assets/img/blog_2.png" alt="..."/>
+                                <div class="filter">
+                                    <button type="button" class="btn btn-neutral btn-simple">
+                                        <i class="fa fa-bookmark-o"></i> Bookmark
+                                    </button>
+                                    <button type="button" class="btn btn-neutral btn-simple">
+                                        <i class="fa fa-align-left"></i> Read article
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <p class="category">Latest news</p>
+                                <a class="card-link" href="#">
+                                    <h4 class="title">Get Shit Done Kit PRO, the most wanted bootstrap kit is here </h4>
+                                </a>
+                                 <div class="footer">
+                                    <div class="author">
+                                        <a class="card-link" href="#">
+                                           <i class="fa fa-female"></i> Elena Conacel 
+                                        </a>
+                                    </div>
+                                    <div class="stats pull-right">
+                                        <i class="fa fa-clock-o"></i> 7 min read
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end card -->
+                    </div> 
 
+                     <div class="col-md-8">
+                        <h5>Tnjnjkfnsjnf</h5>
+                        <div class="card card-horizontal">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="image">
+                                        <img src="assets/img/blog_1.png" alt="..."/>                                
+                                        <div class="filter filter-azure">
+                                            <button type="button" class="btn btn-neutral btn-round">
+                                                <i class="fa fa-heart"></i> Recommend
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                     <div class="content">
+                                       <p class="category text-info">
+                                            <i class="fa fa-trophy"></i> Best of
+                                        </p>
+    
+                                        <a class="card-link" href="#">
+                                            <h4 class="title">Get Shit Done Kit PRO, the most wanted bootstrap kit is here </h4>
+                                        </a>
+                                        <a class="card-link" href="#">
+                                            <p class="description">Edgerank completely fails to have the effect it was originally designed for nice product. This will be a really interesting post about Facebook's biggest mistake yet...</p>
+                                        </a>
+                                         <div class="footer">
+                                            <div class="stats">
+                                                <a class="card-link" href="#">
+                                                   <i class="fa fa-male"></i> Radu Tintescu
+                                                </a>
+                                            </div>
+                                            <div class="stats">
+                                              <a class="card-link" href="#">
+                                                <i class="fa fa-comments"></i> 23 Comments
+                                              </a>
+                                            </div>
+                                            <div class="stats">
+                                               <a class="card-link" href="#">
+                                                <i class="fa fa-heart"></i> 231 Likes
+                                               </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end card -->
+                    </div>
+                    <div class="col-md-4">
+                         <h5>Tnjnjkfnsjnf</h5>
+                        <div class="card card-background">
+                            <div class="image">
+                                <img src="assets/img/card-full-2.jpg" alt="..."/>
+                                <div class="filter"></div>
+                            </div>
+                             <div class="content">
+                                <p class="category">Latest news</p>
+                                <a href="#">
+                                    <h4 class="title">Get Shit Done Kit PRO, the most wanted bootstrap kit is here </h4>
+                                </a>
+                            </div>
+                            <div class="footer">
+                               <div class="author">
+                                    <a href="#">
+                                       <img src="assets/img/faces/face-6.jpg" alt="..." class="avatar">
+                                       <span> Conacel Elena </span>
+                                    </a>
+                                </div>
+                               <div class="stats pull-right">
+                                    <i class="fa fa-clock-o"></i> 3 hours ago
+                               </div>                           
+                            </div>
+                        </div> <!-- end card -->
+                    </div> 
+                </div>
+            </div>
+        </div>
     </div>
-</div> <!-- wrapper --> 
+
+       <footer class="footer">
+            <div class="container">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                               Contact
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="social-area pull-right">                
+                    <a class="btn btn-social btn-facebook btn-simple">
+                        <i class="fa fa-facebook-square"></i>
+                    </a>
+                    <a class="btn btn-social btn-twitter btn-simple">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-social btn-google btn-simple">
+                        <i class="fa fa-google"></i>
+                    </a>
+                </div>
+                <div class="copyright">
+                    &copy; 2015 Verz
+                </div>
+            </div>
+        </footer>
     </div>
+ </div>
+
+<!-- Modal -->
+<div class="modal modal-small fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title text-center">Login With</h4>
+      </div>
+      <div class="modal-body">
+            <div class="social-area">
+                <a href="" class="btn btn-round btn-fill btn-social btn-twitter">
+                   <i class="fa fa-twitter"></i>
+                </a>
+                <a href="" class="btn btn-round btn-fill btn-social btn-facebook">
+                   <i class="fa fa-facebook-square"></i>
+                </a>
+                <a href="" class="btn btn-round btn-fill btn-social btn-google">
+                   <i class="fa fa-google-plus-square"></i>
+                </a>
+            </div>
+            <span class="divider"> or </span>
+           
+            <div class="form-group">
+                <input type="text" value="" placeholder="Email" class="form-control" />
+            </div>
+             <div class="form-group">
+                <input type="password" value="" placeholder="Password" class="form-control" />
+            </div> 
+            <button type="button" class="btn btn-info btn-fill btn-block"> Login </button>
+      </div>
+      <div class="modal-footer">
+            <span class="text-muted">Looking <a href="#">to create an account</a> ?</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal modal-small fade" id="registerModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"> 
+        <h4 class="modal-title text-center">Register with</h4>
+      </div>
+      <div class="modal-body">
+            <div class="social-area">
+                <a href="" class="btn btn-round btn-fill btn-social btn-facebook">
+                   <i class="fa fa-facebook-square"></i>
+                </a>
+                <a href="" class="btn btn-round btn-fill btn-social btn-google">
+                   <i class="fa fa-google-plus-square"></i>
+                </a>
+                <a href="" class="btn btn-round btn-fill btn-social btn-github">
+                   <i class="fa fa-github"></i>
+                </a>
+            </div>
+            <span class="divider"> or </span>
+           
+            <div class="form-group">
+                <input type="text" value="" placeholder="Email" class="form-control" />
+            </div>
+             <div class="form-group">
+                <input type="password" value="" placeholder="Password" class="form-control" />
+            </div> 
+             <div class="form-group">
+                <input type="password" value="" placeholder="Password Confirmation" class="form-control" />
+            </div> 
+            <button type="button" class="btn btn-info btn-fill btn-block"> Register </button>
+      </div>
+      <div class="modal-footer">
+            <span class="text-muted">Looking <a href="#">to login</a> ?</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--    end modal -->
+        
 	<% include ../partials/footer %>
 	    <script type="text/javascript">
         var big_image;
