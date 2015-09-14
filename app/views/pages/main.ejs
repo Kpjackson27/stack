@@ -1,199 +1,315 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-	<% include ../partials/head %>
+  <% include ../partials/head %>
 </head>
+<body class="page-main">
+  <% include ../partials/header %>
 
-<body>
-  <script src="/socket.io/socket.io.js"></script>
-	<% include ../partials/main-header %>
-  <div class="main">
-    <div class="section">
-      <div class="container">
-        <div class="row" id="profile-cards">
-            <div class="col-md-4">
-                <div class="fixed-section">
-                    <div class="card card-user">
-                       <div class="image">
-                         <img src="https://unsplash.imgix.net/41/pHyYeNZMRFOIRpYeW7X3_manacloseup%20copy.jpg?q=75&w=1080&h=1080&fit=max&fm=jpg&auto=format&s=befb073386542ab0a27cd34e4ecba7a9" alt="..."/>
-                      </div>
-                       <div class="content">
-                          <div class="author">
-                             <a href="#">
-                                <img class="avatar" src="/img/face-2.jpg" alt="..."/>
-                                  <h4 class="title"><%= user.email %><a href=""></a></h4> 
-                                    </a>
-                                </div>
-                                <hr>
-                                <div class="description text-center">
-                                    <a class="card-link" href="#">
-                                      <i class="fa fa-comments"></i> 89
-                                    </a>
-                                    <a class="card-link" href="#">
-                                      <i class="fa fa-heart"></i> 432
-                                    </a>
-                                    <a class="card-link" href="#">
-                                      <i class="fa fa-heart"></i> 321
-                                    </a>
-                                  </div>
-                                </div>
-                              <hr>
-                            </div><!-- end card -->
-                          <div class="card">
-                             <div class="content text-center">
-                            <h3 class="title text-center">Inspiration</h3>
-                             
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>    
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>  
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>
-                             <br><br>  
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>    
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>  
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>
-                         </div>
-                         <div class="content text-center">
-                            <h3 class="title text-center">Following</h3>
-                             
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>    
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>  
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>
-                             <br><br>  
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>    
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>  
-                             <div class="icon icon-green">
-                                 <i class="fa fa-money"></i>
-                             </div>
-                         </div><!-- End Follow -->
-                         <hr>
-                     </div> <!-- end card 2 -->
-                </div><!-- end fixed section -->
+  <style>
+    .page-main .list-group-item {
+  padding: 25px 15px;
+  border-top-color: #e4eaec;
+}
+.page-main .list-group-item:first-child {
+  border-top: transparent;
+}
+.page-main .list-group-item:last-child {
+  border-bottom-color: #e4eaec;
+}
+.page-main .list-group-item .media .avatar {
+  width: 50px;
+}
+.page-main .list-group-item .media small {
+  color: #a3afb7;
+}
+.page-main .list-group-item .media-heading {
+  font-size: 16px;
+}
+.page-main .list-group-item .media-heading span {
+  margin-left: 5px;
+  font-size: 14px;
+  color: #76838f;
+}
+.page-main .list-group-item .media .media:first-child {
+  border-top: none;
+}
+</style>
+
+<div class="page page-content container-fluid"><!--Main content-->
+      <div class="row" data-plugin="matchHeight" data-by-row="true">
+<div class="col-lg-3 col-md-5 col-md-offset-1">
+          <div class="widget widget-shadow">
+            <div class="widget-header cover overlay">
+              <div class="cover-background height-150" style="background-image: url('http://www.hdwallpapersimages.com/wp-content/uploads/2014/01/Winter-Tiger-Wild-Cat-Images.jpg')"></div>
+            </div>
+            <div class="widget-body padding-horizontal-30 padding-vertical-20">
+              <div style="position:relative;padding-left:110px;">
+                <a class="avatar avatar-100 bg-white img-bordered" href="javascript:void(0)" style="position:absolute;top:-50px;left:0;">
+                  <img src="../../assets/portraits/2.jpg" alt="">
+                </a>
+                <div class="margin-bottom-20">
+                  <div class="font-size-20">Caleb Richards</div>
+                  <div class="font-size-14">Designer</div>
+                </div>
               </div>
-              <div class="space-50"></div>
-              <div class="col-md-8">
-                <div class="tim-container" style="min-height: 2000px;">
-                   <div class="tim-row" id="cards-row">
-                      <div class="card">
-                          <div class="content">
-                            <form id="createArticle-form" method="POST" class="form-horizontal">
-                                <input type="hidden" name='_csrf' value="<%= locals._csrf %>">
-                                <textarea style="border: none" class="form-control" placeholder="Create Verz" rows="4">
-                                </textarea>
-                                <div class="footer">
-                                  <div class="author">
-                                     <a class="card-link" href="#">
-                                      <img src="/img/faces-2.jpg" alt="..." class="avatar">
-                                        <span><%= user.email %></span>
-                                    </a>
-                                  </div>
-                                  <div class="stats pull-right">
-                                    <button type="submit" class="btn btn-block btn-sm btn-info">Post</button>
-                                  </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
+              <p>
+                Reiciendis iactant eligendi. Vestrae referenda mundus asperum physico miserum viderer
+                potiendi, feci dissentiunt ardore, audaces.
+              </p>
+            </div>
+            <div class="widget-footer text-center bg-blue-grey-400 padding-30 height-100">
+              <div class="row no-space">
+                <div class="col-xs-4">
+                  <div class="counter counter-inverse">
+                    <span class="counter-number">7896</span>
+                    <br>
+                    <div class="counter-label inline-block margin-left-5">Followers</div>
+                  </div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="counter counter-inverse">
+                    <span class="counter-number">621</span>
+                    <br>
+                    <div class="counter-label inline-block margin-left-5">Following</div>
+                  </div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="counter counter-inverse">
+                    <span class="counter-number">21</span>
+                    <br>
+                    <div class="counter-label inline-block margin-left-5">Verzs</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-bordered">
+            <div class="panel-heading">
+              <h6 class="panel-title">Categories</h6>
+            </div>
+            <div class="panel-body">
+              <h4>Body Heading</h4>
+              
+            </div>
+          </div>
+          <div class="panel panel-bordered">
+            <div class="panel-heading">
+              <h6 class="panel-title">Featured Poems</h6>
+            </div>
+            <div class="panel-body">
+              <!-- Panel Last threads -->
+          <div class="panel">
+            <div class="panel-body">
+              <ul class="list-group list-group-dividered list-group-full">
+                <li class="list-group-item">
+                  <div class="media">
+                    <div class="media-left">
+                      <a class="avatar avatar-online" href="javascript:void(0)">
+                        <img src="../../assets/portraits/15.jpg" alt="">
+                        <i></i>
+                      </a>
                     </div>
-                    <div class="tim-row">
-                      <ul>
-                          <% for(var i = 0; i < articles.length; i++) {%>
-                            <div class="col-md-8">
-                              <div class="card">
-                                <div class="content">
-                                  <p class="category text-right">
-                                      <i class="fa fa-clock-o"></i><%= moment(articles[i].created).fromNow() %>
-                                  </p>
-                                  <a class="card-link" href="#">
-                                      <p><%= articles[i].content %></p>
-                                  </a>
-                                  <a class="card-link" href="#"></a>
-
-                                    <div class="footer">
-                                      <div class="author">
-                                        <a class="card-link" href="#">
-                                          <img src="/img/face-2.jpg" alt="..." class="avatar">
-                                            <span><%= user.email %></span>
-                                        </a>
-                                      </div>
-
-                                      <div class="stats pull-right">
-                                        <a class="card-link" href="#">
-                                          <i class="fa fa-comments"></i> 89
-                                        </a>
-                                      </div>
-
-
-                                      <div class="stats pull-right">
-                                          <form action='/api/articles/<%= articles[i]._id%>/favorites', method='POST'>
+                    <div class="media-body">
+                      <small class="pull-right">20 hours ago</small>
+                      <h4 class="media-heading">Indoctum legendum legimus. Faciam mei</h4>
+                      <small>started by <a href="javascript:void(0)" title="">Crystal Bates</a>                        in <a class="label label-outline label-default" href="javascript:void(0)"
+                        title="">Best Practices</a></small>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- End Panel Last threads -->
+              
+            </div>
+          </div>
+          <!-- End Example Panel With Heading -->
+          <!-- End Example Panel With Heading -->
+        </div>
+        <div class="col-lg-5 col-md-7">
+          
+             <!-- Example Panel Toolbar -->
+      <div class="panel" id="examplePanelToolbar">
+        <!--<div class="panel-heading">-->
+          <!--<h3 class="panel-title">Panel With Toolbar</h3>-->
+        <!--</div>-->
+        <div class="panel-collapse">
+          <div class="panel-toolbar" role="toolbar">
+            <div class="btn-group" role="group">
+              <a class="btn" href="javascript:void(0)" role="button"><i class="icon wb-bold" aria-hidden="true"></i></a>
+              <a class="btn" href="javascript:void(0)" role="button"><i class="icon wb-italic" aria-hidden="true"></i></a>
+              <a class="btn" href="javascript:void(0)" role="button"><i class="icon wb-underline" aria-hidden="true"></i></a>
+              <a class="btn" href="javascript:void(0)" role="button"><i class="icon wb-align-left" aria-hidden="true"></i></a>
+              <a class="btn" href="javascript:void(0)" role="button"><i class="icon wb-align-center" aria-hidden="true"></i></a>
+              <a class="btn" href="javascript:void(0)" role="button"><i class="icon wb-align-right" aria-hidden="true"></i></a>
+              <a class="btn" href="javascript:void(0)" role="button"><i class="icon wb-image" aria-hidden="true"></i></a>
+              <a class="btn" href="javascript:void(0)" role="button"><i class="icon wb-table" aria-hidden="true"></i></a>
+              <a class="btn" href="javascript:void(0)" role="button"><i class="icon wb-link" aria-hidden="true"></i></a>
+            </div>
+          </div>
+          <div class="panel-body">
+            <form id="createArticle-form" method="POST" class="form-horizontal">
+              <input type="hidden" name='_csrf' value="<%= locals._csrf %>">
+                  <textarea class="form-control panel-control" placeholder="Unleash Your Creativity...." rows="3"></textarea>
+                <button type="button" class="btn btn-primary margin-top-15">Submit</button>
+            </form>    
+          </div>
+        </div>
+      </div>
+      <!-- End Example Panel Toolbar -->
+      <div class="panel">
+            <div class="panel-body">
+              <ul class="list-group">
+                  <% for(var i = 0; i < articles.length; i++) {%>
+                    <li class="list-group-item">
+                      <div class="media">
+                        <div class="media-left">
+                          <a class="avatar" href="javascript:void(0)">
+                            <img class="img-responsive" src="../../assets/portraits/2.jpg"
+                            alt="...">
+                          </a>
+                        </div>
+                        <div class="media-body">
+                          <h4 class="media-heading">Ida Fleming
+                            <span>posted an updated</span>
+                          </h4>
+                          <small><%= moment(articles[i].created).fromNow() %></small>
+                          <div class="profile-brief"><%= articles[i].content %></div>
+                        </div>
+                           <div class="widget-body-footer">
+                            <div class="widget-actions pull-right">
+                              <a href="javascript:void(0)">
+                                 <i class="icon wb-share"></i>
+                                 <span>0</span>
+                             </a>
+                             <a href="javascript:void(0)">
+                                   <form action='/api/articles/<%= articles[i]._id%>/favorites', method='POST'>
                                               <input type='hidden' name='_csrf' value="<%= locals._csrf %>">                 
                                                   <button type="submit" id="favorites" class=" card-link btn btn-default btn-simple">
-                                                      <i class="fa fa-heart-o"></i><%= articles[i].favoritesCount%>
+                                                      <i class="icon wb-thumb-up"></i><span><%= articles[i].favoritesCount%></span>
                                                   </button>
                                            </form>
-                                      </div>
+                          
+                          </a>
+                          <a href="javascript:void(0)">
+                               <form action='/api/articles/<%= articles[i]._id%>/dislike', method='POST'>
+                                  <input type='hidden' name='_csrf' value="<%= locals._csrf %>">            
+                                      <button type="submit" id="dislike" class="card-link btn btn-default btn-simple pull-right">
+                                         <i class="icon wb-thumb-down"></i><span><%= articles[i].dislikesCount%></span>
+                                      </button>
+                              </form>
+                       </a>
+                      </div>
+                    </div>
+                      </div>
+                    </li>
+                    <% } %>
+               </ul>     
+            </div>
+             <button type="button" class="btn btn-block btn-primary"><i class="icon wb-chevron-down margin-right-5" aria-hidden="true"></i>Show
+                More</button>
+          </div>
+          <!-- End Panel Examples -->
+        </div><!---Div--> 
 
+         <div class="col-lg-3 col-md-5">
+              <!-- Panel Followers -->
+          <div class="panel" id="followers">
+            <div class="panel-heading">
+              <h3 class="panel-title">
+                <i class="icon wb-check" aria-hidden="true"></i> Featured Poets
+              </h3>
+            </div>
+            <div class="panel-body">
+              <ul class="list-group list-group-dividered list-group-full">
+                <li class="list-group-item">
+                  <div class="media">
+                    <div class="media-left">
+                      <a class="avatar avatar-online" href="javascript:void(0)">
+                        <img src="../../assets/portraits/9.jpg" alt="">
+                        <i></i>
+                      </a>
+                    </div>
+                    <div class="media-body">
+                      <div class="pull-right">
+                        <button type="button" class="btn btn-outline btn-default btn-sm">Follow</button>
+                      </div>
+                      <div><a class="name" href="javascript:void(0)">Willard Wood</a></div>
+                      <small>@heavybutterfly920</small>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="media">
+                    <div class="media-left">
+                      <a class="avatar avatar-away" href="javascript:void(0)">
+                        <img src="../../assets/portraits/10.jpg" alt="">
+                        <i></i>
+                      </a>
+                    </div>
+                    <div class="media-body">
+                      <div class="pull-right">
+                        <button type="button" class="btn btn-success btn-default btn-sm"><i class="icon wb-check" aria-hidden="true"></i>Following</button>
+                      </div>
+                      <div><a class="name" href="javascript:void(0)">Ronnie Ellis</a></div>
+                      <small>@kingronnie24</small>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="media">
+                    <div class="media-left">
+                      <a class="avatar avatar-busy" href="javascript:void(0)">
+                        <img src="../../assets/portraits/11.jpg" alt="">
+                        <i></i>
+                      </a>
+                    </div>
+                    <div class="media-body">
+                      <div class="pull-right">
+                        <button type="button" class="btn btn-outline btn-default btn-sm">Follow</button>
+                      </div>
+                      <div><a class="name" href="javascript:void(0)">Gwendolyn Wheeler</a></div>
+                      <small>@perttygirl66</small>
+                    </div>
+                  </div>
+                </li>
+                <li class="list-group-item">
+                  <div class="media">
+                    <div class="media-left">
+                      <a class="avatar avatar-off" href="javascript:void(0)">
+                        <img src="../../assets/portraits/12.jpg" alt="">
+                        <i></i>
+                      </a>
+                    </div>
+                    <div class="media-body">
+                      <div class="pull-right">
+                        <button type="button" class="btn btn-outline btn-default btn-sm">Follow</button>
+                      </div>
+                      <div><a class="name" href="javascript:void(0)">Daniel Russell</a></div>
+                      <small>@danieltiger08</small>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- End Panel Followers -->
+          <!-- End Example Panel With Heading -->
 
-                                      <div class="stats pull-right">
-                                          <form action='/api/articles/<%= articles[i]._id%>/dislike', method='POST'>
-                                              <input type='hidden' name='_csrf' value="<%= locals._csrf %>">            
-                                                  <button type="submit" id="dislike" class="card-link btn btn-default btn-simple pull-right">
-                                                       <i class="fa fa-heart-o"></i><%= articles[i].dislikesCount%>
-                                                   </button>
-                                            </form>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                        </div>
-                      <% } %>
-                    </ul>
-
-
-
-
-
-
-
-                 
-                    
+          <div class="panel panel-bordered">
+            <div class="panel-heading">
+              <h6 class="panel-title">Categories</h6>
+            </div>
+            <div class="panel-body">
+              <h4>Body Heading</h4>
               
-           
+            </div>
+          </div>
 
-       
-            <% include ../partials/footer %>
-        <!--<script type="text/javascript" src="/js/script.js"></script>-->
-        </body>
-    </html>
+          <!-- End Example Panel With Heading -->
+        </div>
+    </div><!-- row -->
+</div><!-- Main Content -->
+
+
+  <% include ../partials/footer %>

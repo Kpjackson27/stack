@@ -3,30 +3,48 @@
 <head>
   <% include ../partials/head %>
 </head>
+<% include ../partials/header %>
 <body>
-<div class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <div class="fixed-section float">
-          <div class="card card-user card-plain">
-            <div class="image image-plain"></div>
-            <div class="content">
-              <div class="author"><a href="<%=u.profile.name%>"><img src="/img/face-4.jpg" alt="..." class="avatar"/>
-                  <h3 class="title"><%= u.email%><br/><small> </small></h3></a></div>
-              <p class="description text-center">"I got my eyes on you <br/>    You're everything that I see <br/>    I want your high love" <br/></p>
-            </div>
-            <div class="footer text-center">
-              <div class="stats"><a href="#" class="card-link"><i class="fa fa-comments"></i> 89</a></div>
-              <div class="stats"><a href="#" class="card-link"><i class="fa fa-heart"></i> 341</a></div>
-              <div class="stats"><a href="#" class="card-link"><i class="fa fa-heart"></i> 341</a></div>
-              <button data-toggle="modal" data-target="#editProfileModal" class="btn btn-info btn-round btn-fill">Edit Profile </button>
+	<div class="container-fluid">
+	 
+          <div class="widget widget-shadow text-center">
+            <div class="widget-header cover overlay">
+              <div class="cover-background" style="background-image: url(http://hdwallpaperia.com/wp-content/uploads/2013/12/Nature-Image-Wallpapers-HD-1024x576.jpg)">
+                <div class="vertical-align padding-horizontal-0">
+                  <div class="vertical-align-bottom width-full">
+                    <a class="avatar avatar-100 img-bordered bg-white margin-top-20" href="javascript:void(0)">
+                      <img src="../../assets/portraits/17.jpg" alt="">
+                    </a>
+                    <h3 class="white">Herman Beck</h3>
+                    <p class="white"><i class="icon wb-map margin-right-10" aria-hidden="true"></i>United
+                      States</p>
+                    <button type="button" class="btn btn-primary margin-bottom-20">Follow</button>
+                    <div class="row no-space overlay-background">
+                      <div class="col-xs-4">
+                        <div class="counter counter-inverse">
+                          <span class="counter-number">13.2K</span>
+                          <div class="counter-label">Followers</div>
+                        </div>
+                      </div>
+                      <div class="col-xs-4">
+                        <div class="counter counter-inverse">
+                          <span class="counter-number">246</span>
+                          <div class="counter-label">Following</div>
+                        </div>
+                      </div>
+                      <div class="col-xs-4">
+                        <div class="counter counter-inverse">
+                          <span class="counter-number">32</span>
+                          <div class="counter-label">Tweets</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-   </body>
-</html>
+       </div>
+
+  <% include ../partials/footer %>

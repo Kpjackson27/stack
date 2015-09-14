@@ -15,7 +15,7 @@ module.exports = function(app){
 	app.route('/main')
 		.get(passportConf.isAuthenticated, articles.list)
 		.post(passportConf.isAuthenticated, articles.create)
-		.get(articles.getCreateArticles);
+		.get(passportConf.isAuthenticated, articles.getCreateArticles);
 		
 	// Set up the 'articles' base routes 
 	app.route('/api/createArticles')

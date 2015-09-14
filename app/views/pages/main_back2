@@ -1,0 +1,234 @@
+<nav class="navbar  navbar-transparent navbar-fixed-top" role="navigation">
+    <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button id="menu-toggle" type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar bar1"></span>
+        <span class="icon-bar bar2"></span>
+        <span class="icon-bar bar3"></span>
+      </button>
+      <a class="navbar-brand" href="#">Verz</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" data-nav-image='assets/img/blog_1.png'>
+      <ul class="nav navbar-nav">
+            <li class="active">
+                <a href="/discover">
+                     Discover 
+                </a>
+            </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="/learn">Learn More</a></li>
+     </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ../partials/head %>
+</head>
+
+<body>
+  <script src="/socket.io/socket.io.js"></script>
+	<% include ../partials/main-header %>
+  <div class="main">
+    <div class="section">
+      <div class="container">
+        <div class="row" id="profile-cards">
+            <div class="col-md-4">
+                <div class="fixed-section">
+                    <div class="card card-user">
+                       <div class="image">
+                         <img src="https://unsplash.imgix.net/41/pHyYeNZMRFOIRpYeW7X3_manacloseup%20copy.jpg?q=75&w=1080&h=1080&fit=max&fm=jpg&auto=format&s=befb073386542ab0a27cd34e4ecba7a9" alt="..."/>
+                      </div>
+                       <div class="content">
+                          <div class="author">
+                             <a href="#">
+                                <img class="avatar" src="/img/face-2.jpg" alt="..."/>
+                                  <h4 class="title"><%= user.email %><a href=""></a></h4> 
+                                    </a>
+                                </div>
+                                <hr>
+                                <div class="description text-center">
+                                    <a class="card-link" href="#">
+                                      <i class="fa fa-comments"></i> 89
+                                    </a>
+                                    <a class="card-link" href="#">
+                                      <i class="fa fa-heart"></i> 432
+                                    </a>
+                                    <a class="card-link" href="#">
+                                      <i class="fa fa-heart"></i> 321
+                                    </a>
+                                  </div>
+                                </div>
+                              <hr>
+                            </div><!-- end card -->
+                          <div class="card">
+                             <div class="content text-center">
+                            <h3 class="title text-center">Inspiration</h3>
+                             
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>    
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <br><br>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>    
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                         </div>
+                         <div class="content text-center">
+                            <h3 class="title text-center">Following</h3>
+                             
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>    
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <br><br>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>    
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>  
+                             <div class="icon icon-green">
+                                 <i class="fa fa-money"></i>
+                             </div>
+                         </div><!-- End Follow -->
+                         <hr>
+                     </div> <!-- end card 2 -->
+                </div><!-- end fixed section -->
+              </div>
+              <div class="space-50"></div>
+              <div class="col-md-8">
+                <div class="tim-container" style="min-height: 2000px;">
+                   <div class="tim-row" id="cards-row">
+                      <div class="card">
+                          <div class="content">
+                            <form id="createArticle-form" method="POST" class="form-horizontal">
+                                <input type="hidden" name='_csrf' value="<%= locals._csrf %>">
+                                <textarea style="border: none" class="form-control" placeholder="Create Verz" rows="4">
+                                </textarea>
+                                <div class="footer">
+                                  <div class="author">
+                                     <a class="card-link" href="#">
+                                      <img src="/img/faces-2.jpg" alt="..." class="avatar">
+                                        <span><%= user.email %></span>
+                                    </a>
+                                  </div>
+                                  <div class="stats pull-right">
+                                    <button type="submit" class="btn btn-block btn-sm btn-info">Post</button>
+                                  </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tim-row">
+                      <ul>
+                          <% for(var i = 0; i < articles.length; i++) {%>
+                            <div class="col-md-8">
+                              <div class="card">
+                                <div class="content">
+                                  <p class="category text-right">
+                                      <i class="fa fa-clock-o"></i><%= moment(articles[i].created).fromNow() %>
+                                  </p>
+                                  <a class="card-link" href="#">
+                                      <p><%= articles[i].content %></p>
+                                  </a>
+                                  <a class="card-link" href="#"></a>
+
+                                    <div class="footer">
+                                      <div class="author">
+                                        <a class="card-link" href="#">
+                                          <img src="/img/face-2.jpg" alt="..." class="avatar">
+                                            <span><%= user.email %></span>
+                                        </a>
+                                      </div>
+
+                                      <div class="stats pull-right">
+                                        <a class="card-link" href="#">
+                                          <i class="fa fa-comments"></i> 89
+                                        </a>
+                                      </div>
+
+
+                                      <div class="stats pull-right">
+                                          <form action='/api/articles/<%= articles[i]._id%>/favorites', method='POST'>
+                                              <input type='hidden' name='_csrf' value="<%= locals._csrf %>">                 
+                                                  <button type="submit" id="favorites" class=" card-link btn btn-default btn-simple">
+                                                      <i class="fa fa-heart-o"></i><%= articles[i].favoritesCount%>
+                                                  </button>
+                                           </form>
+                                      </div>
+
+
+                                      <div class="stats pull-right">
+                                          <form action='/api/articles/<%= articles[i]._id%>/dislike', method='POST'>
+                                              <input type='hidden' name='_csrf' value="<%= locals._csrf %>">            
+                                                  <button type="submit" id="dislike" class="card-link btn btn-default btn-simple pull-right">
+                                                       <i class="fa fa-heart-o"></i><%= articles[i].dislikesCount%>
+                                                   </button>
+                                            </form>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                      <% } %>
+                    </ul>
+
+
+
+
+
+
+
+                 
+                    
+              
+           
+
+       
+            <% include ../partials/footer %>
+        <!--<script type="text/javascript" src="/js/script.js"></script>-->
+        </body>
+    </html>

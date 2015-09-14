@@ -35,7 +35,7 @@ module.exports = function(app){
 
 	//setup the 'account' routes
 	app.route('/account')
-		.get(passportConf.isAuthenticated,users.getAccount);
+		.get(users.getAccount);
 
 	//setup the 'account profile' routes
 	app.route('/account/profile')
