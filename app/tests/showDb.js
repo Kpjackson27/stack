@@ -29,23 +29,47 @@ var getErrorMessage = function(err) {
 //     });
 //     client.quit();
 // });
-client.keys('*', function(err, keys) {
-    if (err) return console.log(err);
 
-    for (var i = 0, len = keys.length; i < len; i++) {
-        console.log(keys[i]);
+
+//Print all keys
+//TODO: Fix Unknown Server Error
+// key=movie:mostLiked
+// key=movie:movieId:liked
+// key=movie:chrisId:liked
+// key=movie:scoreBoard
+// Value Error:Unknown server error
+// Value Error:Unknown server error
+// Value Error:Unknown server error
+// Value Error:Unknown server error
+// client.keys('*', function(err, keys) {
+//     if (err) return console.log(err);
+
+//     for (var i = 0, len = keys.length; i < len; i++) {
+//         console.log('key='+keys[i]);
+//         client.smembers(keys[i], function(err, results) {
+//             if (err) {
+//                 console.log('Value Error:' + getErrorMessage(err));
+//             } else
+//                 console.log('value=' + results[0]);
+//             // res.redirect('/api/articles');
+//         });
+//     }
+// });
+
+
+// get the movei chris liked
+client.smembers('movie:chrisId:liked', function(err, results) {
+    if(err){
+        console.log(getErrorMessage(err));
     }
-    client.smembers(keys[i], function(err, results) {
-        if (err) {
-            console.log(getErrorMessage(err));
-        } else
-            console.log('' + results[0]);
-        // res.redirect('/api/articles');
-    });
-    console.log('------------------');
+    else
+    	console.log(+ results[0]);
+    // res.redirect('/api/articles');
+});
+
     // client.mget(keys, redis.print);
 
-});
+
 
 
 // client.smembers('movie:garyId:liked', function(err, results) {

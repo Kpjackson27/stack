@@ -26,7 +26,7 @@ var getErrorMessage = function(err) {
         return 'Unknown server error';
     }
 };
-
+//REST API for like (thumb up) button
 exports.create = function(req, res) {
     var article = req.article;
     // // console.log(req.article);
@@ -55,7 +55,7 @@ exports.create = function(req, res) {
     });
 
 };
-
+//REST API for dislike (thumb down) button
 exports.dislike = function(req, res) {
     var article = req.article;
     // // console.log(req.article);

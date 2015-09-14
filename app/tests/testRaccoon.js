@@ -25,7 +25,7 @@ raccoon.connect(redisURL.port, redisURL.hostname, redisURL.auth.split(":")[1]);
 
 // raccoon.liked('garyId', 'movieId');
    // raccoon.liked('garyId', 'movie2Id');
-   raccoon.liked('chrisId', 'movieId');
+   raccoon.liked('chrisId', 'movieId', function(){});
 
 // client.smembers('movie:garyId:liked', function(err, results) {
 //     if(err){
