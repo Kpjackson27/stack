@@ -51,11 +51,11 @@ exports.like = function(req, res) {
     // console.log(req.article._id);
     // console.log(req.user._id);
 
-    raccoon.liked(req.article._id, req.user._id, function() {
+    raccoon.liked( req.user._id, req.article._id, function() {
         // client.smembers('movie:' + req.user._id + ':liked', function(err, results) {
         //     console.log('req.user._id liked:' + results[0]);
         // });
-        console.log("redis saved");
+        console.log("redis saved: " + req.user._id+ ' liked: ' + req.article._id);
     });
 };
 //REST API for dislike (thumb down) button
@@ -101,17 +101,17 @@ exports.destroy = function(req, res) {
 exports.recommendFor = function(req, res) {
     // Ask for recommendations for req.user._id
     raccoon.recommendFor(req.user._id, 5, function(recs) {
-        console.log(recs);
-        // res.format({
-        //     html: function() {
-        //         res.render('pages/recommendations', {
-        //             title: 'Recommendations',
-        //             "recs": recs
-        //         });
-        //     },
-        //     json: function() {
-        //         res.json(recs);
-        //     }
-        // });
+        console.log('recommendatoins for '+req.user._id +' is: ' + recs);
+        res.format({
+            html: function() {
+                res.render('pages/recommendations', {
+                    title: 'Recommendations',
+                    "recs": recs //an array of article/verz/post Id
+                });
+            },
+            json: function() {
+                res.json(recs);
+            }
+        });
     });
 }

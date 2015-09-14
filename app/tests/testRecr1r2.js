@@ -19,7 +19,7 @@ raccoon.connect(6379, '127.0.0.1'); //local
 //         raccoon.liked('r2', '1', function() {});
 //     });
 // });
-//ask recommended movie for andre
+//ask recommended movie for r2
 raccoon.recommendFor('r2', 5, function(recs) {
     console.log(recs);
     console.log(recs[0]); //should be batman

@@ -15,7 +15,7 @@ raccoon.connect(6379, '127.0.0.1'); //local
 
 
 //ask recommended movie for andre
-raccoon.recommendFor('andre', 5, function(recs) {
+raccoon.recommendFor('55f6258b142fb6cb1611c48a', 5, function(recs) {
     console.log(recs);
     console.log(recs[0]); //should be batman
 });
