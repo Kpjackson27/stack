@@ -31,7 +31,7 @@ module.exports = function(app){
 	// Set up the 'articleId' parameter middleware   
 	app.param('articleId', articles.articleByID);
 
-	app.post('/api/articles/:articleId/favorites', passportConf.isAuthenticated, favorites.create);
-   	app.post('/api/articles/:articleId/dislike', passportConf.isAuthenticated, favorites.dislike);
+	app.post('/api/articles/:articleId/favorites', passportConf.isAuthenticated, favorites.like);
+   	app.post('/api/articles/:articleId/dislike', passportConf.isAuthenticated, favorites.recommendFor);
    	app.post('/api/articles/:articleId/comments', passportConf.isAuthenticated, articles.createComment);
 };

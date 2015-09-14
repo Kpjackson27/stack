@@ -7,15 +7,17 @@
 //   nodemailer = require('nodemailer'),
 //   User = require('../models/User'),
 //   Article = require('../models/Article');
-var url = require('url'),
-    redis = require('redis');
-var redisURL = url.parse('redis://rediscloud:4kmgVo8PXPmJzJWH@pub-redis-17622.us-east-1-4.5.ec2.garantiadata.com:17622');
-var client = redis.createClient(redisURL.port, redisURL.hostname, {
-    no_ready_check: true
-});
-client.auth(redisURL.auth.split(":")[1]);
+
+//configuration: remote redis
+// var url = require('url'),
+//     redis = require('redis');
+// var redisURL = url.parse('redis://rediscloud:4kmgVo8PXPmJzJWH@pub-redis-17622.us-east-1-4.5.ec2.garantiadata.com:17622');
+// var client = redis.createClient(redisURL.port, redisURL.hostname, {
+//     no_ready_check: true
+// });
+// client.auth(redisURL.auth.split(":")[1]);
 var raccoon = require('raccoon');
-raccoon.connect(redisURL.port, redisURL.hostname, redisURL.auth.split(":")[1]);
+// raccoon.connect(redisURL.port, redisURL.hostname, redisURL.auth.split(":")[1]);
 
 var getErrorMessage = function(err) {
     if (err.errors) {
@@ -27,60 +29,60 @@ var getErrorMessage = function(err) {
     }
 };
 //REST API for like (thumb up) button
-exports.create = function(req, res) {
+exports.like = function(req, res) {
     var article = req.article;
-    // // console.log(req.article);
     article._favorites = req.user;
+    /*
+      save the "LIKE" instance to local mongo db
+    */
     article.save(function(err) {
         if (err) {
             req.flash('errors', {
-                msg: 'Oops! Failed to like verse.'
+                msg: 'Oops! Failed to like this post.'
             });
         }
-        res.redirect('/api/articles');
-
+        //todo: ajax/socket.io, not to refresh forever
+        // res.redirect('/main');
     });
-    //recommendation data
-    console.log("API: like");
-    //article id
-    console.log(req.article._id);
-    //user id
-    console.log(req.user._id);
-    //liked function to store a like instance in redis server
+    /*
+      Save the "LIKE" instance to local/remote redis 
+    */
+
+    // console.log(req.article._id);
+    // console.log(req.user._id);
+
     raccoon.liked(req.article._id, req.user._id, function() {
-        client.smembers('movie:' + req.user._id + ':liked', function(err, results) {
-            console.log('req.user._id liked:' + results[0]);
-            // res.redirect('/api/articles');
-        });
+        // client.smembers('movie:' + req.user._id + ':liked', function(err, results) {
+        //     console.log('req.user._id liked:' + results[0]);
+        // });
+        console.log("redis saved");
     });
-
 };
 //REST API for dislike (thumb down) button
 exports.dislike = function(req, res) {
+    /*
+      save the "DIS-LIKE" instance to local mongo db
+    */
     var article = req.article;
-    // // console.log(req.article);
     article._dislikes = req.user;
     article.save(function(err) {
         if (err) {
             req.flash('errors', {
-                msg: 'Oops! Failed to dislike verse.'
+                msg: 'Oops! Failed to dislike this post.'
             });
         }
-        res.redirect('/api/articles');
-
+        //todo: ajax/socket.io, not to refresh forever
+        // res.redirect('/api/articles');
     });
-    //recommendation data
-    console.log("API: dislike");
-    //article id
-    console.log(req.article._id);
-    //user id
-    console.log(req.user._id);
-    //liked function to store a like instance in redis server
+    // console.log(req.article._id);
+    // console.log(req.user._id);
+    /*
+      Save the "DIS-LIKE" instance to local/remote redis 
+    */
     raccoon.disliked(req.article._id, req.user._id, function() {
-        client.smembers('movie:' + req.user._id + ':disliked', function(err, results) {
-            console.log('req.user._id disliked:' + results[0]);
-            // res.redirect('/api/articles');
-        });
+        // client.smembers('movie:' + req.user._id + ':disliked', function(err, results) {
+        //     console.log('req.user._id disliked:' + results[0]);
+        // });
     });
 };
 
@@ -97,46 +99,19 @@ exports.destroy = function(req, res) {
 };
 
 exports.recommendFor = function(req, res) {
-
-
-    // raccoon.liked(req.article._id, req.user._id, function() {
-    //     client.smembers('movie:' + req.user._id + ':liked', function(err, results) {
-    //         console.log('req.user._id liked:' + results[0]);
-    //         // res.redirect('/api/articles');
-    //     });
-    // });
-    raccoon.liked('garyId', 'movieId');
-    raccoon.liked('garyId', 'movie2Id');
-    raccoon.liked('chrisId', 'movieId');
-
-    client.smembers('movie:garyId:liked', function(err, results) {
-        if(err){
-            console.log(getErrorMessage(err));
-        }
-        console.log('req.user._id liked:' + results[0]);
-        // res.redirect('/api/articles');
+    // Ask for recommendations for req.user._id
+    raccoon.recommendFor(req.user._id, 5, function(recs) {
+        console.log(recs);
+        // res.format({
+        //     html: function() {
+        //         res.render('pages/recommendations', {
+        //             title: 'Recommendations',
+        //             "recs": recs
+        //         });
+        //     },
+        //     json: function() {
+        //         res.json(recs);
+        //     }
+        // });
     });
-    // Ask for recommendations:
-
-    raccoon.recommendFor('chrisId', 10, function(results) {
-        // results will be an array of x ranked recommendations for chris
-        // in this case it would contain movie2
-        console.log(results[0]);
-    });
-    // raccoon.recommendFor(req.user._id, 5, function(recs) {
-
-    //     console.log(recs);
-    //     res.format({
-    //         html: function() {
-    //             res.render('pages/recommendations', {
-    //                 title: 'Recommendations',
-    //                 "recs": recs
-    //             });
-    //         },
-    //         json: function() {
-    //             res.json(recs);
-    //         }
-    //     });
-
-    // });
 }

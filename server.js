@@ -1,5 +1,8 @@
 'use strict';
 
+var raccoon = require('raccoon');
+raccoon.connect(6379, '127.0.0.1');
+
 //Set the 'NODE_ENV' variable
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 process.env.PORT = process.env.PORT || '3000';

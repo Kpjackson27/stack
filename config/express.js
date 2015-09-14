@@ -27,7 +27,9 @@ var config = require('./config'),
 //     no_ready_check: true
 // });
 // client.auth(redisURL.auth.split(":")[1]);
-// var raccoon = require('raccoon');
+var raccoon = require('raccoon');
+raccoon.connect(6379, '127.0.0.1');
+
 // raccoon.connect(redisURL.port, redisURL.hostname, redisURL.auth.split(":")[1]);
 
 
