@@ -7,9 +7,10 @@ var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     FacebookStrategy = require('passport-facebook').Strategy,
     TwitterStrategy = require('passport-twitter').Strategy,
-    LinkedInStrategy = require('passport-linkedin').Strategy;
-    // GoogleStrategy = require('passport-google').Strategy;
-    // GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+    LinkedInStrategy = require('passport-linkedin').Strategy,
+    GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
+    InstagramStrategy = require('passport-instagram').Strategy;
+
 
 var secrets = require('./secrets');
 var User = require('../app/models/User');
@@ -140,93 +141,185 @@ passport.use(new FacebookStrategy(secrets.facebook, function(req, accessToken, r
 // Sign in with Twitter.
 
 passport.use(new TwitterStrategy(secrets.twitter, function(req, accessToken, tokenSecret, profile, done) {
-  if (req.user) {
-    User.findOne({ twitter: profile.id }, function(err, existingUser) {
-      if (existingUser) {
-        req.flash('errors', { msg: 'There is already a Twitter account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
-        done(err);
-      } else {
-        User.findById(req.user.id, function(err, user) {
-          user.twitter = profile.id;
-          user.tokens.push({ kind: 'twitter', accessToken: accessToken, tokenSecret: tokenSecret });
-          user.profile.name = user.profile.name || profile.displayName;
-          user.profile.location = user.profile.location || profile._json.location;
-          user.profile.picture = user.profile.picture || profile._json.profile_image_url_https;
-          user.save(function(err) {
-            req.flash('info', { msg: 'Twitter account has been linked.' });
-            done(err, user);
-          });
+    if (req.user) {
+        User.findOne({
+            twitter: profile.id
+        }, function(err, existingUser) {
+            if (existingUser) {
+                req.flash('errors', {
+                    msg: 'There is already a Twitter account that belongs to you. Sign in with that account or delete it, then link it with your current account.'
+                });
+                done(err);
+            } else {
+                User.findById(req.user.id, function(err, user) {
+                    user.twitter = profile.id;
+                    user.tokens.push({
+                        kind: 'twitter',
+                        accessToken: accessToken,
+                        tokenSecret: tokenSecret
+                    });
+                    user.profile.name = user.profile.name || profile.displayName;
+                    user.profile.location = user.profile.location || profile._json.location;
+                    user.profile.picture = user.profile.picture || profile._json.profile_image_url_https;
+                    user.save(function(err) {
+                        req.flash('info', {
+                            msg: 'Twitter account has been linked.'
+                        });
+                        done(err, user);
+                    });
+                });
+            }
         });
-      }
-    });
 
-  } else {
-    User.findOne({ twitter: profile.id }, function(err, existingUser) {
-      if (existingUser) return done(null, existingUser);
-      var user = new User();
-      // Twitter will not provide an email address.  Period.
-      // But a person’s twitter username is guaranteed to be unique
-      // so we can "fake" a twitter email address as follows:
-      user.email = profile.username + "@twitter.com";
-      user.twitter = profile.id;
-      user.tokens.push({ kind: 'twitter', accessToken: accessToken, tokenSecret: tokenSecret });
-      user.profile.name = profile.displayName;
-      user.profile.location = profile._json.location;
-      user.profile.picture = profile._json.profile_image_url_https;
-      user.save(function(err) {
-        done(err, user);
-      });
-    });
-  }
+    } else {
+        User.findOne({
+            twitter: profile.id
+        }, function(err, existingUser) {
+            if (existingUser) return done(null, existingUser);
+            var user = new User();
+            // Twitter will not provide an email address.  Period.
+            // But a person’s twitter username is guaranteed to be unique
+            // so we can "fake" a twitter email address as follows:
+            user.email = profile.username + "@twitter.com";
+            user.twitter = profile.id;
+            user.tokens.push({
+                kind: 'twitter',
+                accessToken: accessToken,
+                tokenSecret: tokenSecret
+            });
+            user.profile.name = profile.displayName;
+            user.profile.location = profile._json.location;
+            user.profile.picture = profile._json.profile_image_url_https;
+            user.save(function(err) {
+                done(err, user);
+            });
+        });
+    }
 }));
 
 
 /**
  * Sign in with Google.
  */
-// passport.use(new GoogleStrategy(secrets.google, function(req, accessToken, refreshToken, profile, done) {
-//   if (req.user) {
-//     User.findOne({ google: profile.id }, function(err, existingUser) {
-//       if (existingUser) {
-//         req.flash('errors', { msg: 'There is already a Google account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
-//         done(err);
-//       } else {
-//         User.findById(req.user.id, function(err, user) {
-//           user.google = profile.id;
-//           user.tokens.push({ kind: 'google', accessToken: accessToken });
-//           user.profile.name = user.profile.name || profile.displayName;
-//           user.profile.gender = user.profile.gender || profile._json.gender;
-//           user.profile.picture = user.profile.picture || profile._json.image.url;
-//           user.save(function(err) {
-//             req.flash('info', { msg: 'Google account has been linked.' });
-//             done(err, user);
-//           });
-//         });
-//       }
-//     });
-//   } else {
-//     User.findOne({ google: profile.id }, function(err, existingUser) {
-//       if (existingUser) return done(null, existingUser);
-//       User.findOne({ email: profile.emails[0].value }, function(err, existingEmailUser) {
-//         if (existingEmailUser) {
-//           req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with Google manually from Account Settings.' });
-//           done(err);
-//         } else {
-//           var user = new User();
-//           user.email = profile.emails[0].value;
-//           user.google = profile.id;
-//           user.tokens.push({ kind: 'google', accessToken: accessToken });
-//           user.profile.name = profile.displayName;
-//           user.profile.gender = profile._json.gender;
-//           user.profile.picture = profile._json.image.url;
-//           user.save(function(err) {
-//             done(err, user);
-//           });
-//         }
-//       });
-//     });
-//   }
-// }));
+passport.use(new GoogleStrategy(secrets.google, function(req, accessToken, refreshToken, profile, done) {
+    if (req.user) {
+        User.findOne({
+            google: profile.id
+        }, function(err, existingUser) {
+            if (existingUser) {
+                req.flash('errors', {
+                    msg: 'There is already a Google account that belongs to you. Sign in with that account or delete it, then link it with your current account.'
+                });
+                done(err);
+            } else {
+                User.findById(req.user.id, function(err, user) {
+                    user.google = profile.id;
+                    user.tokens.push({
+                        kind: 'google',
+                        accessToken: accessToken
+                    });
+                    user.profile.name = user.profile.name || profile.displayName;
+                    user.profile.gender = user.profile.gender || profile._json.gender;
+                    user.profile.picture = user.profile.picture || profile._json.image.url;
+                    user.save(function(err) {
+                        req.flash('info', {
+                            msg: 'Google account has been linked.'
+                        });
+                        done(err, user);
+                    });
+                });
+            }
+        });
+    } else {
+        User.findOne({
+            google: profile.id
+        }, function(err, existingUser) {
+            if (existingUser) return done(null, existingUser);
+            User.findOne({
+                email: profile.emails[0].value
+            }, function(err, existingEmailUser) {
+                if (existingEmailUser) {
+                    req.flash('errors', {
+                        msg: 'There is already an account using this email address. Sign in to that account and link it with Google manually from Account Settings.'
+                    });
+                    done(err);
+                } else {
+                    var user = new User();
+                    user.email = profile.emails[0].value;
+                    user.google = profile.id;
+                    user.tokens.push({
+                        kind: 'google',
+                        accessToken: accessToken
+                    });
+                    user.profile.name = profile.displayName;
+                    user.profile.gender = profile._json.gender;
+                    user.profile.picture = profile._json.image.url;
+                    user.save(function(err) {
+                        done(err, user);
+                    });
+                }
+            });
+        });
+    }
+}));
+
+/**
+ * Sign in with Instagram.
+ */
+passport.use(new InstagramStrategy(secrets.instagram, function(req, accessToken, refreshToken, profile, done) {
+    if (req.user) {
+        User.findOne({
+            instagram: profile.id
+        }, function(err, existingUser) {
+            if (existingUser) {
+                req.flash('errors', {
+                    msg: 'There is already an Instagram account that belongs to you. Sign in with that account or delete it, then link it with your current account.'
+                });
+                done(err);
+            } else {
+                User.findById(req.user.id, function(err, user) {
+                    user.instagram = profile.id;
+                    user.tokens.push({
+                        kind: 'instagram',
+                        accessToken: accessToken
+                    });
+                    user.profile.name = user.profile.name || profile.displayName;
+                    user.profile.picture = user.profile.picture || profile._json.data.profile_picture;
+                    user.profile.website = user.profile.website || profile._json.data.website;
+                    user.save(function(err) {
+                        req.flash('info', {
+                            msg: 'Instagram account has been linked.'
+                        });
+                        done(err, user);
+                    });
+                });
+            }
+        });
+    } else {
+        User.findOne({
+            instagram: profile.id
+        }, function(err, existingUser) {
+            if (existingUser) return done(null, existingUser);
+
+            var user = new User();
+            user.instagram = profile.id;
+            user.tokens.push({
+                kind: 'instagram',
+                accessToken: accessToken
+            });
+            user.profile.name = profile.displayName;
+            // Similar to Twitter API, assigns a temporary e-mail address
+            // to get on with the registration process. It can be changed later
+            // to a valid e-mail address in Profile Management.
+            user.email = profile.username + "@instagram.com";
+            user.profile.website = profile._json.data.website;
+            user.profile.picture = profile._json.data.profile_picture;
+            user.save(function(err) {
+                done(err, user);
+            });
+        });
+    }
+}));
 
 /*
  * Sign in with LinkedIn.
