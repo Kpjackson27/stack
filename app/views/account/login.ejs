@@ -1,53 +1,61 @@
 <head>
   <% include ../partials/head %>
 </head>
-<body class="page-login layout-full page-dark">
+
+
+<body class="layout-full">
   <!--[if lt IE 8]>
         <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
+<style>
+.logo{
+  height:150px;
+}
+</style>
 
   <!-- Page -->
   <div class="page animsition vertical-align text-center" data-animsition-in="fade-in"
   data-animsition-out="fade-out">>
     <div class="page-content vertical-align-middle">
-      <div class="brand">
-        <img class="brand-img" src="/img/white-01.png" alt="...">
-      </div>
-      <p>Unleash Your Creativity</p>
-      <form method="POST">
-        <input type="hidden" name="_csrf" value="<%= locals._csrf %>">
-        <div class="form-group">
-          <label class="sr-only" for="inputEmail">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Email" autofocus="autofocus" />
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="password" name="password"
-          placeholder="Password">
-        </div>
-        <div class="form-group clearfix">
-          <div class="checkbox-custom checkbox-inline checkbox-primary pull-left">
-            <input type="checkbox" id="inputCheckbox" name="remember">
-            <label for="inputCheckbox">Remember me</label>
+      <div class="panel">
+        <div class="panel-body">
+          <div class="brand">
+            <img class="brand-img logo" src="/img/black-01.png" alt="...">
           </div>
-          <a class="pull-right" href="/forgot">Forgot password?</a>
+          <form method="POST">
+          <input type="hidden" name="_csrf" value="<%= locals._csrf %>">
+            <div class="form-group form-material floating">
+              <input type="email" class="form-control" name="email" id="email" />
+              <label class="floating-label">Email</label>
+            </div>
+            <div class="form-group form-material floating">
+              <input type="password" class="form-control" name="password" id="password" />
+              <label class="floating-label">Password</label>
+            </div>
+            <div class="form-group clearfix">
+              <div class="checkbox-custom checkbox-inline checkbox-primary checkbox-lg pull-left">
+                <input type="checkbox" id="inputCheckbox" name="remember">
+                <label for="inputCheckbox">Remember me</label>
+              </div>
+              <a class="pull-right" href="/forgot">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg margin-top-40">Sign in</button>
+          </form>
+          <p>Still no account? Please go to <a href="/signup">Sign up</a></p>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-      </form>
-      <p>Still no account? Please go to <a href="/signup">Sign Up</a></p>
+      </div>
 
-      <footer class="page-copyright page-copyright-inverse">
+      <footer class="page-copyright">
         <p>Verz</p>
         <p>© 2015. All RIGHT RESERVED.</p>
         <div class="social">
-          <a href="javascript:void(0)">
+          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
             <i class="icon bd-twitter" aria-hidden="true"></i>
           </a>
-          <a href="javascript:void(0)">
+          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
             <i class="icon bd-facebook" aria-hidden="true"></i>
           </a>
-          <a href="javascript:void(0)">
+          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
             <i class="icon bd-google-plus" aria-hidden="true"></i>
           </a>
         </div>
@@ -57,3 +65,4 @@
   <!-- End Page -->
 
   <% include ../partials/footer %>
+

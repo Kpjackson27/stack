@@ -18,11 +18,11 @@ var getErrorMessage = function(err) {
 //render the page to create new articles
 exports.getCreateArticles = function(req, res) {
     if (req.user) {
-        res.render('pages/main', {
+        res.render('article/create', {
             title: 'Create Article'
         });
     } else
-        return res.redirect('/main');
+        return res.redirect('/create');
 };
 
 //create a new article
@@ -39,7 +39,7 @@ exports.create = function(req, res) {
             req.flash('errors', {
                 msg: getErrorMessage(err)
             });
-            return res.redirect('/main');
+            return res.redirect('/create');
         } else {
             // req.flash('success', { msg: 'Poem created.'});
             return res.redirect('/main');
@@ -67,7 +67,7 @@ exports.list = function(req, res) {
             console.log(articles);
             res.format({
                 html: function() {
-                    res.render('pages/main', {
+                    res.render('article/listPost', {
                         title: 'All Poems',
                         "articles": articles
                     });

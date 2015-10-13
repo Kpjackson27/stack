@@ -1,0 +1,9 @@
+ <div class="panel-body">
+      <form id="createArticle-form" method="POST" action="/api/createArticles" class="form-horizontal">
+          <input type="hidden" name='_csrf' value="<%= locals._csrf %>">
+              <textarea type="text" name="content" id="content" class="form-control panel-control" placeholder="Unleash Your Creativity...." rows="3"></textarea>
+              <button type="submit" class="btn btn-primary margin-top-15">Submit</button>
+       </form>    
+     </div>
+      <!-- End -->
+      

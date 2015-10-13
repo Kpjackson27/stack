@@ -4,37 +4,57 @@
   <% include ../partials/head %>
 </head>
 <body>
-  <% include ../partials/main-header %>
 
+  <style>
+   .pad-top-55{
+        padding-top: 150px;
+      }
+      </style>
+ <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+      <div class="navbar-header">
+          <a class="navbar-brand navbar-brand-center" href="javascript:void(0)">
+                Brand
+          </a>
+        </div>
+      </div>
+    </nav>
+<div class="page page-content">
+<section class="pad-top-55">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel">
+      <div class="panel-heading">
+        <h3 class="panel-title text-center">Unleash Your Inspiration</h3>
+      </div>
+      <div class="panel-body container-fluid">
+        <form autocomplete="off">
+          <form id="createArticle-form" method="POST" class="form-horizontal">
+            <input type="hidden" name="_csrf"/>
+              <div class="form-group form-material floating">
+                  <input type="text" name="title" id="title" placeholder="Title" autofocus="autofocus" class="form-control"/>
+                  <label class="floating-label">Title</label>
+              </div>
+               <div class="form-group form-material floating">
+                  <textarea type="text" name="title" id="title" placeholder="Verz" autofocus="autofocus" rows="3" class="form-control"></textarea>
+                  <label class="floating-label">Verz</label>
+              </div>
+              <div class="form-group form-material floating">
+                  <select class="form-control">
+                    <option>&nbsp;</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                  <label class="floating-label">Category</label>
+                </div>
+            </div>
+             <button type="submit" class="btn btn-lg btn-raised btn-primary">Create</a>
 
-<form id="createArticle-form" method="POST" class="form-horizontal">
-  <input type="hidden" name="_csrf"/>
-  <div class="form-group">
-    <label for="title" class="col-sm-3 control-label">Title</label>
-    <div class="col-sm-7">
-      <input type="text" name="title" id="title" placeholder="poem title" autofocus="autofocus" class="form-control"/>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="content" class="col-sm-3 control-label">Content</label>
-    <div class="col-sm-7">
-      <textarea id="content" type="text" name="content" placeholder="poem content" row="10" class="form-control"></textarea>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="category" class="col-sm-3 control-label">Category</label>
-    <div class="col-sm-7">
-      <select id="category" name="category" class="form-control">
-        <option>nonCategorized</option>
-        <option>Category1</option>
-        <option>Category2</option>
-        <option>Category3</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-3 col-sm-7">
-</body>
-</html>
+            </section>
+          </div>
+          </body>
+          </html>
 
 

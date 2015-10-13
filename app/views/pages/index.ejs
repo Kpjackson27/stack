@@ -4,50 +4,100 @@
 	<% include ../partials/head %>
 </head>
 
-<body class="page-locked layout-full page-dark">
-  <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+<style>
+      .pad-top-100{
+        padding-top: 250px;
+      }
+
+      .pad-top-55{
+        padding-top: 55px;
+      }
+
+      .margin-right-100{
+        margin-right: 10px;
+      }
+
+      .box-150{
+        margin-bottom:250px;
+      }
+
+      body.back {
+/*css for full size background image*/
+  background: url(http://3.bp.blogspot.com/-PklNZtUUOh0/T6z57EA_0tI/AAAAAAAAAJE/VXCvrF8BC-E/s1600/Texture-Old-Parchment-e1287582423676.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+  height: 100%;
+  background-color: #060;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+ 
+}
 
 
-  <!-- Page -->
-  <div class="page animsition vertical-align text-center" data-animsition-in="fade-in"
-  data-animsition-out="fade-out">
-    <div class="page-content vertical-align-middle">
-      <div class="col-md-6">
-        <img src="img/white-01.png" class="padding-top-50">
-      </div>
-      <div class="col-md-6">
-      <form method="POST">
-        <input type="hidden" name="_csrf" value="<%= locals._csrf %>">
-        <div class="form-group">
-          <label class="sr-only" for="inputEmail">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Email" autofocus="autofocus" />
-        </div>
-        <div class="form-group">
-          <label class="sr-only" for="inputPassword">Password</label>
-          <input type="password" class="form-control" id="password" name="password"
-          placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-      </form>
 
-</div>
-      <footer class="page-copyright page-copyright-inverse">
-        <p>© 2015. All RIGHT RESERVED.</p>
-        <div class="social">
-          <a href="javascript:void(0)">
-            <i class="icon bd-twitter" aria-hidden="true"></i>
-          </a>
-          <a href="javascript:void(0)">
-            <i class="icon bd-facebook" aria-hidden="true"></i>
-          </a>
-          <a href="javascript:void(0)">
-            <i class="icon bd-dribbble" aria-hidden="true"></i>
-          </a>
-        </div>
-      </footer>
-    </div>
-  </div>
+.logo{
+  height:150px;
+}
+
+.color-blue{
+  background-color: #4C83FF;
+}
+
+.navbar {
+    border: none;
+    -webkit-box-shadow:none; 
+    box-shadow: none;
+}
+
+
+    </style>
+ 
+   <!-- Example Buttons -->
+          <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle hamburger hamburger-close collapsed"
+                data-target="#example-navbar-collapse-3" data-toggle="collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="hamburger-bar"></span>
+                </button>
+                <a class="navbar-brand" href="javascript:void(0)">VERZ</a>
+              </div>
+                <div class="collapse navbar-collapse" id="example-navbar-collapse-3">
+                <a href="/signup" class="margin-right-100 btn btn-raised btn-primary btn-sm navbar-btn navbar-right"> Sign Up </a>
+                <a href="/login" type="submit" class="margin-right-101 btn btn-sm btn-raised btn-default navbar-btn navbar-right"> Sign In </a>
+              </div>
+            </div>
+          </nav>
+      <!-- End Example Buttons -->
+
+<!--Header section -->
+      <section class="box-150">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="pad-top-100">
+                <div class="col-md-4 col-md-offset-2 pad-top-55">
+                  <h1><img src="/img/black-01.png" class="logo"/></h1>
+                </div>
+                <div class="col-md-6">
+                  <h3>Unleash Your Creativity</h3>
+                    <p> All the world’s a stage,<br>
+                        And all the men and women merely players;<br>
+                        They have their exits and their entrances,<br>
+                        And one man in his time plays many parts,<br>
+                        His acts being seven ages. At first, the infant,<br>
+                        Mewling and puking in the nurse’s arms.</p>
+                        <p>~ William Shakespear</p>
+                     <a href="/discover" class="btn btn-lg btn-raised btn-primary">Discover</a>
+                </div>
+            </div>
+          </div>
+      </section>
+      <hr>
   <!-- End Page -->
 <% include ../partials/footer %>

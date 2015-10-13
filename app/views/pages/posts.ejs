@@ -1,0 +1,31 @@
+  <ul>
+    <% for (var i = 0; i < articles.length; i++) {%>
+  <div class="masonry-item">
+          <!-- Widget With Video -->
+          <div class="widget widget-article widget-shadow">
+            <div class="widget-body">
+              <h3 class="widget-title"><%= articles[i].title %></h3>
+              <p class="widget-metas"><%= moment(articles[i].created).fromNow() %></p>
+              <p><% articles[i].content %></p>
+              <div class="widget-body-footer">
+                <a class="btn btn-default btn-outline" href="javascript:void(0)">READ MORE</a>
+                <div class="widget-actions pull-right">
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-share"></i>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-heart"></i>
+                    <span>19</span>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-chat"></i>
+                    <span>71</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Widget With Video -->
+        </div>
+      <%}%>
+    </ul>
