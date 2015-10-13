@@ -5,46 +5,40 @@
 </head>
 <% include ../partials/header %>
 <body>
-	<div class="container-fluid">
-	 
-          <div class="widget widget-shadow text-center">
-            <div class="widget-header cover overlay">
-              <div class="cover-background" style="background-image: url(http://hdwallpaperia.com/wp-content/uploads/2013/12/Nature-Image-Wallpapers-HD-1024x576.jpg)">
-                <div class="vertical-align padding-horizontal-0">
-                  <div class="vertical-align-bottom width-full">
-                    <a class="avatar avatar-100 img-bordered bg-white margin-top-20" href="javascript:void(0)">
-                      <img src="<%= user.profile.picture %>" alt="">
-                    </a>
-                    <h3 class="white"><%= user.profile.name||user.email %></h3>
-                    <p class="white"><i class="icon wb-map margin-right-10" aria-hidden="true"></i>United
-                      States</p>
-                    <button type="button" class="btn btn-primary margin-bottom-20">Follow</button>
-                    <div class="row no-space overlay-background">
-                      <div class="col-xs-4">
-                        <div class="counter counter-inverse">
-                          <span class="counter-number">13.2K</span>
-                          <div class="counter-label">Followers</div>
-                        </div>
-                      </div>
-                      <div class="col-xs-4">
-                        <div class="counter counter-inverse">
-                          <span class="counter-number">246</span>
-                          <div class="counter-label">Following</div>
-                        </div>
-                      </div>
-                      <div class="col-xs-4">
-                        <div class="counter counter-inverse">
-                          <span class="counter-number">32</span>
-                          <div class="counter-label">Tweets</div>
-                        </div>
-                      </div>
-                    </div>
+
+<section class="pad-top-10">
+    <div class="col-md-12 text-center ">
+        <img class="img-circle center-block" width="250" height="250" src="<%= user.profile.picture %>" alt="...">
+        <h2 class="text-center"><%= user.profile.name %></h2>
+        <p> BIO if bio exists </p>
+
+          <div class="widget-footer padding-horizontal-30 padding-vertical-20 height-100">
+              <div class="row no-space">
+                <div class="col-xs-4">
+                  <div class="counter">
+                    <div class="counter-label">Followers</div>
+                    <span class="counter-number">11.2K</span>
+                  </div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="counter">
+                    <div class="counter-label">Following</div>
+                    <span class="counter-number">683</span>
+                  </div>
+                </div> 
+                <div class="col-xs-4">
+                  <div class="counter">
+                    <div class="counter-label">Verzs</div>
+                    <span class="counter-number">326</span>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            <a href="#" class="btn btn-raised btn-primary">Edit</a>
+            <a href="#" class="btn btn-raised btn-primary">Stats</a>
         </div>
-       </div>
+  </section>
 
   <% include ../partials/footer %>
+</body>
+</html>

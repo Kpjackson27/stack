@@ -4,100 +4,313 @@
 	<% include ../partials/head %>
 </head>
 
-<style>
-      .pad-top-100{
-        padding-top: 250px;
-      }
+<body>
+  <% include ../partials/header %>
 
-      .pad-top-55{
-        padding-top: 55px;
-      }
-
-      .margin-right-100{
-        margin-right: 10px;
-      }
-
-      .box-150{
-        margin-bottom:250px;
-      }
-
-      body.back {
-/*css for full size background image*/
-  background: url(http://3.bp.blogspot.com/-PklNZtUUOh0/T6z57EA_0tI/AAAAAAAAAJE/VXCvrF8BC-E/s1600/Texture-Old-Parchment-e1287582423676.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  
-  height: 100%;
-  background-color: #060;
-  color: #fff;
-  text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
- 
-}
-
-
-
-.logo{
-  height:150px;
-}
-
-.color-blue{
-  background-color: #4C83FF;
-}
-
-.navbar {
-    border: none;
-    -webkit-box-shadow:none; 
-    box-shadow: none;
-}
-
-
-    </style>
- 
-   <!-- Example Buttons -->
-          <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle hamburger hamburger-close collapsed"
-                data-target="#example-navbar-collapse-3" data-toggle="collapse">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="hamburger-bar"></span>
-                </button>
-                <a class="navbar-brand" href="javascript:void(0)">VERZ</a>
-              </div>
-                <div class="collapse navbar-collapse" id="example-navbar-collapse-3">
-                <a href="/signup" class="margin-right-100 btn btn-raised btn-primary btn-sm navbar-btn navbar-right"> Sign Up </a>
-                <a href="/login" type="submit" class="margin-right-101 btn btn-sm btn-raised btn-default navbar-btn navbar-right"> Sign In </a>
-              </div>
+  <!-- header section -->
+<section>
+  <div class="container-fluid">
+    <div class="row">
+       <div class="cover height-500 height-xs-500">
+            <div class="cover-background" style="background-image: url('/img/Poetry_Web_Background.jpg')">
+              <div class="col-md-6 col-md-offset-3 text-center pad-top-50">
+                  <h1 class="white-text">Unleash Your Creativity</h1>
+                  <p class="white-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                        <a href="/signup" class="btn btn-primary btn-raised">Join</a>
+                        <a href="/about" class="btn btn-primary btn-raised">Learn More</a>
+               </div>
             </div>
-          </nav>
-      <!-- End Example Buttons -->
+        </div>
+      </div>
+  </div>
+</section>
+<!-- header section -->
 
-<!--Header section -->
-      <section class="box-150">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="pad-top-100">
-                <div class="col-md-4 col-md-offset-2 pad-top-55">
-                  <h1><img src="/img/black-01.png" class="logo"/></h1>
+<!-- Main Section -->
+<section>
+  <div class="container pad-top-10">
+    <div class="row">
+      <div class="col-md-8 masonry-item">  
+        <h3>Featured Poets</h3>
+          
+          <!-- Widget -->
+          <div class="widget widget-article widget-shadow">
+            <div class="widget-header cover overlay-hover overlay">
+              <img class="cover-image overlay-scale" src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&fm=jpg&s=a4598570a3286ea23369fdefe46953ba"
+              alt="...">
+            </div>
+            <div class="widget-body">
+              <p class="widget-metas type-link">
+                <img class="width-50 img-circle" src="assets/portraits/1.jpg" alt="Relevant textual alternative to the image">
+
+                <a href="javascript:void(0)">Heather Harper</a>
+                <a href="javascript:void(0)">05, 2015</a>
+                <a href="javascript:void(0)">
+                  <span>3</span> Comments</a>
+              </p>
+              <h3 class="widget-title">Singulos flagitem cupiditatibus</h3>
+              <p>Geometria eae servare dicat, amicitiam, dixissem principio coniuncta
+                adhibuit quantumcumque placeat easque, fidem gloriatur statuat
+                perspecta ferantur greges propemodum quieti, turpius vituperatoribus
+                complectitur leguntur vidisse assiduitas insolens audeam urbes
+                futuris. Arbitrium dicere multavit. Sola nullas. Animus si orestem
+                distinguique geometriaque. </p>
+              <div class="widget-body-footer">
+                <div class="widget-actions pull-left">
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-share"></i>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-heart"></i>
+                    <span>253</span>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-chat"></i>
+                    <span>115</span>
+                  </a>
                 </div>
-                <div class="col-md-6">
-                  <h3>Unleash Your Creativity</h3>
-                    <p> All the world’s a stage,<br>
-                        And all the men and women merely players;<br>
-                        They have their exits and their entrances,<br>
-                        And one man in his time plays many parts,<br>
-                        His acts being seven ages. At first, the infant,<br>
-                        Mewling and puking in the nurse’s arms.</p>
-                        <p>~ William Shakespear</p>
-                     <a href="/discover" class="btn btn-lg btn-raised btn-primary">Discover</a>
-                </div>
+                <a class="btn btn-default btn-outline pull-right" href="javascript:void(0)">
+                  <i class="icon wb-chevron-right-mini"></i> Read More
+                </a>
+              </div>
             </div>
           </div>
-      </section>
-      <hr>
+          <!-- End Widget -->
+               <!-- Widget -->
+          <div class="widget widget-article widget-shadow">
+            <div class="widget-header cover overlay-hover overlay">
+              <img class="cover-image overlay-scale" src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&fm=jpg&s=a4598570a3286ea23369fdefe46953ba"
+              alt="...">
+            </div>
+            <div class="widget-body">
+              <p class="widget-metas type-link">
+                <img class="width-50 img-circle" src="assets/portraits/1.jpg" alt="Relevant textual alternative to the image">
+
+                <a href="javascript:void(0)">Heather Harper</a>
+                <a href="javascript:void(0)">05, 2015</a>
+                <a href="javascript:void(0)">
+                  <span>3</span> Comments</a>
+              </p>
+              <h3 class="widget-title">Singulos flagitem cupiditatibus</h3>
+              <p>Geometria eae servare dicat, amicitiam, dixissem principio coniuncta
+                adhibuit quantumcumque placeat easque, fidem gloriatur statuat
+                perspecta ferantur greges propemodum quieti, turpius vituperatoribus
+                complectitur leguntur vidisse assiduitas insolens audeam urbes
+                futuris. Arbitrium dicere multavit. Sola nullas. Animus si orestem
+                distinguique geometriaque. </p>
+              <div class="widget-body-footer">
+                <div class="widget-actions pull-left">
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-share"></i>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-heart"></i>
+                    <span>253</span>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-chat"></i>
+                    <span>115</span>
+                  </a>
+                </div>
+                <a class="btn btn-default btn-outline pull-right" href="javascript:void(0)">
+                  <i class="icon wb-chevron-right-mini"></i> Read More
+                </a>
+              </div>
+            </div>
+          </div>
+           <h3><a class="black-link" href="#">Featured Verzs</a></h3>
+          
+          <!-- Widget -->
+          <div class="widget widget-article widget-shadow">
+            <div class="widget-header cover overlay-hover overlay">
+              <img class="cover-image overlay-scale" src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&fm=jpg&s=a4598570a3286ea23369fdefe46953ba"
+              alt="...">
+            </div>
+            <div class="widget-body">
+              <p class="widget-metas type-link">
+                <img class="width-50 img-circle" src="assets/portraits/1.jpg" alt="Relevant textual alternative to the image">
+
+                <a href="javascript:void(0)">Heather Harper</a>
+                <a href="javascript:void(0)">05, 2015</a>
+                <a href="javascript:void(0)">
+                  <span>3</span> Comments</a>
+              </p>
+              <h3 class="widget-title">Singulos flagitem cupiditatibus</h3>
+              <p>Geometria eae servare dicat, amicitiam, dixissem principio coniuncta
+                adhibuit quantumcumque placeat easque, fidem gloriatur statuat
+                perspecta ferantur greges propemodum quieti, turpius vituperatoribus
+                complectitur leguntur vidisse assiduitas insolens audeam urbes
+                futuris. Arbitrium dicere multavit. Sola nullas. Animus si orestem
+                distinguique geometriaque. </p>
+              <div class="widget-body-footer">
+                <div class="widget-actions pull-left">
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-share"></i>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-heart"></i>
+                    <span>253</span>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-chat"></i>
+                    <span>115</span>
+                  </a>
+                </div>
+                <a class="btn btn-default btn-outline pull-right" href="javascript:void(0)">
+                  <i class="icon wb-chevron-right-mini"></i> Read More
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- End Widget -->
+               <!-- Widget -->
+          <div class="widget widget-article widget-shadow">
+            <div class="widget-header cover overlay-hover overlay">
+              <img class="cover-image overlay-scale" src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&fm=jpg&s=a4598570a3286ea23369fdefe46953ba"
+              alt="...">
+            </div>
+            <div class="widget-body">
+              <p class="widget-metas type-link">
+                <img class="width-50 img-circle" src="assets/portraits/1.jpg" alt="Relevant textual alternative to the image">
+
+                <a href="javascript:void(0)">Heather Harper</a>
+                <a href="javascript:void(0)">05, 2015</a>
+                <a href="javascript:void(0)">
+                  <span>3</span> Comments</a>
+              </p>
+              <h3 class="widget-title">Singulos flagitem cupiditatibus</h3>
+              <p>Geometria eae servare dicat, amicitiam, dixissem principio coniuncta
+                adhibuit quantumcumque placeat easque, fidem gloriatur statuat
+                perspecta ferantur greges propemodum quieti, turpius vituperatoribus
+                complectitur leguntur vidisse assiduitas insolens audeam urbes
+                futuris. Arbitrium dicere multavit. Sola nullas. Animus si orestem
+                distinguique geometriaque. </p>
+              <div class="widget-body-footer">
+                <div class="widget-actions pull-left">
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-share"></i>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-heart"></i>
+                    <span>253</span>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-chat"></i>
+                    <span>115</span>
+                  </a>
+                </div>
+                <a class="btn btn-default btn-outline pull-right" href="javascript:void(0)">
+                  <i class="icon wb-chevron-right-mini"></i> Read More
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- Posts -->
+
+      <!-- Categories -->
+      <div class="col-md-4">
+          <h3>Categories</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</p>
+        </div>
+      <!-- Categories -->
+
+        <!-- Verz Ad -->
+        <div class="col-md-4">
+              <div class="cover height-300 height-xs-300">
+            <div class="cover-background" style="background-image: url('https://images.unsplash.com/photo-1442029739115-ce733f0de45e?q=80&fm=jpg&s=fa2c61b58ef6b971915c715b73362e6d')">
+              <div class="col-md-6 col-md-offset-3 text-center pad-top-50">
+                <p class="white-text">Get Started Now</p>
+               <a href="#" class="btn btn-primary btn-outline">Create Verz</a>
+               </div>
+            </div>
+        </div>
+      </div>
+    <!-- Verz Ad -->
+
+      <!-- Featured Verz -->
+      <div class="col-md-4 pad-top-10">
+               <div class="example-wrap">
+                <h4 class="example-title">Featured Verz</h4>
+                <ul class="list-group list-group-full">
+                  <li class="list-group-item">
+                    <div class="media">
+                      <div class="media-left">
+                        <a class="avatar avatar-online" href="javascript:void(0)">
+                          <img class="img-responsive" src="assets/portraits/5.jpg"
+                          alt="..."><i></i></a>
+                      </div>
+                      <div class="media-body">
+                        <h4 class="media-heading">Edward Fletcher</h4>
+                        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
+                          metus.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="media">
+                      <div class="media-left">
+                        <a class="avatar avatar-away" href="javascript:void(0)">
+                          <img class="img-responsive" src="assets/portraits/6.jpg"
+                          alt="..."><i></i></a>
+                      </div>
+                      <div class="media-body">
+                        <h4 class="media-heading">Crystal Bates</h4>
+                        <p>Porta ac consectetur ac. Porta ac consectetur ac.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="media">
+                      <div class="media-left">
+                        <a class="avatar avatar-busy" href="javascript:void(0)">
+                          <img class="img-responsive" src="assets/portraits/7.jpg"
+                          alt="..."><i></i></a>
+                      </div>
+                      <div class="media-body">
+                        <h4 class="media-heading">Nathan Watts</h4>
+                        <p>Cbh libero, in gravida nulla. Nulla vel metus.</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item">
+                    <div class="media">
+                      <div class="media-left">
+                        <a class="avatar avatar-off" href="javascript:void(0)">
+                          <img class="img-responsive" src="assets/portraits/8.jpg"
+                          alt="..."><i></i></a>
+                      </div>
+                      <div class="media-body">
+                        <h4 class="media-heading">Heather Harper</h4>
+                        <p>Bbh libero, in gravida nulla. Nulla vel metus.</p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <!-- End Example Media -->
+      </div>
+      <!-- Featured Verz -->
+
+    <!-- Footer -->
+     <div class="col-md-4 text-center">
+        <hr>
+      <ul class="list-inline list-unstyled">
+        <li>Help</li>
+        <li>About</li>
+        <li>Blog</li>
+        <li>Contact</li>
+        <li>Terms & Services</li>
+      </ul>
+  </div>
+ <!-- Footer -->
+
   <!-- End Page -->
 <% include ../partials/footer %>
+
+</body>
+</html>
