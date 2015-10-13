@@ -3,23 +3,18 @@
 <head>
   <% include ../partials/head %>
 </head>
-<body>
+<body class="page">
 
   <style>
    .pad-top-55{
         padding-top: 150px;
       }
       </style>
- <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
-      <div class="navbar-header">
-          <a class="navbar-brand navbar-brand-center" href="javascript:void(0)">
-                Brand
-          </a>
-        </div>
-      </div>
-    </nav>
-<div class="page page-content">
+
+<% include ../partials/header %>
+
+
+<div class="page-content">
 <section class="pad-top-55">
   <div class="col-md-6 col-md-offset-3">
     <div class="panel">
@@ -49,9 +44,9 @@
                   </select>
                   <label class="floating-label">Category</label>
                 </div>
-            </div>
-             <button type="submit" class="btn btn-lg btn-raised btn-primary">Create</a>
-
+            
+             <button type="submit" class="center-block btn btn-lg btn-raised btn-primary">Create</a>
+              </div>
             </section>
           </div>
           </body>
