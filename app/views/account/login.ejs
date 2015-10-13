@@ -44,44 +44,45 @@
           <p>Still no account? Please go to <a href="/signup">Sign up</a></p>
         </div>
       </form>
-      
-<!-- HEAD -->
-      <form action="/auth/facebook" method="get">
-        <button type="submit" class="btn btn-lg btn-labeled btn-facebook social-facebook">
-          <span class="btn-label">
-            <i class="icon bd-facebook" aria-hidden="true"></i></span>
-                Sign in with Facebook</button>
-        </button>
-      </form>
-<!-- Head -->
-
-<form action="/auth/twitter" method="get">
-        <button type="submit" class="btn btn-lg btn-labeled btn-twitter social-twitter">
-          <span class="btn-label">
-            <i class="icon bd-twitter" aria-hidden="true"></i></span>
-                Sign in with Twitter</button>
-        </button>
-      </form>
-
-<form action="/auth/google" method="get">
-        <button type="submit" class="btn btn-lg btn-labeled btn-google-plus social-google-plus">
-          <span class="btn-label">
-            <i class="icon bd-google-plus" aria-hidden="true"></i></span>
-                Sign in with Google+</button>
-        </button>
-      </form>
-
-<form action="/auth/instagram" method="get">
-        <button type="submit" class="btn btn-lg btn-labeled btn-instagram social-instagram">
-          <span class="btn-label">
-            <i class="icon bd-instagram" aria-hidden="true"></i></span>
-                Sign in with Instagram</button>
-        </button>
-      </form>
-
+    </div>
   
 
-      <footer class="page-copyright page-copyright-inverse">
+      
+<!-- HEAD -->
+<h5> Social Media Login </h5>
+      <div class="col-md-12 col-md-offset-2">
+          
+          <div class="example example-buttons">
+        
+            <div class="col-md-2">
+            <form action="/auth/facebook" method="get">
+              <button type="submit" class="btn btn-icon social-facebook"><i class="icon bd-facebook" aria-hidden="true"></i></button>
+            </form>
+            </div>
+
+            <div class="col-md-2">
+            <form action="/auth/twitter" method="get">
+              <button type="submit" class="btn btn-icon social-twitter"><i class="icon bd-twitter" aria-hidden="true"></i></button>
+            </form>
+             </div>
+
+            <div class="col-md-2">
+            <form action="/auth/instagram" method="get">
+              <button type="submit" class="btn btn-icon social-instagram"><i class="icon bd-instagram" aria-hidden="true"></i></button>
+            </form>
+             </div>
+
+            <div class="col-md-2">
+            <form action="/auth/google" method="get">
+              <button type="submit" class="btn btn-icon social-google-plus"><i class="icon bd-google-plus" aria-hidden="true"></i></button>
+            </form>
+             </div>
+        
+          </div>
+        </div>
+      
+
+   <footer class="page-copyright">
         <p>Verz</p>
         <p>© 2015. All RIGHT RESERVED.</p>
         <div class="social">
@@ -98,6 +99,9 @@
       </footer>
     </div>
   </div>
+
+
+    
   <!-- End Page -->
 
   <% include ../partials/footer %>
