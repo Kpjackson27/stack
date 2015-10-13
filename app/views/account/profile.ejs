@@ -13,9 +13,9 @@
                 <div class="vertical-align padding-horizontal-0">
                   <div class="vertical-align-bottom width-full">
                     <a class="avatar avatar-100 img-bordered bg-white margin-top-20" href="javascript:void(0)">
-                      <img src="../../assets/portraits/17.jpg" alt="">
+                      <img src="<%= user.profile.picture %>" alt="">
                     </a>
-                    <h3 class="white">Herman Beck</h3>
+                    <h3 class="white"><%= user.profile.name||user.email %></h3>
                     <p class="white"><i class="icon wb-map margin-right-10" aria-hidden="true"></i>United
                       States</p>
                     <button type="button" class="btn btn-primary margin-bottom-20">Follow</button>
