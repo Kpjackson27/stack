@@ -22,9 +22,9 @@
            
             <div class="widget-body">
               <p class="widget-metas type-link">
-                <a href="/api/users/#{articles[i].creator.id}/profile"><img class="width-50 img-circle" src="<%= articles[i].creator.profile.picture %>" alt="<%= articles[i].creator.profile.name%>" /></a>
+                <a href="/api/users/<%= articles[i].creator.id %>/profile"><img class="width-50 img-circle" src="<%= articles[i].creator.profile.picture %>" alt="<%= articles[i].creator.profile.name%>" /></a>
 
-                <a href="/api/users/#{article.creator.id}/profile"><p><%= articles[i].creator.profile.name%></a>
+                <a href="/api/users/<%= articles[i].creator.id %>/profile"><p><%= articles[i].creator.profile.name%></a>
                 <p><%= moment(articles[i].created).fromNow() %></p>
                 
               </p>
