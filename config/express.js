@@ -142,7 +142,8 @@ module.exports = function(db) {
     require('../app/routes/articles.js')(app);
     require('../app/routes/about.js')(app);
     require('../app/routes/discover.js')(app);
-     require('../app/routes/settings.js')(app);
+    require('../app/routes/settings.js')(app);
+    require('../app/routes/featured.js')(app);
     require('../app/routes/recommendations.js')(app);
 
     //render static files

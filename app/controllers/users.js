@@ -490,7 +490,7 @@ exports.publicProfile = function(req, res){
         res.format({
           html: function() {
             res.render('account/publicProfile', {
-              title: 'Stats',
+              title: 'Verz | User Stats',
               "stats": stats,
               "u": req.user
             });            

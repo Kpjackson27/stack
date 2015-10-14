@@ -23,18 +23,18 @@
       </div>
       <div class="panel-body container-fluid">
         <form autocomplete="off">
-          <form id="createArticle-form" method="POST" class="form-horizontal">
+          <form id="createArticle-form" method="POST"  action="/api/createArticles" class="form-horizontal">
             <input type="hidden" name="_csrf"/>
               <div class="form-group form-material floating">
                   <input type="text" name="title" id="title" placeholder="Title" autofocus="autofocus" class="form-control"/>
                   <label class="floating-label">Title</label>
               </div>
                <div class="form-group form-material floating">
-                  <textarea type="text" name="title" id="title" placeholder="Verz" autofocus="autofocus" rows="5" class="form-control"></textarea>
+                  <textarea type="text" name="content" id="content" placeholder="Verz" autofocus="autofocus" rows="5" class="form-control"></textarea>
                   <label class="floating-label">Verz</label>
               </div>
               <div class="form-group form-material floating">
-                  <select class="form-control">
+                  <select class="form-control" name="category">
                     <option>&nbsp;</option>
                     <option>1</option>
                     <option>2</option>

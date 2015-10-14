@@ -7,7 +7,7 @@
 exports.render = function(req,res){
 	if(req.user) return res.redirect('/main');
  	res.render('pages/index', {
-		title: 'Lyrical Intent',
+		title: 'Verz',
 	});
 };
 

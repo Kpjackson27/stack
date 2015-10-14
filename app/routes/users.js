@@ -44,6 +44,9 @@ module.exports = function(app) {
     app.route('/account/profile')
         .post(passportConf.isAuthenticated, users.postUpdateProfile);
 
+    app.route('/account/publicProfile')
+        .get(users.publicProfile);
+
     //setup the 'account password' routes
     app.route('/account/password')
         .post(passportConf.isAuthenticated, users.postUpdatePassword);
@@ -103,5 +106,5 @@ module.exports = function(app) {
     }), function(req, res) {
         res.redirect(req.session.returnTo || '/account');
     });
-    //show user statistics
+    
 };

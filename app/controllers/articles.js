@@ -19,7 +19,7 @@ var getErrorMessage = function(err) {
 exports.getCreateArticles = function(req, res) {
     if (req.user) {
         res.render('article/create', {
-            title: 'Create Article'
+            title: 'Verz | Create Verz'
         });
     } else
         return res.redirect('/main');
@@ -39,6 +39,7 @@ exports.create = function(req, res) {
             req.flash('errors', {
                 msg: getErrorMessage(err)
             });
+            console.log('error you are retarded');
             return res.redirect('/create');
         } else {
             // req.flash('success', { msg: 'Poem created.'});
