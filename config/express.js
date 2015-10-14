@@ -19,8 +19,8 @@ var config = require('./config'),
     expressValidator = require('express-validator'),
     errorHandler = require('errorhandler'),
     passport = require('passport');
-    // url = require('url'),
-    // redis = require('redis')
+// url = require('url'),
+// redis = require('redis')
 
 // var redisURL = url.parse('redis://rediscloud:4kmgVo8PXPmJzJWH@pub-redis-17622.us-east-1-4.5.ec2.garantiadata.com:17622');
 // var client = redis.createClient(redisURL.port, redisURL.hostname, {
@@ -67,10 +67,23 @@ module.exports = function(db) {
     }));
     app.use(bodyParser.json());
     app.use(methodOverride());
-
+    //todo
+    // cloudinary.config({
+    //     cloud_name: 'dqevqceyc',
+    //     api_key: '443513514397748',
+    //     api_secret: 'lprAeS7gCHRibLkpY5ZGpMcAbBo'
+    // });
+    // process.env.CLOUDINARY_URL = 'cloudinary://443513514397748:lprAeS7gCHRibLkpY5ZGpMcAbBo@dqevqceyc';
+    // if (typeof(process.env.CLOUDINARY_URL) == 'undefined') {
+    //     console.warn('!! cloudinary config is undefined !!');
+    //     console.warn('export CLOUDINARY_URL or set dotenv file');
+    // } else {
+    //     console.log('cloudinary config:');
+    //     console.log(cloudinary.config());
+    // }
     //Configure multer module
     app.use(multer({
-        dest: ('uploads')
+        dest: ('./client/assets/images/uploads/')
     }));
 
     //Configure express validator module
@@ -132,7 +145,64 @@ module.exports = function(db) {
     //    secret: secrets.sessionSecret,
     //    store: new MongoStore({ url: secrets.db, autoReconnect: true })
     // }));
+    app.post('/profile', function(req, res) {
+        console.log(req.files.file.path);
+        cloudinary.uploader.upload(
+            req.files.file.path, //file.path: file path on the server, need to delete folder files
+            function(result) {
+                // var upload = new Upload({
+                //        public_id: result.public_id
+                //    });
+                // upload.creator = req.user;
+                // console.log('result.url ' + result.url);
+                //cloudinary url for thumb
+                var newUrl = cloudinary.url(result.public_id, {
+                    width: 100,
+                    height: 100,
+                    crop: 'thumb',
+                    gravity: 'face',
+                    radius: '25'
+                });
+                console.log('newUrl: ' + newUrl);
+                User.findById(req.user.id).exec(function(err, user) {
+                    if (err) {
+                        // Use the error handling method to get the error message
+                        var message = getErrorMessage(err);
+                        console.log(message);
+                        // Set the flash messages
+                        // req.flash('error', message);
+                        return res.redirect('/');
+                    }
+                    // console.log('cloud: result.url:' + result.url);
+                    user.profile.cloudinaryUrl = newUrl;
+                    user.save(function(err) {
+                        if (err) {
+                            // Use the error handling method to get the error message
+                            var message = getErrorMessage(err);
+                            console.log(message);
+                            // Set the flash messages
+                            // req.flash('error', message);
+                            return res.redirect('/');
+                        }
+                    });
+                });
+                // console.log(req.user.id);
+            }
+            // ,{
+            //  // public_id:req.files.file.name, 
+            //  crop: 'limit',
+            //  width: 2000,
+            //  height: 2000,
+            //  eager: [
+            //  { width: 200, height: 200, crop: 'thumb', gravity: 'face',
+            //    radius: 20, effect: 'sepia' },
+            //  { width: 100, height: 150, crop: 'fit', format: 'png' }
+            //  ],                                     
+            //  tags: ['special', 'for_homepage']
+            // }
 
+        );
+    });
 
     //Load the routing files
     require('../app/routes/index.js')(app);

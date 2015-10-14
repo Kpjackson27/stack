@@ -36,6 +36,8 @@ module.exports = function(app) {
     //setup the 'account' routes
     app.route('/account')
         .get(users.getAccount);
+    app.route('/profile')
+        .get(users.getProfile);
 
     //setup the 'account profile' routes
     app.route('/account/profile')

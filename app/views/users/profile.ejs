@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Image Uploader</title>
+ </head>
+ <body>
+ 
+   <form method='POST' action='/profile', enctype='multipart/form-data'>
+          <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+            <div class="form-group form-material floating">
+              <input type="file" class="form-control" name="file" id="file" />
+            </div>
+      		 <button type="submit" class="btn btn-primary btn-block btn-lg margin-top-40">upload</button>
+          </form>
+ </body>
+</html>

@@ -45,6 +45,10 @@ var UserSchema = new Schema({
             type: String,
             default: ''
         },
+        cloudinaryUrl: {
+            type: String,
+            default: 'http://res.cloudinary.com/dqevqceyc/image/upload/w_100,h_100,c_thumb,g_face,r_25/noProfile_p8w4ge.jpg'
+        },
         test: {
             type: String,
             default: 'test'
