@@ -3,6 +3,7 @@
 </head>
 <body>
 <% include ../partials/header %>
+
 <!-- Main Section -->
 <section>
   <div class="container pad-top-10">
@@ -21,15 +22,15 @@
            
             <div class="widget-body">
               <p class="widget-metas type-link">
-                <img class="width-50 img-circle" src="<%= user.profile.picture %>" alt="Relevant textual alternative to the image">
+                <a href="/api/users/#{articles[i].creator.id}/profile"><img class="width-50 img-circle" src="<%= articles[i].creator.profile.picture %>" alt="<%= articles[i].creator.profile.name%>" /></a>
 
-                <a href="javascript:void(0)"><% articles[i].creator.name %></a>
-                <a href="javascript:void(0)"><% moment(articles[i].created).fromNow() %></a>
-                <a href="javascript:void(0)">
-                  <span>3</span> Comments</a>
+                <a href="/api/users/#{article.creator.id}/profile"><p><%= articles[i].creator.profile.name%></a>
+                <p><%= moment(articles[i].created).fromNow() %></p>
+                
               </p>
-              <h3 class="widget-title"><% articles[i].title %></h3>
-              <p><% articles[i].content %></p>
+              
+          <a href="api/articles/<%= articles[i].id %>"><h3 class="widget-title"><%= articles[i].title %></h3></a>
+              <p><%= articles[i].content %></p>
               <div class="widget-body-footer">
                 <div class="widget-actions pull-left">
                   <a href="javascript:void(0)">
@@ -37,14 +38,18 @@
                   </a>
                   <a href="javascript:void(0)">
                     <i class="icon wb-heart"></i>
-                    <span>253</span>
+                    <span><%= articles[i].favoritesCount %></span>
+                  </a>
+                  <a href="javascript:void(0)">
+                    <i class="icon wb-heart"></i>
+                    <span><%= articles[i].dislikesCount %></span>
                   </a>
                   <a href="javascript:void(0)">
                     <i class="icon wb-chat"></i>
                     <span>115</span>
                   </a>
                 </div>
-                <a class="btn btn-default btn-outline pull-right" href="javascript:void(0)">
+                <a class="btn btn-default btn-outline pull-right" href="api/articles/<%= articles[i].id %>">
                   <i class="icon wb-chevron-right-mini"></i> Read More
                 </a>
               </div>

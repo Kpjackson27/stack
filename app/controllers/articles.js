@@ -39,8 +39,8 @@ exports.create = function(req, res) {
             req.flash('errors', {
                 msg: getErrorMessage(err)
             });
-            console.log('error you are retarded');
-            return res.redirect('/create');
+            console.log(getErrorMessage(err));
+            return res.redirect('/api/createArticles');
         } else {
             // req.flash('success', { msg: 'Poem created.'});
             return res.redirect('/main');

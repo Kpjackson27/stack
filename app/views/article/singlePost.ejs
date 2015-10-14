@@ -4,17 +4,25 @@
   <% include ../partials/head %>
 </head>
 <body>
-    <h1><%= title %></h1>
-    <p>Title:<%= article.title %></p>
-    <p>Content:<%= article.content %></p>
-    <p>Creator Detail:<%= article.creator %></p>
-    <p>Creator Profile:<%= article.creator.profile %></p>
-    <p>Creator Profile.name:<%= article.creator.profile.name %></p>
-    <p>Creator:<%= article.creator.profile.name ? article.creator.email : article.creator.id : article.creator.profile.name %></p>
-    <p>Creator.profile.name:<%= article.creator.email %></p>
-    <p>Creator.creator.id:<%= article.creator.id %></p>
-    <p>Category:<%= article.category %></p>
-    <p>Created on:<%= article.created %></p>
-    <p>id:<%= article._id %></p>
+
+    <% include ../partials/header %>
+
+    <div class="section pad-top-10">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-4">
+                    <h1><%= article.title %></h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-2">
+                    <p><%= article.content %></p>
+                </div>
+             </div>
+        </div>
+    </section>
+   
+
+   <% include ../partials/footer %>
 </body>
 </html>
