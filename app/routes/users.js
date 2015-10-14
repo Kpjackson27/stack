@@ -56,8 +56,6 @@ module.exports = function(app) {
     app.route('/account/profile')
         .post(passportConf.isAuthenticated, users.postUpdateProfile);
 
-    app.route('/account/publicProfile')
-        .get(users.publicProfile);
 
     //setup the 'account password' routes
     app.route('/account/password')
