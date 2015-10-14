@@ -22,7 +22,7 @@ exports.getCreateArticles = function(req, res) {
             title: 'Create Article'
         });
     } else
-        return res.redirect('/create');
+        return res.redirect('/main');
 };
 
 //create a new article

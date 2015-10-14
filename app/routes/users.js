@@ -37,6 +37,9 @@ module.exports = function(app) {
     app.route('/account')
         .get(users.getAccount);
 
+    app.route('/account/stats')
+        .get(passportConf.isAuthenticated, users.getStats);
+
     //setup the 'account profile' routes
     app.route('/account/profile')
         .post(passportConf.isAuthenticated, users.postUpdateProfile);
@@ -100,4 +103,5 @@ module.exports = function(app) {
     }), function(req, res) {
         res.redirect(req.session.returnTo || '/account');
     });
+    //show user statistics
 };

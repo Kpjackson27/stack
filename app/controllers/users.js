@@ -81,6 +81,20 @@ exports.postLogin = function(req,res,next){
  };
 
  /**
+  * Get /stats page
+  *
+  **/
+
+ exports.getStats = function(req, res) {
+    if (req.user) {
+        res.render('account/stats', {
+            title: 'Verz Statistics'
+        });
+    } else
+        return res.redirect('/');
+};
+
+ /**
   * POST /signup
   * Create a new local account
   */
@@ -146,6 +160,8 @@ exports.postLogin = function(req,res,next){
         });
       }
     });
+
+
 
   //   Tweet.load(id, function (err, tweet) {
   //   if (err) return next(err);
