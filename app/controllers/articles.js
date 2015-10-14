@@ -67,7 +67,7 @@ exports.list = function(req, res) {
             console.log(articles);
             res.format({
                 html: function() {
-                    res.render('article/listPost', {
+                    res.render('pages/main', {
                         title: 'All Poems',
                         "articles": articles
                     });

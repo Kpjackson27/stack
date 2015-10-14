@@ -18,7 +18,11 @@ var config = require('./config'),
     lusca = require('lusca'),
     expressValidator = require('express-validator'),
     errorHandler = require('errorhandler'),
-    passport = require('passport');
+    passport = require('passport'),
+    cloudinary = require('cloudinary');
+
+// var mongoose = require('mongoose'),
+//     Article = mongoose.model('Article');
 // url = require('url'),
 // redis = require('redis')
 
@@ -67,20 +71,20 @@ module.exports = function(db) {
     }));
     app.use(bodyParser.json());
     app.use(methodOverride());
-    //todo
-    // cloudinary.config({
-    //     cloud_name: 'dqevqceyc',
-    //     api_key: '443513514397748',
-    //     api_secret: 'lprAeS7gCHRibLkpY5ZGpMcAbBo'
-    // });
-    // process.env.CLOUDINARY_URL = 'cloudinary://443513514397748:lprAeS7gCHRibLkpY5ZGpMcAbBo@dqevqceyc';
-    // if (typeof(process.env.CLOUDINARY_URL) == 'undefined') {
-    //     console.warn('!! cloudinary config is undefined !!');
-    //     console.warn('export CLOUDINARY_URL or set dotenv file');
-    // } else {
-    //     console.log('cloudinary config:');
-    //     console.log(cloudinary.config());
-    // }
+    //todo use secrets.js
+    cloudinary.config({
+        cloud_name: 'dqevqceyc',
+        api_key: '443513514397748',
+        api_secret: 'lprAeS7gCHRibLkpY5ZGpMcAbBo'
+    });
+    process.env.CLOUDINARY_URL = 'cloudinary://443513514397748:lprAeS7gCHRibLkpY5ZGpMcAbBo@dqevqceyc';
+    if (typeof(process.env.CLOUDINARY_URL) == 'undefined') {
+        console.warn('!! cloudinary config is undefined !!');
+        console.warn('export CLOUDINARY_URL or set dotenv file');
+    } else {
+        console.log('cloudinary config:');
+        console.log(cloudinary.config());
+    }
     //Configure multer module
     app.use(multer({
         dest: ('./client/assets/images/uploads/')
@@ -94,7 +98,7 @@ module.exports = function(db) {
         db: db.connection.db
     });
 
-
+    //warning: vexpress-session deprecated undefined saveUninitialized option; provide saveUninitialized option
     //Configure the 'session' middleware
     app.use(session({
         saveUnitialized: true,
@@ -145,6 +149,20 @@ module.exports = function(db) {
     //    secret: secrets.sessionSecret,
     //    store: new MongoStore({ url: secrets.db, autoReconnect: true })
     // }));
+
+
+    //Load the routing files
+    require('../app/routes/index.js')(app);
+    //require('../app/routes/landing.js')(app);
+    require('../app/routes/main.js')(app);
+    require('../app/routes/users.js')(app);
+    require('../app/routes/articles.js')(app);
+    require('../app/routes/about.js')(app);
+    require('../app/routes/discover.js')(app);
+    require('../app/routes/recommendations.js')(app);
+    var User = require('mongoose').model('User');
+    //todo : use should be logged in 
+    // app.get('/api/recommendFor', passportConf.isAuthenticated, favorites.recommendFor);
     app.post('/profile', function(req, res) {
         console.log(req.files.file.path);
         cloudinary.uploader.upload(
@@ -203,17 +221,6 @@ module.exports = function(db) {
 
         );
     });
-
-    //Load the routing files
-    require('../app/routes/index.js')(app);
-    //require('../app/routes/landing.js')(app);
-    require('../app/routes/main.js')(app);
-    require('../app/routes/users.js')(app);
-    require('../app/routes/articles.js')(app);
-    require('../app/routes/about.js')(app);
-    require('../app/routes/discover.js')(app);
-    require('../app/routes/recommendations.js')(app);
-
     //render static files
     app.use(express.static('./public'));
     //load socket.io configuration

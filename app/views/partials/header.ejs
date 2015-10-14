@@ -33,23 +33,13 @@
         <ul class="nav nav-tabs nav-tabs-line" style="border-bottom:none">
             <li style="padding-left:50px; padding-top:15px;"><a href="/discover">Discover</a></li>
             <li style="padding-left:10px; padding-top:15px;"><a data-toggle="tab" href="javascript:void(0)">Featured</a></li>
+
         </ul>
     </div>
-    <div style="padding-right:125px">
-      <button type="submit" class="btn btn-primary btn-raised navbar-right navbar-btn">Sign In / Log In</button>
+<% if (!user) {%>
+<div style="padding-right:125px">
+      <a href="/login" class="btn btn-primary btn-raised navbar-right navbar-btn">Log In</a>
     </div>
-
-
-      <div style="padding-right:200px">
-      <a href='/logout' type="submit" class="btn btn-primary btn-raised navbar-right navbar-btn">Logout</a>
-    </div>
-
-
-      <div style="padding-right:300">
-      <a href='/login' type="submit" class="btn btn-primary btn-raised navbar-right navbar-btn">Login</a>
-    </div>
-
-
     <div class="collapse navbar-search navbar-right" id="example-navbar-search-1">
         <form class="navbar-form" role="search">
           <div class="input-search">
@@ -60,6 +50,129 @@
               </div>
           </form> 
        </div>
-    </div>
-  </nav>
+<% } else  {%>
+  <div class="collapse navbar-collapse navbar-collapse-group" id="example-navbar-toolbar-1">
+                <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+                  <li class="dropdown">
+                    <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                      <span class="avatar avatar-online">
+                        <img src="<%= user.profile.picture %>" alt="...">
+                      </span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li role="presentation">
+                        <a href="/account" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Profile</a>
+                      </li>
+                      <li role="presentation">
+                        <a href="/settings" role="menuitem"><i class="icon wb-settings" aria-hidden="true"></i> Settings</a>
+                      </li>
+                      <li class="divider" role="presentation"></li>
+                      <li role="presentation">
+                        <a href="/logout" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a data-toggle="dropdown" href="javascript:void(0)" title="Notifications" aria-expanded="false"
+                    data-animation="slide-bottom" role="button">
+                      <i class="icon wb-bell" aria-hidden="true"></i>
+                      <span class="badge badge-danger up">5</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
+                      <li class="dropdown-menu-header" role="presentation">
+                        <h5>NOTIFICATIONS</h5>
+                        <span class="label label-round label-danger">New 5</span>
+                      </li>
+
+                      <li class="list-group" role="presentation">
+                        <div data-role="container">
+                          <div data-role="content">
+                            <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                              <div class="media">
+                                <div class="media-left padding-right-10">
+                                  <i class="icon wb-order bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                  <h6 class="media-heading">A new order has been placed</h6>
+                                  <time class="media-meta" datetime="2015-06-12T20:50:48+08:00">5 hours ago</time>
+                                </div>
+                              </div>
+                            </a>
+                            <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                              <div class="media">
+                                <div class="media-left padding-right-10">
+                                  <i class="icon wb-user bg-green-600 white icon-circle" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                  <h6 class="media-heading">Completed the task</h6>
+                                  <time class="media-meta" datetime="2015-06-11T18:29:20+08:00">2 days ago</time>
+                                </div>
+                              </div>
+                            </a>
+                            <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                              <div class="media">
+                                <div class="media-left padding-right-10">
+                                  <i class="icon wb-settings bg-red-600 white icon-circle" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                  <h6 class="media-heading">Settings updated</h6>
+                                  <time class="media-meta" datetime="2015-06-11T14:05:00+08:00">2 days ago</time>
+                                </div>
+                              </div>
+                            </a>
+                            <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                              <div class="media">
+                                <div class="media-left padding-right-10">
+                                  <i class="icon wb-calendar bg-blue-600 white icon-circle" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                  <h6 class="media-heading">Event started</h6>
+                                  <time class="media-meta" datetime="2015-06-10T13:50:18+08:00">3 days ago</time>
+                                </div>
+                              </div>
+                            </a>
+                            <a class="list-group-item" href="javascript:void(0)" role="menuitem">
+                              <div class="media">
+                                <div class="media-left padding-right-10">
+                                  <i class="icon wb-chat bg-orange-600 white icon-circle" aria-hidden="true"></i>
+                                </div>
+                                <div class="media-body">
+                                  <h6 class="media-heading">Message received</h6>
+                                  <time class="media-meta" datetime="2015-06-10T12:34:48+08:00">3 days ago</time>
+                                </div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="dropdown-menu-footer" role="presentation">
+                        <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button">
+                          <i class="icon wb-settings" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0)" role="menuitem">
+                        All notifications
+                      </a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+                 <ul class="nav navbar-toolbar navbar-right">
+                      <a href="/api/CreateArticles" style="margin-top:15px" class="btn btn-icon"><i class="icon pe-pen" aria-hidden="true" style="font-size:30px"></i></a>
+                </ul>
+                <ul class="nav navbar-toolbar navbar-right">
+                  <li class="collapse navbar-search">
+                      <form class="navbar-form" role="search">
+                        <div class="input-search">
+                          <input type="text" class="form-control" placeholder="Search">
+                             <button type="button" class="input-search-btn">
+                                 <i class="icon wb-search" aria-hidden="true"></i>
+                              </button>
+                        </div>
+                    </form> 
+                  </li>
+                   </ul>
+             <% } %>
+              </div>
+          </nav>
+      
 <!--Navigation Section -->
