@@ -50,7 +50,7 @@ exports.getDailyFeatured = function(req, res) {
         res.format({
             html: function() {
                 res.render('pages/discover', {
-                    title: 'Lyrical Intent | Discover',
+                    title: 'Verz| Discover',
                     "poems": poems
                 });
             },

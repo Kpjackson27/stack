@@ -383,13 +383,11 @@ exports.isAuthenticated = function(req, res, next) {
     }
     return res.redirect('/');
 };
-
 /**
  * Authorization Required middleware.
  */
 exports.isAuthorized = function(req, res, next) {
     var provider = req.path.split('/').slice(-1)[0];
-
     if (_.find(req.user.tokens, {
             kind: provider
         })) {

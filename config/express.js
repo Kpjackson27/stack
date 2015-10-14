@@ -20,6 +20,7 @@ var config = require('./config'),
     errorHandler = require('errorhandler'),
     passport = require('passport'),
     cloudinary = require('cloudinary');
+var secrets = require('./secrets');
 
 // var mongoose = require('mongoose'),
 //     Article = mongoose.model('Article');
@@ -73,9 +74,9 @@ module.exports = function(db) {
     app.use(methodOverride());
     //todo use secrets.js
     cloudinary.config({
-        cloud_name: 'dqevqceyc',
-        api_key: '443513514397748',
-        api_secret: 'lprAeS7gCHRibLkpY5ZGpMcAbBo'
+        cloud_name: secrets.cloudinary.cloud_name,
+        api_key: secrets.cloudinary.api_key,
+        api_secret: secrets.cloudinary.api_secret
     });
     process.env.CLOUDINARY_URL = 'cloudinary://443513514397748:lprAeS7gCHRibLkpY5ZGpMcAbBo@dqevqceyc';
     if (typeof(process.env.CLOUDINARY_URL) == 'undefined') {
@@ -85,14 +86,10 @@ module.exports = function(db) {
         console.log('cloudinary config:');
         console.log(cloudinary.config());
     }
-    //Configure multer module
     app.use(multer({
         dest: ('./client/assets/images/uploads/')
     }));
-
-    //Configure express validator module
     app.use(expressValidator());
-
     //Configure the MongoDB session storage
     var mongoStore = new MongoStore({
         db: db.connection.db
@@ -107,30 +104,21 @@ module.exports = function(db) {
         secret: 'developmentSessionSecret',
         store: mongoStore
     }));
-
     //set application view engine and 'views' folder
     app.set('views', './app/views');
     app.set('view engine', 'ejs');
     app.use(compress());
-
-
-
-
     //configure the flash messages middleware
     app.use(flash());
-
     //configure the lusca security middleware
     app.use(lusca({
         csrf: true,
         xframe: 'SAMEORIGIN',
         xssProtection: true
     }));
-
-
     //Configure passport middleware
     app.use(passport.initialize());
     app.use(passport.session());
-
     app.use(function(req, res, next) {
         res.locals.user = req.user;
         next();
@@ -149,8 +137,6 @@ module.exports = function(db) {
     //    secret: secrets.sessionSecret,
     //    store: new MongoStore({ url: secrets.db, autoReconnect: true })
     // }));
-
-
     //Load the routing files
     require('../app/routes/index.js')(app);
     //require('../app/routes/landing.js')(app);
@@ -159,73 +145,13 @@ module.exports = function(db) {
     require('../app/routes/articles.js')(app);
     require('../app/routes/about.js')(app);
     require('../app/routes/discover.js')(app);
+    require('../app/routes/settings.js')(app);
+    require('../app/routes/featured.js')(app);
     require('../app/routes/recommendations.js')(app);
-    var User = require('mongoose').model('User');
-    //todo : use should be logged in 
     // app.get('/api/recommendFor', passportConf.isAuthenticated, favorites.recommendFor);
-    app.post('/profile', function(req, res) {
-        console.log(req.files.file.path);
-        cloudinary.uploader.upload(
-            req.files.file.path, //file.path: file path on the server, need to delete folder files
-            function(result) {
-                // var upload = new Upload({
-                //        public_id: result.public_id
-                //    });
-                // upload.creator = req.user;
-                // console.log('result.url ' + result.url);
-                //cloudinary url for thumb
-                var newUrl = cloudinary.url(result.public_id, {
-                    width: 100,
-                    height: 100,
-                    crop: 'thumb',
-                    gravity: 'face',
-                    radius: '25'
-                });
-                console.log('newUrl: ' + newUrl);
-                User.findById(req.user.id).exec(function(err, user) {
-                    if (err) {
-                        // Use the error handling method to get the error message
-                        var message = getErrorMessage(err);
-                        console.log(message);
-                        // Set the flash messages
-                        // req.flash('error', message);
-                        return res.redirect('/');
-                    }
-                    // console.log('cloud: result.url:' + result.url);
-                    user.profile.cloudinaryUrl = newUrl;
-                    user.save(function(err) {
-                        if (err) {
-                            // Use the error handling method to get the error message
-                            var message = getErrorMessage(err);
-                            console.log(message);
-                            // Set the flash messages
-                            // req.flash('error', message);
-                            return res.redirect('/');
-                        }
-                    });
-                });
-                // console.log(req.user.id);
-            }
-            // ,{
-            //  // public_id:req.files.file.name, 
-            //  crop: 'limit',
-            //  width: 2000,
-            //  height: 2000,
-            //  eager: [
-            //  { width: 200, height: 200, crop: 'thumb', gravity: 'face',
-            //    radius: 20, effect: 'sepia' },
-            //  { width: 100, height: 150, crop: 'fit', format: 'png' }
-            //  ],                                     
-            //  tags: ['special', 'for_homepage']
-            // }
-
-        );
-    });
     //render static files
     app.use(express.static('./public'));
     //load socket.io configuration
     require('./socketio')(server, io, mongoStore);
-
-
     return server;
 };

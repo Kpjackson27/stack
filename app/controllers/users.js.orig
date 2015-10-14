@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('lodash'),
+<<<<<<< HEAD
     async = require('async'),
     crypto = require('crypto'),
     passport = require('passport'),
@@ -8,7 +9,15 @@ var _ = require('lodash'),
     User = require('../models/User'),
     Article = require('../models/Article');
 // var secrets = require('../../config/secrets');
-
+=======
+	async = require('async'),
+	crypto = require('crypto'),
+	passport = require('passport'),
+	nodemailer = require('nodemailer'),
+	User = require('../models/User'),
+  Article = require('../models/Article');
+// var secrets = require('../../config/secrets');  
+>>>>>>> 226cafd6dc7643c6c509a789d3efaf905db1cc62
 // Create a new error handling controller method
 var getErrorMessage = function(err) {
     if (err.errors) {
@@ -23,13 +32,21 @@ var getErrorMessage = function(err) {
 /**
  *GET /login
  * Login Page
+<<<<<<< HEAD
  */
-
+exports.getLogin = function(req, res) {
+    if (req.user) return res.redirect('/');
+    res.render('account/login', {
+        title: 'Login'
+    });
+=======
+*/
 exports.getLogin = function(req,res){
 	if(req.user) return res.redirect('/main');
 	res.render('account/login', {
 		title: 'Login'
 	});
+>>>>>>> 226cafd6dc7643c6c509a789d3efaf905db1cc62
 };
 
 /**
@@ -69,7 +86,16 @@ exports.postLogin = function(req, res, next) {
  *GET /logout
  *Log out
  */
+<<<<<<< HEAD
+exports.logout = function(req, res) {
+    req.logout();
+    res.redirect('/');
+};
 
+/**
+ * GET /signup
+ * Signup Page
+=======
  exports.logout = function(req,res) {
  	req.logout();
  	res.redirect('/');
@@ -218,6 +244,15 @@ exports.getAccount = function(req, res) {
         }
     });
 
+<<<<<<< HEAD
+    //   Tweet.load(id, function (err, tweet) {
+    //   if (err) return next(err);
+    //   if (!tweet) return next(new Error('Failed to load tweet'+id));
+    //   req.tweet = tweet;
+    //   next();
+    // });
+=======
+
 
   //   Tweet.load(id, function (err, tweet) {
   //   if (err) return next(err);
@@ -225,6 +260,7 @@ exports.getAccount = function(req, res) {
   //   req.tweet = tweet;
   //   next();
   // });
+>>>>>>> 226cafd6dc7643c6c509a789d3efaf905db1cc62
 
 
 };
@@ -520,7 +556,74 @@ exports.userByID = function(req, res, next, id) {
         next();
     });
 };
+<<<<<<< HEAD
+exports.publicProfile = function(req, res) {
+    // console.log('userId:'+req.params.userId);
+    // var user = req.user;
+    // console.log('user:'+user);
+    // var stats={};
+    // Article.countArticle(req.user._id, function(err, c){
+    //   // if (err) return next(err);
+    //   console.log('count:'+c);
+    //   if (err) {
+    //     req.flash('errors', {
+    //       msg: getErrorMessage(err)
+    //     });
+    //     return res.redirect('/');
+    //   } else {
+    //     stats.count = c;
+    //     console.log('stats.count!!!!:'+stats.count);
+    //   }
+    // });
 
+    // // User.findOne({_id:req.params.userId}).exec(function(err, user) {
+    // //   if (err) return next(err);
+    // //   if (!user) {
+    // //       req.flash('errors', {
+    // //         msg: 'Failed to find user ' + id
+    // //       });
+    // //       return res.redirect('/');
+    // //   }
+    // // });
+
+
+    // res.format({
+    //     html: function() {
+    //       res.render('account/publicProfile', {
+    //         title: 'Stats',
+    //         "stats": stats,
+    //         "_user": req.user
+
+    //       });            
+    //     },
+    //     json: function() {
+    //       res.json(stats);
+    //     }
+    //   });
+    var stats = {};
+    Article.countArticle(req.user.id, function(err, c) {
+        if (err) {
+            req.flash('errors', {
+                msg: getErrorMessage(err)
+            });
+            return res.redirect('/');
+        } else {
+            stats.count = c;
+            console.log('stats.count:' + stats.count);
+            res.format({
+                html: function() {
+                    res.render('account/publicProfile', {
+                        title: 'Stats',
+                        "stats": stats,
+                        "u": req.user
+                    });
+                },
+                json: function() {
+                    res.json(stats);
+                }
+            });
+        }
+=======
 exports.publicProfile = function(req, res){
   // console.log('userId:'+req.params.userId);
   // var user = req.user;
@@ -587,6 +690,7 @@ exports.publicProfile = function(req, res){
           }
         });
       }
+>>>>>>> 226cafd6dc7643c6c509a789d3efaf905db1cc62
 
     });
 };

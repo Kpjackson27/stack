@@ -105,7 +105,7 @@ exports.recommendFor = function(req, res) {
         res.format({
             html: function() {
                 res.render('pages/recommendations', {
-                    title: 'Recommendations',
+                    title: 'Verz | Recommendations',
                     "recs": recs //an array of article/verz/post Id
                 });
             },

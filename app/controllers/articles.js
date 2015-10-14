@@ -19,14 +19,15 @@ var getErrorMessage = function(err) {
 exports.getCreateArticles = function(req, res) {
     if (req.user) {
         res.render('article/create', {
-            title: 'Create Article'
+            title: 'Verz | Create Verz'
         });
     } else
-        return res.redirect('/create');
+        return res.redirect('/main');
 };
 
 //create a new article
 exports.create = function(req, res) {
+    console.log('in create');
     // Create a new article object
     var article = new Article(req.body);
 
@@ -39,9 +40,11 @@ exports.create = function(req, res) {
             req.flash('errors', {
                 msg: getErrorMessage(err)
             });
+            console.log('error you are retarded');
             return res.redirect('/create');
         } else {
             // req.flash('success', { msg: 'Poem created.'});
+            console.log('success');
             return res.redirect('/main');
         }
     });
