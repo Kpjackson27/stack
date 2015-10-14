@@ -25,7 +25,7 @@ var getErrorMessage = function(err) {
  * Login Page
 */
 exports.getLogin = function(req,res){
-	if(req.user) return res.redirect('/');
+	if(req.user) return res.redirect('/main');
 	res.render('account/login', {
 		title: 'Login'
 	});
@@ -74,7 +74,7 @@ exports.postLogin = function(req,res,next){
   * Signup Page
   */
  exports.getSignup = function(req, res){
- 	if(req.user) return res.redirect('/');
+ 	if(req.user) return res.redirect('/main');
  	res.render('account/signup', {
  		title: 'Create Account'
  	});
