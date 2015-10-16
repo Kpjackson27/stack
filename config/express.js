@@ -148,6 +148,7 @@ module.exports = function(db) {
     require('../app/routes/settings.js')(app);
     require('../app/routes/featured.js')(app);
     require('../app/routes/recommendations.js')(app);
+    require('../app/routes/subscribers.js')(app);
     // app.get('/api/recommendFor', passportConf.isAuthenticated, favorites.recommendFor);
     //render static files
     app.use(express.static('./public'));

@@ -10,18 +10,41 @@
     <div class="section pad-top-10">
         <div class="container">
             <div class="row">
-                <div class="col-md-8 col-md-offset-4">
+                <div class="col-md-8 col-md-offset-5">
                     <h1><%= article.title %></h1>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-md-offset-2">
+                <div class="col-md-6 col-md-offset-3">
                     <p><%= article.content %></p>
                 </div>
              </div>
+              
+          <div class="widget-footer padding-horizontal-30 padding-vertical-20 height-100">
+              <div class="row no-space">
+                <div class="col-xs-4">
+                  <div class="counter">
+                    <div class="counter-label">Likes</div>
+                    <span class="counter-number"><%= article.favoritesCount %></span>
+                  </div>
+                </div>
+                <div class="col-xs-4">
+                  <div class="counter">
+                    <div class="counter-label">Dislikes</div>
+                    <span class="counter-number"><%= article.dislikesCount %></span>
+                  </div>
+                </div> 
+                <div class="col-xs-4">
+                  <div class="counter">
+                    <div class="counter-label">Comments</div>
+                    <span class="counter-number">326</span>
+                  </div>
+                </div>
+              </div>
+            </div>
         </div>
     </section>
-   
+     
 
    <% include ../partials/footer %>
 </body>

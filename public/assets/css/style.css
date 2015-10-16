@@ -3,3 +3,16 @@
     background-color: #b29374;
     border-color: #b29374;
 }
+
+p{
+	letter-spacing: 1.3px;
+    line-height: 2;
+    max-width: 700px;
+    font-size: 14px;
+    font-family: 'PT Mono',;
+}
+
+
+h1.title-main{
+font-family: 'Cousine', ;
+}
