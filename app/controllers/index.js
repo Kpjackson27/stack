@@ -5,8 +5,8 @@
 
 //Create a new 'render' controller method
 exports.render = function(req,res){
-	if(req.user) return res.redirect('/main');
- 	res.render('pages/index', {
+	//if(req.user) return res.redirect('/main');
+ 	res.render('subscribe', {
 		title: 'Verz',
 	});
 };

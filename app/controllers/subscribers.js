@@ -27,7 +27,7 @@ exports.postSubscribe = function(req, res) {
                     message: errorHandler.getErrorMessage(err)
                 });
             } else {
-                res.json(subscriber);
+                return res.redirect('/welcome');
             }
         });
     });

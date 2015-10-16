@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <% include partials/head %>
+</head>
+<body>
+  <style>
+.logo{
+  height:250px;
+}
+
+.form-material .form-control, .form-material .form-control.focus, .form-material .form-control:focus {
+    float: none;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#b29374),to(##b29374)),-webkit-gradient(linear,left top,left bottom,from(#e4eaec),to(#e4eaec));
+    background-image: -webkit-linear-gradient(#b29374,#b29374),-webkit-linear-gradient(#b29374,#b29374);
+    background-image: -o-linear-gradient(#b29374,#b29374),-o-linear-gradient(#b29374,#b29374);
+    background-image: linear-gradient(#b29374,#b29374)linear-gradient(#b29374,#b29374);
+    border: 0;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.form-material .floating-label {
+    position: absolute;
+    left: 0;
+    font-size: 14px;
+    color: #b29374;
+    pointer-events: none;
+    -webkit-transition: .3s ease all;
+    -o-transition: .3s ease all;
+    transition: .3s ease all;
+}
+</style>
+
+	  <!-- header section -->
+<section>
+  <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <img class="brand-img logo" src="/img/verz_logo_main.png" alt="...">
+            <p class="text-center">Join the biggest community of artists, poets and songwritters</p>
+             <form method="POST" action="/">
+                <input type="hidden" name="_csrf" value="<%= locals._csrf %>">
+                  <div class="form-group form-material floating">
+                  <input type="email" class="form-control" name="email" id="email" />
+                <label class="floating-label">Subscribe for more information</label>
+              </div>
+              <button type="submit" class="btn btn-brown btn-raised btn-block btn-lg margin-top-40">Subscribe</button>
+            </form>
+          </div>  
+      </div>
+    </div>
+  </section>
+<!-- header section -->
+
+
+  <% include partials/footer %>
+</body>
+</html>
